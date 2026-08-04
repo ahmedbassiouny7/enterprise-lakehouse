@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Bind-mounted over /opt/hadoop/etc/hadoop/hdfs-site.xml in the `master`
+  (and `worker`) containers, replacing the image's baked-in version.
+  Only difference from the original: dfs.replication 3 -> 1.
+
+  Why: the baked-in config asks for 3 replicas of every block, but this
+  compose file only runs ONE DataNode (`worker`). With replication=3 and
+  one DataNode, every write succeeds but every block stays permanently
+  under-replicated — harmless functionally, but it clutters the NameNode
+  UI with warnings and is worth fixing rather than explaining away in an
+  interview. All other values are unchanged from the original image.
+
+  IMPORTANT: this file must be in place *before* the first `docker compose
+  up`, because `master`'s run.sh only formats the NameNode once (guarded by
+  a marker file) — changing this after first boot won't retroactively
+  re-replicate existing blocks.
+-->
+<configuration>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>/opt/hadoop/dfs/name</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>/opt/hadoop/dfs/data</value>
+    </property>
+    <property>
+        <name>dfs.namenode.checkpoint.dir</name>
+        <value>/opt/hadoop/dfs/namesecondary</value>
+    </property>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+</configuration>

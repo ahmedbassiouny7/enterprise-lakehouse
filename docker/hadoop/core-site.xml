@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Exact copy of what's already baked into hadoop-hive-spark-master:latest
+  at /opt/hadoop/etc/hadoop/core-site.xml — kept here only so it can be
+  mounted into Trino's catalog directory (Trino needs its own copy of
+  Hadoop's client config to talk to HDFS for Iceberg data files). NOT
+  mounted into master/worker — their baked-in copy is untouched.
+-->
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://master</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.jupyter.groups</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.jupyter.hosts</name>
+        <value>*</value>
+    </property>
+</configuration>

@@ -1,0 +1,311 @@
+version: "3.8"
+
+# ============================================================================
+# Enterprise Lakehouse & Data Virtualization Platform
+#
+# One command brings the whole stack up:  docker compose up -d
+#
+# The Hadoop/Spark/Hive corner of this file reuses Ahmed's existing
+# hadoop-hive-spark-{master,worker,history} images rather than pulling
+# separate bde2020/bitnami/apache-hive containers. Those images bundle
+# HDFS + Spark + Hive together per-role, with several hostnames and
+# credentials hardcoded inside them (not env-configurable) — every comment
+# below tagged "HARDCODED IN IMAGE" reflects something reverse-engineered
+# from their entrypoint/run scripts and config files, not a free choice.
+# Full writeup: docs/design-decisions.md.
+#
+# Before first boot: fetch the two jars in docker/spark-jars/ (see the
+# README there) — everything else here uses images already on this machine.
+# ============================================================================
+
+x-airflow-common: &airflow-common
+  build: ./docker/airflow
+  environment: &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: ${AIRFLOW__CORE__EXECUTOR:-LocalExecutor}
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${AIRFLOW_DB_USER}:${AIRFLOW_DB_PASSWORD}@airflow-db:5432/${AIRFLOW_DB}
+    AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW__CORE__FERNET_KEY}
+    AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW__WEBSERVER__SECRET_KEY}
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    AIRFLOW_UID: ${AIRFLOW_UID:-50000}
+  volumes:
+    - ./airflow/dags:/opt/airflow/dags
+    - ./spark/jobs:/opt/airflow/spark_jobs
+    - airflow_logs:/opt/airflow/logs
+  networks: [lakehouse-net]
+  depends_on:
+    airflow-db:
+      condition: service_healthy
+
+services:
+  # --------------------------------------------------------------------
+  # Hadoop NameNode + YARN ResourceManager + Hive Metastore + HiveServer2
+  # + Spark Master — all one container. This is how Ahmed's image is
+  # built (see docker/spark-jars/README.md); not a design choice made
+  # for this project.
+  #
+  # HARDCODED IN IMAGE: fs.defaultFS=hdfs://master, hive.metastore.uris=
+  # thrift://master:9083, metastore JDBC target jdbc:postgresql://
+  # metastore:5432/metastore — meaning this service MUST be named
+  # exactly "master" and a Postgres service named exactly "metastore"
+  # MUST exist on this network.
+  # --------------------------------------------------------------------
+  master:
+    image: hadoop-hive-spark-master:latest
+    container_name: master
+    hostname: master
+    environment:
+      - SPARK_MASTER_HOST=${SPARK_MASTER_HOST}   # not baked in — image needs this passed at runtime
+    ports:
+      - "${NAMENODE_UI_PORT}:9870"     # HDFS NameNode web UI
+      - "${SPARK_MASTER_UI_PORT}:8080" # Spark Master web UI
+      - "${SPARK_MASTER_RPC_PORT}:7077" # Spark Master RPC (workers + spark-submit connect here)
+      - "${HIVE_METASTORE_THRIFT_PORT}:9083" # Hive Metastore (Trino + Spark catalog reads)
+      - "${HIVESERVER2_PORT}:10000"    # HiveServer2 (beeline / JDBC clients)
+    volumes:
+      - namenode_data:/opt/hadoop/dfs/name
+      - ./docker/hadoop/hdfs-site.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml:ro
+      - ./docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:/opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:ro
+      - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
+      - ./spark/jobs:/opt/spark-jobs
+    networks: [lakehouse-net]
+    depends_on:
+      metastore:
+        condition: service_healthy
+
+  # HARDCODED IN IMAGE: connects to spark://master:7077 and joins HDFS via
+  # fs.defaultFS=hdfs://master (baked into core-site.xml) — no config
+  # needed on our side beyond making sure "master" resolves on the network,
+  # which Compose already guarantees via the service name above.
+  worker:
+    image: hadoop-hive-spark-worker:latest
+    container_name: worker
+    hostname: worker
+    ports:
+      - "${SPARK_WORKER_UI_PORT}:8081"
+    volumes:
+      - datanode_data:/opt/hadoop/dfs/data
+      - ./docker/hadoop/hdfs-site.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml:ro
+      - ./docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:/opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:ro
+      - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
+    networks: [lakehouse-net]
+    depends_on:
+      - master
+
+  history:
+    image: hadoop-hive-spark-history:latest
+    container_name: history
+    ports:
+      - "${SPARK_HISTORY_UI_PORT}:18080"
+    volumes:
+      - ./docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:/opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:ro
+      - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
+    networks: [lakehouse-net]
+    depends_on:
+      - master
+
+  # --------------------------------------------------------------------
+  # Hive Metastore's backing database. Db/user/password and the service
+  # name itself are all fixed by the JDBC URL baked into master's
+  # hive-site.xml (jdbc:postgresql://metastore:5432/metastore) — none of
+  # these four values are free to change without rebuilding master.
+  # `master`'s first-boot script runs `schematool -initSchema` against
+  # this automatically — no manual init needed on our side.
+  # --------------------------------------------------------------------
+  metastore:
+    image: postgres:15
+    container_name: metastore
+    environment:
+      - POSTGRES_DB=${METASTORE_DB}
+      - POSTGRES_USER=${METASTORE_USER}
+      - POSTGRES_PASSWORD=${METASTORE_PASSWORD}
+    ports:
+      - "${METASTORE_PORT}:5432"
+    volumes:
+      - metastore_db_data:/var/lib/postgresql/data
+    networks: [lakehouse-net]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${METASTORE_USER} -d ${METASTORE_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # --------------------------------------------------------------------
+  # Operational source systems (what the pipeline reads FROM)
+  # --------------------------------------------------------------------
+  postgres-orders:
+    image: postgres:15
+    container_name: postgres-orders
+    environment:
+      - POSTGRES_DB=${POSTGRES_ORDERS_DB}
+      - POSTGRES_USER=${POSTGRES_ORDERS_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_ORDERS_PASSWORD}
+    ports:
+      - "${POSTGRES_ORDERS_PORT}:5432"
+    volumes:
+      - postgres_orders_data:/var/lib/postgresql/data
+    networks: [lakehouse-net]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_ORDERS_USER} -d ${POSTGRES_ORDERS_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  mysql-customers:
+    image: mysql:8.0
+    container_name: mysql-customers
+    environment:
+      - MYSQL_DATABASE=${MYSQL_CUSTOMERS_DB}
+      - MYSQL_USER=${MYSQL_CUSTOMERS_USER}
+      - MYSQL_PASSWORD=${MYSQL_CUSTOMERS_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "${MYSQL_CUSTOMERS_PORT}:3306"
+    volumes:
+      - mysql_customers_data:/var/lib/mysql
+    networks: [lakehouse-net]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # --------------------------------------------------------------------
+  # data-generator — one-shot job container. Generates the synthetic
+  # dataset (Faker/numpy, seed 42, correlated distributions) and loads it
+  # directly into postgres-orders and mysql-customers over lakehouse-net.
+  # Not a long-running service: it runs once, exits 0, and sits stopped
+  # (same pattern as airflow-init below). Re-run any time with:
+  #   docker compose run --rm data-generator
+  # products.csv / exchange_rates.csv (flat-file/API sources, not live
+  # DB tables) land in ./generator/output on the host via the volume mount.
+  # --------------------------------------------------------------------
+  data-generator:
+    build: ./generator
+    container_name: data-generator
+    environment:
+      GEN_SEED: "42"
+      GEN_N_CUSTOMERS: "10000"
+      GEN_N_PRODUCTS: "2000"
+      GEN_N_ORDERS: "100000"
+      GEN_START_DATE: "2024-01-01"
+      GEN_END_DATE: "2025-12-31"
+      GEN_OUTPUT_DIR: "/data/output"
+
+      ORDERS_DB_HOST: postgres-orders
+      ORDERS_DB_PORT: "5432"
+      ORDERS_DB_NAME: ${POSTGRES_ORDERS_DB}
+      ORDERS_DB_USER: ${POSTGRES_ORDERS_USER}
+      ORDERS_DB_PASSWORD: ${POSTGRES_ORDERS_PASSWORD}
+
+      CUSTOMERS_DB_HOST: mysql-customers
+      CUSTOMERS_DB_PORT: "3306"
+      CUSTOMERS_DB_NAME: ${MYSQL_CUSTOMERS_DB}
+      CUSTOMERS_DB_USER: ${MYSQL_CUSTOMERS_USER}
+      CUSTOMERS_DB_PASSWORD: ${MYSQL_CUSTOMERS_PASSWORD}
+    volumes:
+      - ./generator/output:/data/output
+    networks: [lakehouse-net]
+    restart: "no"
+    depends_on:
+      postgres-orders:
+        condition: service_healthy
+      mysql-customers:
+        condition: service_healthy
+
+  # --------------------------------------------------------------------
+  # Trino — unified SQL / data-virtualization endpoint
+  # --------------------------------------------------------------------
+  trino:
+    image: trinodb/trino:465
+    container_name: trino
+    ports:
+      - "${TRINO_PORT}:8080"
+    volumes:
+      - ./docker/trino/catalog:/etc/trino/catalog
+      - ./docker/hadoop:/etc/trino/catalog/hadoop-conf:ro
+    networks: [lakehouse-net]
+    depends_on:
+      - master
+      - postgres-orders
+      - mysql-customers
+
+  # --------------------------------------------------------------------
+  # Airflow — orchestration. LocalExecutor + its own Postgres metadata DB.
+  # Custom image built FROM apache/airflow:2.9.3 (already cached locally)
+  # adding the Spark/Trino providers — see docker/airflow/Dockerfile.
+  # --------------------------------------------------------------------
+  airflow-db:
+    image: postgres:15
+    container_name: airflow-db
+    environment:
+      - POSTGRES_DB=${AIRFLOW_DB}
+      - POSTGRES_USER=${AIRFLOW_DB_USER}
+      - POSTGRES_PASSWORD=${AIRFLOW_DB_PASSWORD}
+    volumes:
+      - airflow_db_data:/var/lib/postgresql/data
+    networks: [lakehouse-net]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${AIRFLOW_DB_USER} -d ${AIRFLOW_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  airflow-init:
+    <<: *airflow-common
+    container_name: airflow-init
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        airflow db migrate
+        airflow users create \
+          --username "${AIRFLOW_ADMIN_USER}" \
+          --password "${AIRFLOW_ADMIN_PASSWORD}" \
+          --firstname Admin --lastname User \
+          --role Admin --email admin@example.com
+    restart: "no"
+
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: airflow-webserver
+    command: webserver
+    ports:
+      - "${AIRFLOW_WEBSERVER_PORT}:8080"
+    depends_on:
+      airflow-db:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: airflow-scheduler
+    command: scheduler
+    depends_on:
+      airflow-db:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-triggerer:
+    <<: *airflow-common
+    container_name: airflow-triggerer
+    command: triggerer
+    depends_on:
+      airflow-db:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+
+networks:
+  lakehouse-net:
+    driver: bridge
+
+volumes:
+  namenode_data:
+  datanode_data:
+  metastore_db_data:
+  postgres_orders_data:
+  mysql_customers_data:
+  airflow_db_data:
+  airflow_logs:

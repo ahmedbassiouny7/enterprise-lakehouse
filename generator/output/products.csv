@@ -1,0 +1,2001 @@
+product_id,product_name,category,subcategory,brand,unit_cost,list_price,is_active
+1,Together Beverage,Grocery,Beverages,Acme,16.05,25.85,1
+2,Adult Outdoor Rec,Sports,Outdoor Rec,Wayne,6.83,11.13,1
+3,Heavy Men,Apparel,Men,Hooli,19.55,37.63,1
+4,Citizen Educational,Toys,Educational,Wayne,57.02,78.82,1
+5,Paper Skincare,Beauty,Skincare,Soylent,13.56,26.55,1
+6,Blood Footwear,Apparel,Footwear,Stark,27.9,48.61,1
+7,Occur Children,Books,Children,Globex,67.15,128.57,1
+8,Time Fitnes,Sports,Fitness,Soylent,70.96,98.29,1
+9,Federal Laptop,Electronics,Laptops,Globex,38.14,75.3,1
+10,Figure Makeup,Beauty,Makeup,Stark,29.97,51.42,1
+11,Apply Kitchen,Home & Garden,Kitchen,Umbrella,69.27,94.12,1
+12,Outside Men,Apparel,Men,Soylent,86.05,159.76,1
+13,Agency Haircare,Beauty,Haircare,Soylent,69.24,103.54,1
+14,Ask Outdoor,Home & Garden,Outdoor,Globex,75.57,115.41,1
+15,To Makeup,Beauty,Makeup,Stark,97.23,188.3,1
+16,Computer Audio,Electronics,Audio,Stark,40.3,76.39,1
+17,Guess Outdoor Rec,Sports,Outdoor Rec,Soylent,18.0,32.83,1
+18,Support Fiction,Books,Fiction,Soylent,49.41,87.27,1
+19,Fund Haircare,Beauty,Haircare,Acme,48.59,70.17,1
+20,Woman Skincare,Beauty,Skincare,Soylent,37.01,62.7,1
+21,Name Outdoor,Home & Garden,Outdoor,Soylent,32.74,52.54,1
+22,Loss Snack,Grocery,Snacks,Globex,70.13,95.18,1
+23,Mrs Educational,Toys,Educational,Wayne,39.91,58.95,1
+24,Claim Fitnes,Sports,Fitness,Soylent,46.49,88.58,1
+25,Game Audio,Electronics,Audio,Wayne,43.78,83.19,1
+26,Trial Audio,Electronics,Audio,Umbrella,85.03,136.49,1
+27,Major Beverage,Grocery,Beverages,Stark,7.5,11.34,1
+28,Decide Non-Fiction,Books,Non-Fiction,Stark,91.92,183.48,1
+29,Break Non-Fiction,Books,Non-Fiction,Wayne,94.63,126.69,0
+30,Development Phone,Electronics,Phones,Stark,37.92,74.85,1
+31,Age Audio,Electronics,Audio,Wayne,47.45,72.44,1
+32,Country Team Sport,Sports,Team Sports,Stark,28.06,54.28,1
+33,Close Board Game,Toys,Board Games,Hooli,67.9,110.77,1
+34,Treatment Board Game,Toys,Board Games,Wayne,29.33,41.9,1
+35,Take Educational,Toys,Educational,Initech,78.69,140.07,1
+36,Allow Fiction,Books,Fiction,Initech,54.21,97.29,1
+37,Each Board Game,Toys,Board Games,Acme,52.23,88.24,1
+38,Local Skincare,Beauty,Skincare,Hooli,74.33,130.19,1
+39,Song Laptop,Electronics,Laptops,Acme,42.75,68.25,1
+40,Them Outdoor,Home & Garden,Outdoor,Stark,45.21,86.47,1
+41,Else Skincare,Beauty,Skincare,Soylent,70.12,93.42,1
+42,Word Snack,Grocery,Snacks,Soylent,44.94,65.47,1
+43,Professional Children,Books,Children,Soylent,53.97,75.43,1
+44,Half Haircare,Beauty,Haircare,Hooli,99.51,170.21,1
+45,Fish Pantry,Grocery,Pantry,Soylent,35.37,67.14,1
+46,And Board Game,Toys,Board Games,Hooli,20.07,26.6,1
+47,Tough Action Figure,Toys,Action Figures,Soylent,62.47,104.39,1
+48,Station Decor,Home & Garden,Decor,Acme,8.19,14.49,1
+49,History Fitnes,Sports,Fitness,Acme,76.16,138.97,1
+50,Push Non-Fiction,Books,Non-Fiction,Hooli,25.47,47.93,1
+51,Early Kitchen,Home & Garden,Kitchen,Acme,63.48,86.86,1
+52,Deep Pantry,Grocery,Pantry,Globex,58.99,91.24,1
+53,Rich Kitchen,Home & Garden,Kitchen,Umbrella,43.79,64.98,1
+54,Responsibility Women,Apparel,Women,Globex,56.67,113.08,1
+55,Entire Board Game,Toys,Board Games,Initech,36.84,73.09,1
+56,Star Fitnes,Sports,Fitness,Acme,57.6,111.41,0
+57,Student Beverage,Grocery,Beverages,Stark,68.96,120.85,1
+58,A Skincare,Beauty,Skincare,Soylent,57.09,82.52,1
+59,Suffer Skincare,Beauty,Skincare,Umbrella,54.4,82.14,1
+60,Big Fiction,Books,Fiction,Wayne,32.73,55.15,1
+61,Key Fitnes,Sports,Fitness,Soylent,82.18,148.89,1
+62,Fall Furniture,Home & Garden,Furniture,Globex,99.56,169.53,1
+63,Stuff Educational,Toys,Educational,Umbrella,95.03,145.49,1
+64,Third Children,Books,Children,Stark,61.81,92.38,1
+65,Reveal Outdoor Rec,Sports,Outdoor Rec,Soylent,48.19,75.96,1
+66,Magazine Children,Books,Children,Stark,88.85,161.14,1
+67,Of Women,Apparel,Women,Soylent,85.94,169.93,1
+68,Similar Non-Fiction,Books,Non-Fiction,Hooli,27.94,51.74,1
+69,Herself Men,Apparel,Men,Initech,31.57,50.83,1
+70,Red Beverage,Grocery,Beverages,Globex,20.72,37.8,1
+71,Ask Fiction,Books,Fiction,Initech,10.21,16.95,1
+72,Ten Audio,Electronics,Audio,Soylent,10.52,20.27,1
+73,See Women,Apparel,Women,Umbrella,60.73,113.15,1
+74,Keep Team Sport,Sports,Team Sports,Hooli,8.45,16.46,1
+75,Worry Kid,Apparel,Kids,Wayne,63.17,91.94,1
+76,Almost Women,Apparel,Women,Globex,38.89,75.13,1
+77,Probably Kid,Apparel,Kids,Soylent,52.58,81.95,1
+78,Wall Women,Apparel,Women,Globex,49.28,88.02,0
+79,Service Non-Fiction,Books,Non-Fiction,Soylent,58.02,79.17,1
+80,Drop Accessorie,Electronics,Accessories,Globex,99.9,130.35,1
+81,Decade Fiction,Books,Fiction,Soylent,46.95,68.79,1
+82,Money Phone,Electronics,Phones,Globex,84.62,161.82,1
+83,Authority Haircare,Beauty,Haircare,Initech,19.67,27.73,1
+84,Pressure Kitchen,Home & Garden,Kitchen,Globex,4.51,5.86,1
+85,Not Beverage,Grocery,Beverages,Hooli,29.18,52.08,1
+86,Husband Laptop,Electronics,Laptops,Globex,91.81,139.47,0
+87,Head Skincare,Beauty,Skincare,Stark,36.11,65.19,1
+88,Mouth Men,Apparel,Men,Acme,83.51,150.14,0
+89,Wife Audio,Electronics,Audio,Wayne,35.88,48.73,1
+90,Front Men,Apparel,Men,Hooli,58.5,89.48,1
+91,Avoid Outdoor,Home & Garden,Outdoor,Stark,42.4,78.28,1
+92,Against Non-Fiction,Books,Non-Fiction,Wayne,61.87,98.5,1
+93,Case Action Figure,Toys,Action Figures,Acme,17.52,28.57,1
+94,See Decor,Home & Garden,Decor,Acme,33.03,62.94,1
+95,Use Haircare,Beauty,Haircare,Globex,75.38,124.39,1
+96,Safe Non-Fiction,Books,Non-Fiction,Initech,85.72,164.23,1
+97,Skill Fiction,Books,Fiction,Globex,79.95,120.73,1
+98,Available Board Game,Toys,Board Games,Soylent,5.04,6.82,1
+99,Tax Action Figure,Toys,Action Figures,Initech,91.32,121.4,1
+100,Significant Beverage,Grocery,Beverages,Stark,89.1,132.21,1
+101,Fight Makeup,Beauty,Makeup,Stark,75.42,131.0,1
+102,Institution Beverage,Grocery,Beverages,Acme,79.72,104.68,1
+103,Future Phone,Electronics,Phones,Soylent,34.86,48.34,1
+104,Ever Snack,Grocery,Snacks,Soylent,42.84,63.25,1
+105,Note Kitchen,Home & Garden,Kitchen,Globex,9.09,16.43,1
+106,Walk Accessorie,Electronics,Accessories,Globex,97.66,172.04,1
+107,Book Phone,Electronics,Phones,Stark,44.63,60.45,1
+108,Organization Board Game,Toys,Board Games,Umbrella,48.82,86.42,1
+109,System Non-Fiction,Books,Non-Fiction,Acme,42.88,58.89,1
+110,Space Footwear,Apparel,Footwear,Acme,78.99,120.52,1
+111,Region Snack,Grocery,Snacks,Soylent,10.79,20.31,1
+112,Describe Men,Apparel,Men,Soylent,3.53,5.7,1
+113,Consumer Kitchen,Home & Garden,Kitchen,Hooli,97.47,151.45,1
+114,Take Beverage,Grocery,Beverages,Hooli,49.78,66.31,1
+115,Compare Women,Apparel,Women,Umbrella,80.44,114.53,1
+116,Tv Kid,Apparel,Kids,Initech,22.91,45.03,1
+117,Whole Outdoor,Home & Garden,Outdoor,Soylent,95.35,173.7,1
+118,Age Team Sport,Sports,Team Sports,Stark,95.51,155.18,1
+119,Street Phone,Electronics,Phones,Wayne,19.55,35.96,1
+120,Suffer Makeup,Beauty,Makeup,Hooli,69.74,121.32,1
+121,Include Phone,Electronics,Phones,Wayne,20.11,37.04,1
+122,World Furniture,Home & Garden,Furniture,Acme,54.62,86.87,1
+123,Audience Laptop,Electronics,Laptops,Acme,37.69,70.73,1
+124,Head Pantry,Grocery,Pantry,Hooli,19.34,25.78,1
+125,Conference Fiction,Books,Fiction,Wayne,24.97,38.96,1
+126,Return Kid,Apparel,Kids,Hooli,14.96,24.04,1
+127,Free Pantry,Grocery,Pantry,Hooli,43.09,85.65,1
+128,Trade Board Game,Toys,Board Games,Umbrella,86.39,168.17,1
+129,All Laptop,Electronics,Laptops,Hooli,78.71,115.74,1
+130,Base Fitnes,Sports,Fitness,Initech,81.51,141.27,1
+131,Plan Makeup,Beauty,Makeup,Acme,7.46,12.57,1
+132,Talk Skincare,Beauty,Skincare,Soylent,62.42,105.58,1
+133,Bar Fiction,Books,Fiction,Umbrella,82.27,137.81,1
+134,Left Skincare,Beauty,Skincare,Acme,76.2,151.45,1
+135,Meet Board Game,Toys,Board Games,Umbrella,31.41,47.15,1
+136,Play Fitnes,Sports,Fitness,Acme,76.38,114.09,1
+137,Window Board Game,Toys,Board Games,Soylent,72.31,94.07,1
+138,Mrs Beverage,Grocery,Beverages,Umbrella,57.83,109.55,1
+139,Seem Audio,Electronics,Audio,Acme,30.42,58.36,1
+140,Letter Board Game,Toys,Board Games,Stark,56.78,83.46,1
+141,Organization Outdoor,Home & Garden,Outdoor,Initech,66.52,113.34,1
+142,Former Beverage,Grocery,Beverages,Acme,38.73,77.4,1
+143,Against Audio,Electronics,Audio,Globex,92.35,171.45,1
+144,Throw Action Figure,Toys,Action Figures,Acme,34.86,57.08,1
+145,Firm Outdoor,Home & Garden,Outdoor,Initech,32.82,51.46,1
+146,Man Accessorie,Electronics,Accessories,Initech,18.89,28.72,1
+147,Push Kitchen,Home & Garden,Kitchen,Acme,10.08,19.05,1
+148,School Educational,Toys,Educational,Soylent,27.53,37.34,1
+149,Almost Children,Books,Children,Acme,76.79,141.47,1
+150,Activity Women,Apparel,Women,Globex,98.39,170.77,1
+151,Traditional Skincare,Beauty,Skincare,Globex,52.75,81.83,1
+152,Instead Women,Apparel,Women,Acme,5.14,9.25,1
+153,Cover Audio,Electronics,Audio,Wayne,74.29,116.01,1
+154,Challenge Fitnes,Sports,Fitness,Hooli,80.82,113.78,1
+155,Future Outdoor,Home & Garden,Outdoor,Stark,57.49,110.69,1
+156,Teach Children,Books,Children,Initech,22.7,38.53,1
+157,This Decor,Home & Garden,Decor,Acme,61.46,96.05,1
+158,Whose Team Sport,Sports,Team Sports,Initech,81.69,131.3,1
+159,Another Women,Apparel,Women,Stark,49.29,85.11,1
+160,Bag Kitchen,Home & Garden,Kitchen,Umbrella,54.91,102.67,1
+161,Write Pantry,Grocery,Pantry,Stark,30.85,44.2,1
+162,Live Beverage,Grocery,Beverages,Stark,68.76,98.77,1
+163,Teach Board Game,Toys,Board Games,Stark,97.0,192.3,1
+164,Minute Pantry,Grocery,Pantry,Wayne,76.78,119.6,0
+165,Goal Makeup,Beauty,Makeup,Globex,71.02,131.59,1
+166,Popular Non-Fiction,Books,Non-Fiction,Acme,78.76,115.61,1
+167,Bank Audio,Electronics,Audio,Umbrella,18.1,33.98,1
+168,Make Fitnes,Sports,Fitness,Initech,67.16,105.48,1
+169,Rich Outdoor,Home & Garden,Outdoor,Stark,4.57,5.96,1
+170,Father Beverage,Grocery,Beverages,Acme,44.59,67.43,1
+171,Suggest Outdoor,Home & Garden,Outdoor,Wayne,7.15,10.1,1
+172,Office Beverage,Grocery,Beverages,Wayne,22.65,37.43,1
+173,Quite Fiction,Books,Fiction,Initech,54.4,102.83,1
+174,Personal Accessorie,Electronics,Accessories,Initech,5.87,10.13,1
+175,Always Fiction,Books,Fiction,Globex,64.2,104.43,1
+176,Plan Snack,Grocery,Snacks,Hooli,13.12,22.23,1
+177,Without Beverage,Grocery,Beverages,Initech,54.16,107.76,1
+178,Could Footwear,Apparel,Footwear,Acme,55.81,94.98,1
+179,Decide Pantry,Grocery,Pantry,Initech,69.05,115.07,1
+180,Throw Audio,Electronics,Audio,Initech,73.51,103.97,1
+181,Order Makeup,Beauty,Makeup,Hooli,34.28,66.85,1
+182,Stock Footwear,Apparel,Footwear,Stark,60.89,85.84,1
+183,Ten Children,Books,Children,Acme,45.96,66.73,1
+184,Do Team Sport,Sports,Team Sports,Wayne,57.2,74.54,1
+185,Issue Makeup,Beauty,Makeup,Acme,91.11,181.33,1
+186,Upon Haircare,Beauty,Haircare,Wayne,26.93,39.82,1
+187,Adult Children,Books,Children,Initech,64.54,101.38,1
+188,School Men,Apparel,Men,Hooli,43.97,70.17,1
+189,Foot Board Game,Toys,Board Games,Stark,61.77,105.29,1
+190,Put Accessorie,Electronics,Accessories,Umbrella,73.31,95.75,1
+191,Fast Kitchen,Home & Garden,Kitchen,Soylent,71.49,135.02,1
+192,Memory Pantry,Grocery,Pantry,Soylent,88.06,146.89,1
+193,Affect Kid,Apparel,Kids,Globex,79.29,120.84,1
+194,Majority Fiction,Books,Fiction,Initech,72.3,108.35,0
+195,She Footwear,Apparel,Footwear,Initech,67.86,106.63,1
+196,Soldier Haircare,Beauty,Haircare,Globex,27.45,39.46,1
+197,Professor Outdoor,Home & Garden,Outdoor,Wayne,24.93,46.5,1
+198,After Non-Fiction,Books,Non-Fiction,Stark,45.17,59.73,1
+199,Kind Children,Books,Children,Stark,29.6,57.45,1
+200,Lead Kid,Apparel,Kids,Hooli,45.9,69.13,1
+201,Approach Children,Books,Children,Wayne,67.23,127.05,1
+202,Short Action Figure,Toys,Action Figures,Stark,67.41,101.82,1
+203,Her Beverage,Grocery,Beverages,Acme,47.08,81.31,0
+204,Mind Decor,Home & Garden,Decor,Stark,98.32,156.72,1
+205,Practice Phone,Electronics,Phones,Globex,33.5,61.69,1
+206,Husband Outdoor,Home & Garden,Outdoor,Hooli,72.58,141.49,1
+207,War Fitnes,Sports,Fitness,Hooli,62.77,116.91,1
+208,Full Board Game,Toys,Board Games,Hooli,88.47,141.22,1
+209,Career Beverage,Grocery,Beverages,Wayne,98.35,132.01,1
+210,Marriage Non-Fiction,Books,Non-Fiction,Stark,65.22,87.15,1
+211,Describe Kid,Apparel,Kids,Hooli,83.75,142.86,1
+212,Participant Outdoor Rec,Sports,Outdoor Rec,Acme,38.47,67.45,1
+213,Throughout Women,Apparel,Women,Stark,82.73,131.44,1
+214,Story Accessorie,Electronics,Accessories,Acme,10.32,17.79,1
+215,Study Men,Apparel,Men,Hooli,7.55,10.38,1
+216,Trade Action Figure,Toys,Action Figures,Umbrella,35.96,54.58,1
+217,Treat Footwear,Apparel,Footwear,Hooli,88.85,169.57,1
+218,Onto Children,Books,Children,Initech,31.92,58.47,1
+219,Employee Audio,Electronics,Audio,Wayne,20.55,36.99,1
+220,Avoid Children,Books,Children,Soylent,93.27,134.15,1
+221,Side Fitnes,Sports,Fitness,Wayne,13.57,27.06,1
+222,Beyond Pantry,Grocery,Pantry,Soylent,89.0,118.56,1
+223,Collection Snack,Grocery,Snacks,Globex,86.86,162.4,1
+224,Sign Skincare,Beauty,Skincare,Acme,65.02,100.8,1
+225,Throughout Decor,Home & Garden,Decor,Stark,97.94,195.47,1
+226,Gas Haircare,Beauty,Haircare,Hooli,43.15,60.33,1
+227,Person Educational,Toys,Educational,Stark,85.19,168.78,1
+228,Most Children,Books,Children,Hooli,85.43,115.82,1
+229,Travel Board Game,Toys,Board Games,Soylent,58.58,90.6,1
+230,Cold Non-Fiction,Books,Non-Fiction,Acme,57.69,104.83,1
+231,Chair Kid,Apparel,Kids,Initech,88.52,125.22,1
+232,Whole Phone,Electronics,Phones,Umbrella,41.74,81.77,1
+233,Team Outdoor Rec,Sports,Outdoor Rec,Soylent,96.72,134.8,1
+234,Bed Makeup,Beauty,Makeup,Umbrella,65.41,98.19,1
+235,Myself Kitchen,Home & Garden,Kitchen,Hooli,36.47,59.07,1
+236,Seat Children,Books,Children,Acme,65.42,97.98,1
+237,Piece Non-Fiction,Books,Non-Fiction,Hooli,15.56,27.16,1
+238,North Fiction,Books,Fiction,Umbrella,79.35,146.99,1
+239,List Skincare,Beauty,Skincare,Soylent,57.6,75.29,1
+240,Street Men,Apparel,Men,Stark,6.12,10.41,1
+241,Across Decor,Home & Garden,Decor,Hooli,59.16,87.16,1
+242,Break Furniture,Home & Garden,Furniture,Wayne,15.48,21.5,1
+243,Lay Fiction,Books,Fiction,Initech,96.85,184.66,1
+244,Clearly Men,Apparel,Men,Globex,36.21,56.29,1
+245,Result Skincare,Beauty,Skincare,Hooli,28.66,57.08,1
+246,Film Women,Apparel,Women,Umbrella,99.41,144.75,1
+247,Return Skincare,Beauty,Skincare,Acme,72.52,118.0,1
+248,Environmental Accessorie,Electronics,Accessories,Umbrella,85.77,124.5,1
+249,Exist Skincare,Beauty,Skincare,Stark,34.3,55.39,1
+250,Guy Accessorie,Electronics,Accessories,Globex,23.3,41.56,1
+251,Avoid Furniture,Home & Garden,Furniture,Initech,64.81,120.28,1
+252,Individual Furniture,Home & Garden,Furniture,Wayne,97.3,161.29,1
+253,Political Children,Books,Children,Soylent,52.01,75.53,1
+254,Yes Fiction,Books,Fiction,Acme,50.3,78.41,1
+255,Its Board Game,Toys,Board Games,Initech,72.99,127.51,1
+256,Beautiful Fitnes,Sports,Fitness,Stark,46.05,65.64,1
+257,Dinner Fitnes,Sports,Fitness,Acme,44.46,71.9,0
+258,Middle Children,Books,Children,Soylent,53.95,79.78,1
+259,Address Team Sport,Sports,Team Sports,Soylent,61.61,102.39,1
+260,Either Decor,Home & Garden,Decor,Umbrella,63.17,109.61,1
+261,Every Kid,Apparel,Kids,Umbrella,38.11,56.68,0
+262,All Action Figure,Toys,Action Figures,Initech,97.39,187.3,1
+263,That Snack,Grocery,Snacks,Hooli,75.01,98.45,1
+264,Number Educational,Toys,Educational,Wayne,33.62,60.73,1
+265,Relationship Makeup,Beauty,Makeup,Soylent,85.67,143.96,0
+266,Father Board Game,Toys,Board Games,Umbrella,35.15,51.2,1
+267,Police Children,Books,Children,Umbrella,94.26,137.56,1
+268,May Non-Fiction,Books,Non-Fiction,Hooli,89.98,172.39,1
+269,Near Non-Fiction,Books,Non-Fiction,Globex,38.0,50.75,1
+270,Future Phone,Electronics,Phones,Stark,19.64,32.8,1
+271,Down Board Game,Toys,Board Games,Soylent,68.02,124.39,1
+272,Campaign Audio,Electronics,Audio,Wayne,14.7,20.4,1
+273,Friend Accessorie,Electronics,Accessories,Acme,21.75,37.62,1
+274,Sell Team Sport,Sports,Team Sports,Umbrella,83.96,131.66,1
+275,Another Children,Books,Children,Initech,58.83,110.58,1
+276,Such Non-Fiction,Books,Non-Fiction,Initech,68.53,127.15,1
+277,Tv Non-Fiction,Books,Non-Fiction,Wayne,21.86,29.59,1
+278,Chair Skincare,Beauty,Skincare,Acme,55.29,77.06,1
+279,Process Children,Books,Children,Stark,21.7,29.68,1
+280,Lose Skincare,Beauty,Skincare,Stark,60.59,102.71,1
+281,Provide Snack,Grocery,Snacks,Stark,64.4,113.88,1
+282,Film Outdoor,Home & Garden,Outdoor,Wayne,46.34,81.81,1
+283,Effort Outdoor Rec,Sports,Outdoor Rec,Acme,64.71,108.04,1
+284,Order Audio,Electronics,Audio,Initech,68.37,131.75,1
+285,Either Men,Apparel,Men,Hooli,93.96,128.04,1
+286,Writer Accessorie,Electronics,Accessories,Stark,37.45,51.45,1
+287,Police Action Figure,Toys,Action Figures,Hooli,44.67,86.58,1
+288,Send Children,Books,Children,Globex,39.51,51.63,1
+289,Understand Audio,Electronics,Audio,Globex,25.76,51.43,1
+290,Business Outdoor,Home & Garden,Outdoor,Hooli,66.44,102.29,1
+291,Tough Non-Fiction,Books,Non-Fiction,Hooli,43.67,76.41,1
+292,Order Fiction,Books,Fiction,Soylent,73.34,125.53,1
+293,Blood Skincare,Beauty,Skincare,Hooli,77.16,118.54,1
+294,Return Laptop,Electronics,Laptops,Stark,26.41,35.34,1
+295,Sit Pantry,Grocery,Pantry,Soylent,21.02,31.9,1
+296,Husband Snack,Grocery,Snacks,Wayne,84.26,165.62,1
+297,He Fiction,Books,Fiction,Wayne,84.13,155.92,1
+298,Fall Skincare,Beauty,Skincare,Soylent,55.69,72.4,1
+299,Forward Footwear,Apparel,Footwear,Hooli,17.45,25.16,1
+300,Perhaps Accessorie,Electronics,Accessories,Hooli,13.82,26.11,1
+301,Fast Pantry,Grocery,Pantry,Soylent,8.29,13.29,1
+302,Whose Audio,Electronics,Audio,Soylent,14.49,23.5,1
+303,Notice Pantry,Grocery,Pantry,Stark,22.66,38.89,1
+304,Agent Accessorie,Electronics,Accessories,Stark,68.29,115.04,1
+305,Item Women,Apparel,Women,Umbrella,17.51,33.34,1
+306,Center Children,Books,Children,Soylent,53.16,95.61,1
+307,Around Kitchen,Home & Garden,Kitchen,Hooli,78.44,126.97,0
+308,Participant Pantry,Grocery,Pantry,Soylent,69.6,139.02,0
+309,Remain Decor,Home & Garden,Decor,Acme,4.18,7.71,1
+310,Four Fiction,Books,Fiction,Wayne,90.24,133.57,1
+311,Success Educational,Toys,Educational,Umbrella,14.22,28.38,1
+312,Catch Furniture,Home & Garden,Furniture,Soylent,9.37,14.33,1
+313,Sing Kid,Apparel,Kids,Initech,4.72,6.66,1
+314,Some Beverage,Grocery,Beverages,Globex,94.01,164.5,1
+315,Miss Fiction,Books,Fiction,Stark,43.75,66.86,1
+316,Positive Decor,Home & Garden,Decor,Hooli,67.08,104.75,1
+317,Good Children,Books,Children,Globex,11.32,16.48,1
+318,Month Women,Apparel,Women,Acme,39.98,68.21,1
+319,Writer Children,Books,Children,Stark,7.67,12.29,1
+320,Protect Skincare,Beauty,Skincare,Globex,77.69,138.11,1
+321,Tell Outdoor Rec,Sports,Outdoor Rec,Globex,27.73,39.07,0
+322,Indicate Women,Apparel,Women,Acme,45.1,85.21,1
+323,Artist Pantry,Grocery,Pantry,Globex,7.85,12.53,1
+324,List Makeup,Beauty,Makeup,Hooli,86.43,138.31,1
+325,Close Snack,Grocery,Snacks,Initech,12.97,23.75,1
+326,Health Skincare,Beauty,Skincare,Soylent,97.12,154.08,1
+327,Ask Audio,Electronics,Audio,Wayne,74.82,136.23,1
+328,Thought Haircare,Beauty,Haircare,Soylent,4.13,7.17,1
+329,Traditional Board Game,Toys,Board Games,Acme,49.96,74.91,1
+330,Want Laptop,Electronics,Laptops,Hooli,11.1,14.93,1
+331,Physical Board Game,Toys,Board Games,Initech,57.16,91.72,1
+332,Customer Haircare,Beauty,Haircare,Globex,93.2,148.52,1
+333,Customer Board Game,Toys,Board Games,Wayne,93.42,133.29,1
+334,Provide Phone,Electronics,Phones,Hooli,3.97,7.55,1
+335,Reduce Haircare,Beauty,Haircare,Soylent,84.0,167.02,1
+336,Seem Children,Books,Children,Wayne,76.7,102.66,1
+337,Discuss Outdoor,Home & Garden,Outdoor,Wayne,52.1,76.29,1
+338,Story Skincare,Beauty,Skincare,Initech,70.33,104.04,1
+339,Age Phone,Electronics,Phones,Wayne,14.71,25.79,1
+340,Choose Skincare,Beauty,Skincare,Globex,68.2,106.36,1
+341,Apply Action Figure,Toys,Action Figures,Umbrella,81.18,119.65,1
+342,Talk Laptop,Electronics,Laptops,Soylent,62.15,91.33,1
+343,Key Kitchen,Home & Garden,Kitchen,Umbrella,17.52,34.8,1
+344,Speech Team Sport,Sports,Team Sports,Umbrella,70.77,96.76,1
+345,Officer Children,Books,Children,Hooli,88.93,135.9,1
+346,Cultural Accessorie,Electronics,Accessories,Acme,22.14,32.23,1
+347,Success Haircare,Beauty,Haircare,Acme,34.59,52.86,0
+348,Change Haircare,Beauty,Haircare,Acme,19.56,37.65,1
+349,Add Outdoor,Home & Garden,Outdoor,Soylent,21.16,38.39,1
+350,Full Outdoor Rec,Sports,Outdoor Rec,Hooli,75.67,99.61,1
+351,Difficult Kitchen,Home & Garden,Kitchen,Umbrella,87.29,171.63,1
+352,Stock Audio,Electronics,Audio,Initech,37.15,51.75,1
+353,Take Outdoor Rec,Sports,Outdoor Rec,Soylent,67.45,133.58,1
+354,Mrs Phone,Electronics,Phones,Initech,11.18,16.08,1
+355,Fear Children,Books,Children,Stark,5.37,9.9,1
+356,Great Makeup,Beauty,Makeup,Hooli,49.25,75.66,1
+357,Strategy Snack,Grocery,Snacks,Soylent,74.4,101.39,0
+358,Color Fiction,Books,Fiction,Wayne,53.93,102.64,1
+359,Only Furniture,Home & Garden,Furniture,Umbrella,80.42,144.2,0
+360,Brother Beverage,Grocery,Beverages,Umbrella,46.93,85.57,1
+361,Design Non-Fiction,Books,Non-Fiction,Globex,29.17,43.8,1
+362,Enough Action Figure,Toys,Action Figures,Acme,18.0,25.53,1
+363,Page Team Sport,Sports,Team Sports,Stark,77.85,146.5,1
+364,Management Outdoor,Home & Garden,Outdoor,Soylent,14.84,24.67,1
+365,My Snack,Grocery,Snacks,Umbrella,91.84,147.2,1
+366,Free Makeup,Beauty,Makeup,Umbrella,10.2,20.05,1
+367,Test Decor,Home & Garden,Decor,Hooli,9.85,13.81,1
+368,Tell Outdoor,Home & Garden,Outdoor,Globex,52.16,93.41,1
+369,Likely Team Sport,Sports,Team Sports,Wayne,66.14,115.33,1
+370,Woman Board Game,Toys,Board Games,Initech,95.49,174.64,1
+371,From Accessorie,Electronics,Accessories,Umbrella,62.51,84.47,1
+372,Tree Accessorie,Electronics,Accessories,Globex,76.97,128.36,1
+373,Citizen Accessorie,Electronics,Accessories,Initech,12.65,21.72,1
+374,Though Outdoor Rec,Sports,Outdoor Rec,Hooli,41.82,61.52,1
+375,Throw Board Game,Toys,Board Games,Stark,67.25,100.9,1
+376,What Fiction,Books,Fiction,Initech,78.62,148.46,1
+377,Dog Non-Fiction,Books,Non-Fiction,Umbrella,85.81,124.31,1
+378,Check Men,Apparel,Men,Stark,69.34,114.62,1
+379,Huge Haircare,Beauty,Haircare,Soylent,26.35,48.48,1
+380,However Non-Fiction,Books,Non-Fiction,Stark,95.98,150.02,1
+381,Bed Men,Apparel,Men,Soylent,9.37,15.63,1
+382,Alone Furniture,Home & Garden,Furniture,Umbrella,72.2,128.86,1
+383,Determine Outdoor,Home & Garden,Outdoor,Stark,37.61,67.1,1
+384,Oil Fitnes,Sports,Fitness,Initech,15.72,22.77,1
+385,Clearly Footwear,Apparel,Footwear,Initech,79.3,104.03,1
+386,Budget Outdoor,Home & Garden,Outdoor,Globex,86.03,143.51,1
+387,By Board Game,Toys,Board Games,Umbrella,81.76,107.67,1
+388,Network Skincare,Beauty,Skincare,Soylent,39.96,55.59,1
+389,Itself Snack,Grocery,Snacks,Acme,56.66,96.12,1
+390,Consumer Fitnes,Sports,Fitness,Globex,93.62,122.93,1
+391,Account Kitchen,Home & Garden,Kitchen,Initech,9.25,14.6,1
+392,South Phone,Electronics,Phones,Acme,23.89,38.56,1
+393,Front Kid,Apparel,Kids,Stark,3.47,6.61,1
+394,Study Snack,Grocery,Snacks,Hooli,86.93,127.38,1
+395,Something Non-Fiction,Books,Non-Fiction,Acme,16.85,27.7,1
+396,Animal Makeup,Beauty,Makeup,Acme,7.71,13.87,1
+397,Remember Outdoor Rec,Sports,Outdoor Rec,Umbrella,69.46,133.33,1
+398,Career Team Sport,Sports,Team Sports,Initech,5.64,11.1,1
+399,Hot Educational,Toys,Educational,Stark,6.46,12.21,1
+400,Student Footwear,Apparel,Footwear,Wayne,26.69,51.11,1
+401,Total Educational,Toys,Educational,Acme,23.07,40.61,1
+402,From Fiction,Books,Fiction,Initech,8.35,15.91,1
+403,Attorney Accessorie,Electronics,Accessories,Umbrella,33.01,57.65,1
+404,Eight Beverage,Grocery,Beverages,Acme,35.73,52.36,1
+405,Anyone Snack,Grocery,Snacks,Wayne,67.11,111.55,1
+406,Until Fitnes,Sports,Fitness,Acme,61.69,105.59,1
+407,Organization Audio,Electronics,Audio,Hooli,12.89,18.03,1
+408,Someone Phone,Electronics,Phones,Umbrella,72.2,115.62,1
+409,Professional Makeup,Beauty,Makeup,Acme,38.18,75.43,1
+410,Peace Haircare,Beauty,Haircare,Wayne,90.69,141.4,1
+411,Pressure Makeup,Beauty,Makeup,Initech,86.45,129.79,1
+412,Including Men,Apparel,Men,Globex,16.62,23.57,1
+413,Tend Educational,Toys,Educational,Acme,61.2,103.02,1
+414,Consider Phone,Electronics,Phones,Acme,85.61,157.18,1
+415,Politics Educational,Toys,Educational,Initech,92.16,167.74,1
+416,Finish Non-Fiction,Books,Non-Fiction,Stark,64.5,120.08,1
+417,Couple Pantry,Grocery,Pantry,Stark,18.47,25.89,0
+418,Stay Beverage,Grocery,Beverages,Soylent,44.22,84.72,1
+419,Story Furniture,Home & Garden,Furniture,Soylent,16.79,21.87,1
+420,Reduce Laptop,Electronics,Laptops,Umbrella,40.19,71.2,1
+421,Involve Beverage,Grocery,Beverages,Initech,11.57,17.4,1
+422,Fill Fiction,Books,Fiction,Soylent,69.56,118.77,1
+423,Question Educational,Toys,Educational,Wayne,9.25,13.95,1
+424,Position Phone,Electronics,Phones,Acme,17.08,29.58,0
+425,Moment Action Figure,Toys,Action Figures,Hooli,48.64,96.39,1
+426,Source Skincare,Beauty,Skincare,Stark,81.71,145.57,1
+427,Million Men,Apparel,Men,Initech,95.53,164.99,1
+428,Admit Phone,Electronics,Phones,Stark,28.62,45.83,1
+429,May Decor,Home & Garden,Decor,Globex,43.58,70.07,1
+430,Again Snack,Grocery,Snacks,Wayne,19.24,29.9,1
+431,Discover Outdoor Rec,Sports,Outdoor Rec,Globex,66.87,95.74,1
+432,Film Decor,Home & Garden,Decor,Wayne,55.96,108.3,1
+433,Green Footwear,Apparel,Footwear,Globex,38.89,69.04,1
+434,Huge Children,Books,Children,Stark,6.51,11.98,1
+435,Contain Footwear,Apparel,Footwear,Hooli,21.23,30.63,1
+436,Away Men,Apparel,Men,Initech,76.8,151.43,1
+437,Heart Pantry,Grocery,Pantry,Globex,67.11,103.87,1
+438,Her Accessorie,Electronics,Accessories,Hooli,30.63,45.77,1
+439,Give Non-Fiction,Books,Non-Fiction,Wayne,28.19,47.6,1
+440,Century Educational,Toys,Educational,Acme,56.84,110.56,1
+441,Memory Kid,Apparel,Kids,Initech,27.04,53.78,1
+442,Watch Laptop,Electronics,Laptops,Initech,52.92,73.23,1
+443,Establish Educational,Toys,Educational,Initech,27.34,45.66,1
+444,Claim Educational,Toys,Educational,Hooli,4.09,5.85,1
+445,Tonight Men,Apparel,Men,Acme,86.53,146.58,1
+446,Break Decor,Home & Garden,Decor,Acme,81.5,149.96,1
+447,Inside Educational,Toys,Educational,Umbrella,4.47,7.17,1
+448,Over Fitnes,Sports,Fitness,Stark,25.02,48.31,1
+449,Wind Pantry,Grocery,Pantry,Initech,49.05,90.95,1
+450,Board Men,Apparel,Men,Soylent,74.24,113.58,1
+451,Pattern Fiction,Books,Fiction,Stark,61.38,121.83,0
+452,Upon Makeup,Beauty,Makeup,Hooli,93.81,140.17,1
+453,Heavy Kid,Apparel,Kids,Hooli,26.98,43.66,1
+454,Son Skincare,Beauty,Skincare,Wayne,14.3,25.52,1
+455,Memory Action Figure,Toys,Action Figures,Soylent,51.05,88.1,1
+456,Hear Snack,Grocery,Snacks,Soylent,74.48,108.64,1
+457,Television Skincare,Beauty,Skincare,Globex,50.44,67.09,1
+458,Our Audio,Electronics,Audio,Globex,42.68,78.33,1
+459,Stock Skincare,Beauty,Skincare,Acme,69.47,105.3,1
+460,Two Pantry,Grocery,Pantry,Soylent,66.23,96.79,1
+461,Fly Footwear,Apparel,Footwear,Globex,6.24,9.66,1
+462,Building Fiction,Books,Fiction,Umbrella,18.53,27.57,1
+463,Recognize Team Sport,Sports,Team Sports,Soylent,27.28,48.1,1
+464,Out Phone,Electronics,Phones,Stark,24.13,32.64,1
+465,Show Women,Apparel,Women,Globex,36.41,64.51,1
+466,Administration Outdoor,Home & Garden,Outdoor,Stark,15.06,20.72,1
+467,Enough Furniture,Home & Garden,Furniture,Soylent,46.19,68.3,1
+468,Future Outdoor Rec,Sports,Outdoor Rec,Wayne,36.35,50.33,1
+469,Everything Beverage,Grocery,Beverages,Umbrella,46.85,91.64,1
+470,Three Footwear,Apparel,Footwear,Initech,52.65,80.49,1
+471,Paper Team Sport,Sports,Team Sports,Stark,64.8,85.09,1
+472,Appear Fitnes,Sports,Fitness,Wayne,15.08,25.38,1
+473,Learn Footwear,Apparel,Footwear,Acme,39.23,62.91,1
+474,Fund Skincare,Beauty,Skincare,Initech,52.3,90.72,1
+475,Fish Pantry,Grocery,Pantry,Initech,20.9,34.88,1
+476,Serve Fiction,Books,Fiction,Soylent,28.44,44.49,1
+477,Treat Snack,Grocery,Snacks,Globex,10.58,17.93,1
+478,Model Team Sport,Sports,Team Sports,Umbrella,91.36,167.57,1
+479,Never Audio,Electronics,Audio,Acme,35.92,63.04,1
+480,Situation Team Sport,Sports,Team Sports,Hooli,58.07,102.1,1
+481,Theory Beverage,Grocery,Beverages,Umbrella,59.32,107.24,1
+482,Choice Pantry,Grocery,Pantry,Umbrella,81.56,117.64,1
+483,Politics Children,Books,Children,Soylent,15.75,28.18,1
+484,Choice Men,Apparel,Men,Initech,38.29,73.85,1
+485,First Fitnes,Sports,Fitness,Hooli,93.45,127.27,1
+486,Arrive Snack,Grocery,Snacks,Stark,66.21,97.4,1
+487,Reality Children,Books,Children,Soylent,47.14,61.72,1
+488,Possible Accessorie,Electronics,Accessories,Stark,18.51,35.9,1
+489,More Men,Apparel,Men,Globex,35.83,47.34,1
+490,Necessary Women,Apparel,Women,Soylent,54.52,96.42,1
+491,Impact Outdoor Rec,Sports,Outdoor Rec,Umbrella,65.87,100.8,1
+492,Successful Laptop,Electronics,Laptops,Soylent,96.66,179.3,1
+493,Late Kid,Apparel,Kids,Wayne,44.29,68.38,1
+494,Interesting Pantry,Grocery,Pantry,Initech,53.11,74.57,1
+495,Back Kitchen,Home & Garden,Kitchen,Globex,81.98,130.35,1
+496,Without Decor,Home & Garden,Decor,Hooli,99.36,186.03,1
+497,Turn Phone,Electronics,Phones,Soylent,68.88,103.02,1
+498,Receive Kid,Apparel,Kids,Initech,71.26,96.5,1
+499,Box Audio,Electronics,Audio,Initech,31.6,43.41,1
+500,Trial Team Sport,Sports,Team Sports,Stark,15.43,25.98,1
+501,News Snack,Grocery,Snacks,Hooli,23.76,38.35,1
+502,Trouble Fiction,Books,Fiction,Soylent,80.89,112.51,1
+503,Together Snack,Grocery,Snacks,Umbrella,71.24,141.19,1
+504,Life Board Game,Toys,Board Games,Acme,9.43,13.84,1
+505,Turn Non-Fiction,Books,Non-Fiction,Stark,10.22,16.24,1
+506,Art Beverage,Grocery,Beverages,Umbrella,93.35,137.28,1
+507,Three Action Figure,Toys,Action Figures,Stark,78.76,152.35,1
+508,Add Action Figure,Toys,Action Figures,Wayne,46.93,84.48,1
+509,Left Makeup,Beauty,Makeup,Umbrella,51.99,82.65,1
+510,Exist Haircare,Beauty,Haircare,Umbrella,87.99,170.07,1
+511,Position Snack,Grocery,Snacks,Wayne,30.36,45.18,1
+512,Spring Action Figure,Toys,Action Figures,Globex,51.16,68.74,0
+513,Sort Kitchen,Home & Garden,Kitchen,Globex,79.58,136.19,1
+514,Once Men,Apparel,Men,Hooli,96.37,154.84,1
+515,Policy Kitchen,Home & Garden,Kitchen,Acme,3.25,6.12,1
+516,Take Non-Fiction,Books,Non-Fiction,Acme,11.73,16.54,1
+517,Actually Beverage,Grocery,Beverages,Hooli,33.95,46.99,1
+518,Add Footwear,Apparel,Footwear,Soylent,92.04,119.85,1
+519,Just Outdoor Rec,Sports,Outdoor Rec,Umbrella,79.7,141.46,1
+520,Benefit Skincare,Beauty,Skincare,Wayne,19.15,31.21,1
+521,Oil Kitchen,Home & Garden,Kitchen,Hooli,90.47,121.79,1
+522,Among Action Figure,Toys,Action Figures,Hooli,33.98,51.34,1
+523,Claim Furniture,Home & Garden,Furniture,Soylent,97.34,173.25,1
+524,Tv Audio,Electronics,Audio,Wayne,41.25,78.79,0
+525,Alone Fiction,Books,Fiction,Stark,53.77,93.45,1
+526,White Snack,Grocery,Snacks,Hooli,78.54,143.14,1
+527,Customer Pantry,Grocery,Pantry,Umbrella,86.56,152.52,0
+528,Building Non-Fiction,Books,Non-Fiction,Initech,42.37,78.94,1
+529,Hour Action Figure,Toys,Action Figures,Globex,61.28,109.79,1
+530,Hope Skincare,Beauty,Skincare,Hooli,25.32,45.15,1
+531,Lay Non-Fiction,Books,Non-Fiction,Wayne,47.44,89.8,1
+532,We Accessorie,Electronics,Accessories,Initech,56.99,84.79,1
+533,Majority Educational,Toys,Educational,Initech,25.84,43.09,1
+534,Main Haircare,Beauty,Haircare,Hooli,71.33,140.29,1
+535,Trade Phone,Electronics,Phones,Acme,52.85,96.74,1
+536,Such Haircare,Beauty,Haircare,Umbrella,4.91,7.82,1
+537,Free Non-Fiction,Books,Non-Fiction,Hooli,35.36,49.39,1
+538,Cultural Team Sport,Sports,Team Sports,Initech,62.41,118.96,1
+539,Building Fitnes,Sports,Fitness,Stark,61.26,109.13,1
+540,Until Women,Apparel,Women,Wayne,11.22,16.14,1
+541,Item Children,Books,Children,Acme,62.25,82.26,1
+542,Deal Action Figure,Toys,Action Figures,Soylent,40.57,76.94,1
+543,Hold Fitnes,Sports,Fitness,Hooli,40.01,57.89,1
+544,President Team Sport,Sports,Team Sports,Wayne,70.69,123.93,1
+545,Such Audio,Electronics,Audio,Soylent,12.61,19.91,1
+546,Window Beverage,Grocery,Beverages,Umbrella,61.8,115.14,1
+547,Coach Kitchen,Home & Garden,Kitchen,Umbrella,87.42,137.09,1
+548,Process Beverage,Grocery,Beverages,Globex,33.42,61.68,1
+549,Establish Audio,Electronics,Audio,Initech,35.44,62.69,1
+550,Similar Makeup,Beauty,Makeup,Initech,22.73,44.28,1
+551,Far Non-Fiction,Books,Non-Fiction,Umbrella,58.43,115.06,1
+552,Fish Beverage,Grocery,Beverages,Hooli,29.15,49.03,1
+553,Statement Pantry,Grocery,Pantry,Soylent,87.55,145.64,1
+554,Hear Outdoor Rec,Sports,Outdoor Rec,Stark,91.55,182.26,1
+555,Weight Team Sport,Sports,Team Sports,Stark,59.66,108.71,1
+556,Air Makeup,Beauty,Makeup,Soylent,28.26,42.25,1
+557,Little Kitchen,Home & Garden,Kitchen,Initech,32.12,49.48,1
+558,Leader Snack,Grocery,Snacks,Soylent,8.91,13.67,1
+559,Future Outdoor,Home & Garden,Outdoor,Wayne,29.89,40.0,0
+560,Follow Outdoor Rec,Sports,Outdoor Rec,Acme,15.02,22.18,1
+561,Loss Furniture,Home & Garden,Furniture,Globex,25.15,39.98,1
+562,News Audio,Electronics,Audio,Acme,54.89,89.81,1
+563,Want Non-Fiction,Books,Non-Fiction,Umbrella,5.85,8.39,1
+564,Music Kitchen,Home & Garden,Kitchen,Soylent,41.19,80.9,1
+565,Participant Haircare,Beauty,Haircare,Globex,81.56,152.53,1
+566,Bill Non-Fiction,Books,Non-Fiction,Hooli,9.5,15.03,1
+567,Subject Children,Books,Children,Globex,77.23,128.92,1
+568,Free Fitnes,Sports,Fitness,Globex,77.26,121.66,1
+569,Student Fitnes,Sports,Fitness,Stark,75.19,119.33,1
+570,Hot Beverage,Grocery,Beverages,Hooli,5.64,8.33,1
+571,Price Haircare,Beauty,Haircare,Wayne,50.19,66.31,1
+572,Effect Makeup,Beauty,Makeup,Stark,96.49,179.66,0
+573,Prevent Action Figure,Toys,Action Figures,Soylent,13.01,17.91,1
+574,North Phone,Electronics,Phones,Umbrella,85.24,152.62,1
+575,Pattern Furniture,Home & Garden,Furniture,Initech,91.96,170.39,1
+576,Man Educational,Toys,Educational,Stark,86.27,131.56,1
+577,Military Pantry,Grocery,Pantry,Acme,44.35,70.66,1
+578,Yet Women,Apparel,Women,Wayne,88.03,126.03,1
+579,Him Skincare,Beauty,Skincare,Globex,95.11,183.05,1
+580,Yes Non-Fiction,Books,Non-Fiction,Initech,52.86,78.59,1
+581,Responsibility Snack,Grocery,Snacks,Soylent,66.21,94.16,1
+582,War Fitnes,Sports,Fitness,Hooli,24.94,46.89,1
+583,Reflect Skincare,Beauty,Skincare,Stark,4.93,8.31,1
+584,Buy Non-Fiction,Books,Non-Fiction,Initech,96.43,131.03,1
+585,Travel Educational,Toys,Educational,Acme,73.94,110.68,1
+586,Food Skincare,Beauty,Skincare,Soylent,64.72,126.63,1
+587,Cell Outdoor,Home & Garden,Outdoor,Stark,38.75,54.19,1
+588,From Beverage,Grocery,Beverages,Stark,71.01,136.92,1
+589,Without Women,Apparel,Women,Umbrella,82.37,153.22,1
+590,Series Haircare,Beauty,Haircare,Initech,97.95,158.53,1
+591,Month Haircare,Beauty,Haircare,Initech,8.02,15.33,1
+592,Against Kid,Apparel,Kids,Umbrella,68.93,129.53,1
+593,Modern Skincare,Beauty,Skincare,Hooli,36.26,65.29,1
+594,Six Pantry,Grocery,Pantry,Globex,65.71,108.26,1
+595,Find Outdoor Rec,Sports,Outdoor Rec,Wayne,30.52,54.88,1
+596,Check Outdoor Rec,Sports,Outdoor Rec,Soylent,77.18,142.18,1
+597,Cold Kid,Apparel,Kids,Initech,4.79,8.57,1
+598,Build Audio,Electronics,Audio,Stark,68.15,103.63,1
+599,Color Educational,Toys,Educational,Acme,15.72,24.85,1
+600,Ability Snack,Grocery,Snacks,Wayne,12.28,24.1,1
+601,Statement Fiction,Books,Fiction,Umbrella,65.0,91.58,1
+602,Dark Fitnes,Sports,Fitness,Stark,33.61,50.11,1
+603,Statement Makeup,Beauty,Makeup,Acme,89.53,163.92,1
+604,Manager Haircare,Beauty,Haircare,Initech,4.64,7.93,1
+605,Six Fitnes,Sports,Fitness,Acme,58.77,114.83,0
+606,Different Fiction,Books,Fiction,Umbrella,4.46,8.46,1
+607,Success Laptop,Electronics,Laptops,Umbrella,76.62,133.61,1
+608,Job Outdoor,Home & Garden,Outdoor,Wayne,16.79,32.33,1
+609,Actually Board Game,Toys,Board Games,Hooli,36.58,71.33,1
+610,Activity Haircare,Beauty,Haircare,Wayne,51.29,80.48,1
+611,Born Children,Books,Children,Umbrella,70.07,132.01,1
+612,Five Skincare,Beauty,Skincare,Wayne,9.95,16.96,1
+613,Fund Action Figure,Toys,Action Figures,Initech,56.05,93.69,1
+614,Culture Audio,Electronics,Audio,Umbrella,49.78,90.01,1
+615,Work Fitnes,Sports,Fitness,Hooli,69.17,93.37,1
+616,Effort Makeup,Beauty,Makeup,Acme,76.32,133.14,1
+617,Cost Makeup,Beauty,Makeup,Wayne,87.3,123.11,1
+618,Election Pantry,Grocery,Pantry,Initech,48.37,93.22,1
+619,Catch Non-Fiction,Books,Non-Fiction,Acme,53.48,100.32,1
+620,Sort Laptop,Electronics,Laptops,Initech,6.35,9.77,1
+621,Price Pantry,Grocery,Pantry,Stark,91.39,175.53,1
+622,Boy Accessorie,Electronics,Accessories,Stark,83.11,161.54,1
+623,Son Fiction,Books,Fiction,Stark,62.55,83.13,1
+624,Fight Makeup,Beauty,Makeup,Globex,4.26,6.96,1
+625,Cell Men,Apparel,Men,Umbrella,14.72,21.0,1
+626,Public Fiction,Books,Fiction,Globex,62.21,123.13,1
+627,West Skincare,Beauty,Skincare,Hooli,89.64,121.71,1
+628,Along Beverage,Grocery,Beverages,Soylent,49.89,99.47,1
+629,Everything Team Sport,Sports,Team Sports,Wayne,20.75,31.94,1
+630,Soldier Laptop,Electronics,Laptops,Umbrella,13.32,23.7,1
+631,Black Phone,Electronics,Phones,Umbrella,74.44,100.94,1
+632,Method Educational,Toys,Educational,Acme,98.95,193.39,1
+633,Per Non-Fiction,Books,Non-Fiction,Hooli,9.74,17.7,1
+634,Difference Skincare,Beauty,Skincare,Acme,95.09,160.22,1
+635,Serious Decor,Home & Garden,Decor,Umbrella,12.35,20.3,1
+636,Page Makeup,Beauty,Makeup,Stark,84.17,124.28,1
+637,Generation Accessorie,Electronics,Accessories,Hooli,7.68,12.1,1
+638,Discuss Team Sport,Sports,Team Sports,Initech,91.07,152.07,1
+639,Much Men,Apparel,Men,Acme,6.82,11.06,1
+640,Film Makeup,Beauty,Makeup,Acme,63.2,123.92,1
+641,Dark Footwear,Apparel,Footwear,Hooli,8.91,13.73,1
+642,Administration Pantry,Grocery,Pantry,Soylent,35.11,61.12,1
+643,Understand Children,Books,Children,Umbrella,5.06,7.38,1
+644,Member Children,Books,Children,Stark,34.06,58.32,1
+645,Avoid Men,Apparel,Men,Umbrella,82.38,150.98,1
+646,Road Children,Books,Children,Hooli,30.39,54.74,1
+647,Mrs Fitnes,Sports,Fitness,Umbrella,55.19,82.91,1
+648,Fly Fitnes,Sports,Fitness,Initech,28.58,53.52,1
+649,Item Fiction,Books,Fiction,Soylent,3.21,4.52,1
+650,Lawyer Makeup,Beauty,Makeup,Hooli,36.68,68.54,1
+651,Activity Footwear,Apparel,Footwear,Globex,23.45,32.77,1
+652,Policy Decor,Home & Garden,Decor,Wayne,8.11,15.33,1
+653,Agree Footwear,Apparel,Footwear,Hooli,80.75,114.88,0
+654,Either Fitnes,Sports,Fitness,Stark,55.78,107.92,1
+655,Senior Accessorie,Electronics,Accessories,Initech,88.41,119.83,1
+656,Give Audio,Electronics,Audio,Acme,32.54,62.34,1
+657,Break Board Game,Toys,Board Games,Soylent,83.41,135.55,1
+658,Range Women,Apparel,Women,Globex,46.19,82.76,1
+659,Exist Footwear,Apparel,Footwear,Umbrella,99.93,192.89,1
+660,Picture Furniture,Home & Garden,Furniture,Soylent,35.38,69.08,1
+661,Approach Fiction,Books,Fiction,Acme,10.05,16.24,1
+662,Ready Pantry,Grocery,Pantry,Stark,65.54,97.78,1
+663,Detail Fiction,Books,Fiction,Stark,36.94,63.71,1
+664,Discover Educational,Toys,Educational,Initech,64.67,97.28,1
+665,Wind Action Figure,Toys,Action Figures,Soylent,46.09,72.17,1
+666,Early Outdoor Rec,Sports,Outdoor Rec,Hooli,83.47,130.36,1
+667,Bill Snack,Grocery,Snacks,Umbrella,24.78,35.01,1
+668,End Phone,Electronics,Phones,Wayne,28.71,51.88,1
+669,Outside Accessorie,Electronics,Accessories,Wayne,80.21,149.79,1
+670,Day Footwear,Apparel,Footwear,Umbrella,73.65,128.28,1
+671,Various Audio,Electronics,Audio,Wayne,50.3,82.69,1
+672,I Snack,Grocery,Snacks,Wayne,71.1,110.42,1
+673,Sister Fitnes,Sports,Fitness,Stark,81.02,133.97,1
+674,Also Furniture,Home & Garden,Furniture,Globex,45.14,75.98,1
+675,Whatever Beverage,Grocery,Beverages,Umbrella,8.2,15.41,1
+676,Suggest Audio,Electronics,Audio,Umbrella,94.34,164.83,1
+677,Heart Team Sport,Sports,Team Sports,Umbrella,82.12,118.53,1
+678,Save Accessorie,Electronics,Accessories,Umbrella,45.96,79.98,1
+679,Material Kitchen,Home & Garden,Kitchen,Hooli,90.5,134.16,1
+680,Choose Furniture,Home & Garden,Furniture,Stark,80.67,132.58,1
+681,Side Beverage,Grocery,Beverages,Umbrella,51.48,71.63,1
+682,Soon Outdoor Rec,Sports,Outdoor Rec,Initech,32.28,52.88,1
+683,Area Educational,Toys,Educational,Acme,43.8,62.12,1
+684,Respond Action Figure,Toys,Action Figures,Initech,54.04,76.09,1
+685,Little Fitnes,Sports,Fitness,Wayne,12.9,25.12,1
+686,Defense Outdoor,Home & Garden,Outdoor,Stark,41.15,65.09,1
+687,Behavior Footwear,Apparel,Footwear,Stark,97.55,177.5,1
+688,Avoid Non-Fiction,Books,Non-Fiction,Initech,36.08,51.5,1
+689,Herself Pantry,Grocery,Pantry,Globex,80.43,157.49,1
+690,Third Furniture,Home & Garden,Furniture,Globex,49.24,66.5,1
+691,Remember Kitchen,Home & Garden,Kitchen,Acme,34.79,60.87,1
+692,Sound Educational,Toys,Educational,Soylent,63.68,98.58,1
+693,Series Board Game,Toys,Board Games,Hooli,54.07,71.94,1
+694,Itself Children,Books,Children,Umbrella,31.92,46.54,1
+695,Might Non-Fiction,Books,Non-Fiction,Umbrella,7.51,12.58,1
+696,Training Haircare,Beauty,Haircare,Initech,20.12,39.08,1
+697,Itself Educational,Toys,Educational,Globex,30.83,60.66,1
+698,Return Laptop,Electronics,Laptops,Stark,88.36,164.78,1
+699,Continue Pantry,Grocery,Pantry,Globex,83.48,126.72,1
+700,Worker Men,Apparel,Men,Globex,65.54,111.75,1
+701,Economy Kid,Apparel,Kids,Umbrella,68.34,110.97,1
+702,Morning Women,Apparel,Women,Umbrella,83.35,137.9,1
+703,Throw Board Game,Toys,Board Games,Acme,27.29,46.18,1
+704,Late Outdoor,Home & Garden,Outdoor,Soylent,49.06,68.43,0
+705,Her Kid,Apparel,Kids,Wayne,40.36,66.65,1
+706,Night Phone,Electronics,Phones,Soylent,69.07,103.41,1
+707,Cause Skincare,Beauty,Skincare,Umbrella,91.48,119.05,1
+708,Interview Decor,Home & Garden,Decor,Hooli,57.92,77.11,1
+709,East Footwear,Apparel,Footwear,Acme,34.6,63.12,1
+710,Your Team Sport,Sports,Team Sports,Hooli,43.82,66.84,1
+711,Agree Fiction,Books,Fiction,Umbrella,53.89,105.09,1
+712,Store Beverage,Grocery,Beverages,Acme,43.72,87.16,0
+713,Big Audio,Electronics,Audio,Globex,59.22,78.05,1
+714,Second Phone,Electronics,Phones,Wayne,70.8,92.04,1
+715,However Children,Books,Children,Soylent,17.92,35.49,1
+716,Travel Furniture,Home & Garden,Furniture,Acme,91.11,182.13,1
+717,Bank Phone,Electronics,Phones,Initech,90.26,144.13,1
+718,Most Outdoor Rec,Sports,Outdoor Rec,Hooli,60.26,94.3,1
+719,Arrive Action Figure,Toys,Action Figures,Globex,9.7,18.39,0
+720,Current Accessorie,Electronics,Accessories,Initech,3.25,6.0,1
+721,Already Decor,Home & Garden,Decor,Stark,83.69,149.48,1
+722,Street Outdoor,Home & Garden,Outdoor,Umbrella,24.02,40.27,1
+723,Remain Outdoor,Home & Garden,Outdoor,Soylent,22.42,38.29,1
+724,Dinner Haircare,Beauty,Haircare,Acme,34.41,59.4,1
+725,Need Fitnes,Sports,Fitness,Wayne,37.87,71.74,1
+726,Left Decor,Home & Garden,Decor,Globex,28.47,50.06,1
+727,Talk Men,Apparel,Men,Soylent,36.96,72.89,1
+728,Partner Laptop,Electronics,Laptops,Acme,59.94,81.54,0
+729,Sort Skincare,Beauty,Skincare,Initech,44.57,75.61,1
+730,Soon Outdoor,Home & Garden,Outdoor,Globex,60.79,118.02,1
+731,Face Haircare,Beauty,Haircare,Globex,10.85,14.64,1
+732,Coach Kitchen,Home & Garden,Kitchen,Soylent,35.71,59.32,1
+733,Information Skincare,Beauty,Skincare,Initech,84.64,144.18,1
+734,Development Beverage,Grocery,Beverages,Soylent,74.3,140.29,1
+735,Represent Phone,Electronics,Phones,Wayne,57.07,100.64,1
+736,Wish Phone,Electronics,Phones,Umbrella,58.27,96.05,0
+737,Fear Action Figure,Toys,Action Figures,Initech,34.19,47.96,1
+738,Account Board Game,Toys,Board Games,Stark,43.9,57.82,1
+739,Sign Phone,Electronics,Phones,Globex,13.08,23.36,1
+740,Health Team Sport,Sports,Team Sports,Initech,86.15,128.47,1
+741,Financial Makeup,Beauty,Makeup,Wayne,68.8,89.66,1
+742,Something Accessorie,Electronics,Accessories,Initech,89.94,145.16,1
+743,Mind Makeup,Beauty,Makeup,Soylent,7.91,15.48,1
+744,Help Kitchen,Home & Garden,Kitchen,Soylent,54.67,89.61,1
+745,Hotel Laptop,Electronics,Laptops,Acme,35.33,49.19,1
+746,Baby Men,Apparel,Men,Hooli,6.58,11.74,1
+747,Go Non-Fiction,Books,Non-Fiction,Acme,63.87,113.2,1
+748,This Furniture,Home & Garden,Furniture,Acme,68.76,96.94,1
+749,Sometimes Non-Fiction,Books,Non-Fiction,Hooli,47.3,68.6,0
+750,Recognize Outdoor,Home & Garden,Outdoor,Wayne,39.68,78.18,1
+751,Interest Educational,Toys,Educational,Wayne,35.19,55.94,1
+752,Pretty Educational,Toys,Educational,Hooli,73.3,117.16,1
+753,Nature Children,Books,Children,Soylent,19.28,30.47,1
+754,Down Phone,Electronics,Phones,Stark,8.21,12.65,1
+755,Write Makeup,Beauty,Makeup,Soylent,85.31,125.16,1
+756,Close Educational,Toys,Educational,Stark,59.74,104.23,1
+757,Culture Audio,Electronics,Audio,Stark,82.37,146.83,1
+758,Politics Board Game,Toys,Board Games,Umbrella,75.28,109.04,1
+759,Term Pantry,Grocery,Pantry,Globex,91.22,160.01,1
+760,Particular Pantry,Grocery,Pantry,Soylent,14.7,24.61,1
+761,Away Board Game,Toys,Board Games,Stark,62.83,96.0,1
+762,Scientist Women,Apparel,Women,Initech,26.88,52.46,1
+763,Table Non-Fiction,Books,Non-Fiction,Acme,72.72,98.66,1
+764,Officer Beverage,Grocery,Beverages,Umbrella,70.62,114.58,1
+765,Walk Haircare,Beauty,Haircare,Wayne,63.5,82.66,1
+766,Audience Fiction,Books,Fiction,Hooli,99.49,144.89,1
+767,Commercial Makeup,Beauty,Makeup,Stark,27.53,47.44,1
+768,Movement Pantry,Grocery,Pantry,Umbrella,95.0,158.96,1
+769,Type Snack,Grocery,Snacks,Soylent,40.92,74.32,1
+770,Production Beverage,Grocery,Beverages,Acme,96.86,147.37,1
+771,Account Fitnes,Sports,Fitness,Wayne,79.57,126.51,1
+772,Politics Footwear,Apparel,Footwear,Acme,84.21,152.86,1
+773,Author Outdoor Rec,Sports,Outdoor Rec,Acme,9.28,18.51,1
+774,Table Non-Fiction,Books,Non-Fiction,Stark,9.03,17.47,1
+775,Wife Board Game,Toys,Board Games,Hooli,76.96,150.82,1
+776,Organization Board Game,Toys,Board Games,Initech,87.48,119.48,1
+777,Become Women,Apparel,Women,Soylent,6.37,10.59,1
+778,Management Women,Apparel,Women,Globex,36.81,71.53,1
+779,Many Outdoor Rec,Sports,Outdoor Rec,Initech,98.94,151.32,1
+780,Save Board Game,Toys,Board Games,Initech,53.08,104.85,1
+781,Air Action Figure,Toys,Action Figures,Hooli,10.52,14.42,0
+782,Be Non-Fiction,Books,Non-Fiction,Stark,77.83,119.32,1
+783,Parent Snack,Grocery,Snacks,Initech,15.98,28.61,1
+784,Threat Non-Fiction,Books,Non-Fiction,Initech,64.49,127.03,1
+785,Rise Men,Apparel,Men,Soylent,96.34,125.44,1
+786,Never Makeup,Beauty,Makeup,Hooli,23.16,34.64,1
+787,Culture Snack,Grocery,Snacks,Stark,26.83,41.76,1
+788,Third Pantry,Grocery,Pantry,Soylent,20.39,37.99,1
+789,Method Kitchen,Home & Garden,Kitchen,Globex,17.62,27.35,1
+790,Major Team Sport,Sports,Team Sports,Initech,85.88,117.37,1
+791,Race Pantry,Grocery,Pantry,Stark,38.49,57.13,1
+792,Story Outdoor,Home & Garden,Outdoor,Initech,7.98,15.31,1
+793,Business Team Sport,Sports,Team Sports,Initech,30.87,50.3,1
+794,Loss Board Game,Toys,Board Games,Umbrella,93.48,174.05,1
+795,Performance Snack,Grocery,Snacks,Acme,96.24,192.04,1
+796,Great Board Game,Toys,Board Games,Soylent,54.49,93.89,1
+797,Interview Decor,Home & Garden,Decor,Acme,28.99,47.97,1
+798,Model Pantry,Grocery,Pantry,Umbrella,80.09,159.07,1
+799,Natural Action Figure,Toys,Action Figures,Globex,41.98,69.53,1
+800,Girl Kitchen,Home & Garden,Kitchen,Soylent,88.65,153.26,1
+801,Property Pantry,Grocery,Pantry,Wayne,57.37,76.34,1
+802,Option Children,Books,Children,Umbrella,96.02,180.32,1
+803,Left Accessorie,Electronics,Accessories,Initech,63.5,115.19,1
+804,Technology Snack,Grocery,Snacks,Stark,59.07,88.74,1
+805,Industry Educational,Toys,Educational,Acme,12.95,24.15,1
+806,Leave Beverage,Grocery,Beverages,Acme,78.83,130.94,1
+807,Can Board Game,Toys,Board Games,Soylent,93.53,178.39,1
+808,Clear Decor,Home & Garden,Decor,Acme,22.59,33.94,1
+809,Be Phone,Electronics,Phones,Globex,41.73,74.41,1
+810,Seek Pantry,Grocery,Pantry,Umbrella,48.53,91.82,1
+811,Little Team Sport,Sports,Team Sports,Globex,60.4,110.73,1
+812,Might Furniture,Home & Garden,Furniture,Hooli,97.66,137.48,1
+813,Send Decor,Home & Garden,Decor,Globex,18.3,29.06,1
+814,Simply Kitchen,Home & Garden,Kitchen,Initech,93.2,140.6,1
+815,Site Decor,Home & Garden,Decor,Umbrella,30.86,40.6,1
+816,Fear Phone,Electronics,Phones,Soylent,5.64,8.08,1
+817,Short Decor,Home & Garden,Decor,Acme,28.68,42.02,1
+818,Evening Children,Books,Children,Wayne,12.3,24.01,1
+819,Foreign Kitchen,Home & Garden,Kitchen,Soylent,97.4,134.57,0
+820,Box Kitchen,Home & Garden,Kitchen,Stark,89.74,160.4,1
+821,Hair Non-Fiction,Books,Non-Fiction,Soylent,30.73,59.3,1
+822,This Educational,Toys,Educational,Acme,39.47,76.32,1
+823,Huge Accessorie,Electronics,Accessories,Umbrella,6.86,9.18,1
+824,Here Team Sport,Sports,Team Sports,Umbrella,8.31,13.63,1
+825,Listen Action Figure,Toys,Action Figures,Hooli,48.58,87.78,1
+826,Feeling Team Sport,Sports,Team Sports,Wayne,21.14,29.64,1
+827,Difficult Children,Books,Children,Initech,46.7,75.58,1
+828,Yourself Outdoor Rec,Sports,Outdoor Rec,Initech,18.15,27.14,1
+829,Visit Decor,Home & Garden,Decor,Umbrella,99.19,194.64,1
+830,Three Women,Apparel,Women,Initech,51.51,100.42,1
+831,Subject Team Sport,Sports,Team Sports,Initech,61.33,80.93,1
+832,Upon Audio,Electronics,Audio,Acme,92.18,172.63,1
+833,Medical Kid,Apparel,Kids,Wayne,32.03,45.49,1
+834,Wait Decor,Home & Garden,Decor,Soylent,27.41,42.73,1
+835,Wall Outdoor Rec,Sports,Outdoor Rec,Wayne,71.5,138.25,1
+836,Government Snack,Grocery,Snacks,Umbrella,70.33,121.64,1
+837,Try Non-Fiction,Books,Non-Fiction,Wayne,13.95,27.15,1
+838,Plan Fitnes,Sports,Fitness,Wayne,72.42,116.8,1
+839,News Men,Apparel,Men,Stark,36.01,66.03,1
+840,Create Non-Fiction,Books,Non-Fiction,Initech,58.33,78.25,1
+841,Finally Fiction,Books,Fiction,Umbrella,24.82,45.14,1
+842,Yard Fiction,Books,Fiction,Globex,57.28,109.51,1
+843,No Haircare,Beauty,Haircare,Soylent,83.1,130.94,1
+844,Bad Educational,Toys,Educational,Umbrella,75.09,102.77,1
+845,Dinner Beverage,Grocery,Beverages,Hooli,7.01,12.24,1
+846,Check Outdoor,Home & Garden,Outdoor,Acme,84.91,161.77,1
+847,Wish Educational,Toys,Educational,Stark,68.72,107.09,1
+848,Nothing Men,Apparel,Men,Wayne,75.36,101.24,1
+849,Story Snack,Grocery,Snacks,Initech,66.37,131.74,1
+850,Yourself Beverage,Grocery,Beverages,Acme,43.83,76.76,1
+851,But Skincare,Beauty,Skincare,Stark,74.68,126.8,1
+852,Mouth Fitnes,Sports,Fitness,Stark,44.16,65.65,1
+853,Address Educational,Toys,Educational,Hooli,97.91,137.97,1
+854,Step Fitnes,Sports,Fitness,Stark,97.9,170.71,0
+855,Beyond Skincare,Beauty,Skincare,Umbrella,70.46,136.27,1
+856,Course Educational,Toys,Educational,Umbrella,89.29,160.53,1
+857,Power Phone,Electronics,Phones,Hooli,35.51,67.13,1
+858,Rich Audio,Electronics,Audio,Globex,26.35,52.11,1
+859,History Decor,Home & Garden,Decor,Hooli,99.17,140.27,1
+860,He Non-Fiction,Books,Non-Fiction,Hooli,45.49,73.9,1
+861,Morning Beverage,Grocery,Beverages,Umbrella,30.34,50.19,1
+862,Explain Accessorie,Electronics,Accessories,Globex,53.85,97.69,1
+863,Region Women,Apparel,Women,Stark,31.55,59.55,1
+864,Face Audio,Electronics,Audio,Initech,41.0,71.67,1
+865,Free Non-Fiction,Books,Non-Fiction,Acme,72.5,127.39,1
+866,Line Men,Apparel,Men,Acme,66.82,123.32,1
+867,Without Outdoor Rec,Sports,Outdoor Rec,Stark,9.92,18.73,1
+868,Current Furniture,Home & Garden,Furniture,Acme,30.47,52.43,1
+869,Garden Beverage,Grocery,Beverages,Initech,8.49,12.61,1
+870,Compare Fiction,Books,Fiction,Umbrella,68.11,101.63,1
+871,In Action Figure,Toys,Action Figures,Wayne,79.23,115.04,1
+872,Everyone Children,Books,Children,Acme,33.7,52.94,1
+873,Already Non-Fiction,Books,Non-Fiction,Stark,65.81,97.87,1
+874,Suffer Educational,Toys,Educational,Wayne,35.22,46.3,1
+875,Likely Outdoor,Home & Garden,Outdoor,Globex,48.99,87.19,1
+876,Box Outdoor Rec,Sports,Outdoor Rec,Wayne,40.66,55.84,1
+877,Save Footwear,Apparel,Footwear,Globex,19.89,35.95,1
+878,Service Board Game,Toys,Board Games,Hooli,21.7,29.91,1
+879,Fly Beverage,Grocery,Beverages,Soylent,4.01,5.93,1
+880,Today Action Figure,Toys,Action Figures,Acme,23.9,45.28,1
+881,Product Fiction,Books,Fiction,Initech,21.13,27.57,1
+882,Without Audio,Electronics,Audio,Initech,34.13,61.68,1
+883,Own Accessorie,Electronics,Accessories,Hooli,72.76,96.34,1
+884,Because Kitchen,Home & Garden,Kitchen,Umbrella,77.28,112.92,1
+885,Decade Men,Apparel,Men,Umbrella,92.51,157.97,1
+886,Box Kid,Apparel,Kids,Globex,77.94,102.73,1
+887,Analysis Children,Books,Children,Initech,13.73,25.45,1
+888,Evidence Outdoor,Home & Garden,Outdoor,Globex,86.19,130.5,1
+889,Lawyer Haircare,Beauty,Haircare,Umbrella,17.55,27.19,1
+890,Win Educational,Toys,Educational,Initech,17.42,27.85,1
+891,Share Pantry,Grocery,Pantry,Hooli,60.74,95.7,1
+892,Hot Men,Apparel,Men,Initech,6.64,8.96,1
+893,Character Outdoor,Home & Garden,Outdoor,Acme,17.4,25.92,1
+894,Moment Non-Fiction,Books,Non-Fiction,Hooli,51.28,85.21,1
+895,Foreign Men,Apparel,Men,Initech,50.84,84.27,1
+896,Around Laptop,Electronics,Laptops,Umbrella,64.41,87.49,1
+897,Should Kid,Apparel,Kids,Initech,47.08,67.08,1
+898,Everybody Beverage,Grocery,Beverages,Initech,11.14,20.02,1
+899,Heart Fiction,Books,Fiction,Globex,60.19,119.0,1
+900,Lay Pantry,Grocery,Pantry,Hooli,84.74,133.96,0
+901,Enter Snack,Grocery,Snacks,Acme,97.82,185.43,1
+902,Full Laptop,Electronics,Laptops,Initech,63.6,115.73,1
+903,Far Non-Fiction,Books,Non-Fiction,Hooli,90.12,130.8,1
+904,Study Snack,Grocery,Snacks,Wayne,89.13,128.77,1
+905,Development Pantry,Grocery,Pantry,Hooli,42.23,84.38,1
+906,Audience Action Figure,Toys,Action Figures,Acme,4.92,8.62,1
+907,Property Phone,Electronics,Phones,Initech,56.19,74.74,1
+908,Could Audio,Electronics,Audio,Hooli,98.4,194.28,1
+909,Paper Skincare,Beauty,Skincare,Globex,59.75,108.99,1
+910,Arrive Skincare,Beauty,Skincare,Wayne,43.52,68.53,1
+911,Economy Furniture,Home & Garden,Furniture,Globex,45.7,62.36,1
+912,News Kid,Apparel,Kids,Hooli,62.3,104.39,1
+913,Teach Haircare,Beauty,Haircare,Globex,4.39,6.12,1
+914,Control Haircare,Beauty,Haircare,Globex,83.85,149.83,1
+915,Knowledge Beverage,Grocery,Beverages,Acme,35.29,46.45,1
+916,From Non-Fiction,Books,Non-Fiction,Globex,65.24,93.9,1
+917,Bit Non-Fiction,Books,Non-Fiction,Initech,65.53,115.68,1
+918,Claim Educational,Toys,Educational,Hooli,72.47,106.78,1
+919,Something Outdoor Rec,Sports,Outdoor Rec,Stark,8.71,13.91,1
+920,Peace Non-Fiction,Books,Non-Fiction,Wayne,88.6,144.45,1
+921,Especially Educational,Toys,Educational,Soylent,89.19,131.45,1
+922,Little Outdoor,Home & Garden,Outdoor,Acme,3.1,4.26,1
+923,Crime Phone,Electronics,Phones,Acme,23.13,38.81,1
+924,Page Outdoor Rec,Sports,Outdoor Rec,Initech,16.9,32.21,1
+925,Pass Skincare,Beauty,Skincare,Acme,81.84,129.59,1
+926,Catch Action Figure,Toys,Action Figures,Wayne,71.32,119.41,1
+927,Into Beverage,Grocery,Beverages,Hooli,11.18,14.68,1
+928,Spend Haircare,Beauty,Haircare,Stark,7.65,11.14,1
+929,Door Pantry,Grocery,Pantry,Initech,10.26,20.22,1
+930,Day Outdoor,Home & Garden,Outdoor,Initech,69.91,134.02,1
+931,Listen Audio,Electronics,Audio,Acme,29.05,50.95,1
+932,Alone Snack,Grocery,Snacks,Stark,75.33,107.42,1
+933,Weight Beverage,Grocery,Beverages,Globex,72.94,124.68,1
+934,Real Action Figure,Toys,Action Figures,Stark,55.47,103.5,1
+935,Wonder Fitnes,Sports,Fitness,Stark,67.86,109.58,1
+936,Along Men,Apparel,Men,Soylent,20.09,33.73,1
+937,Place Makeup,Beauty,Makeup,Umbrella,27.74,50.27,1
+938,Happy Fiction,Books,Fiction,Acme,39.64,69.4,1
+939,Campaign Audio,Electronics,Audio,Soylent,45.52,66.27,1
+940,Available Non-Fiction,Books,Non-Fiction,Umbrella,76.11,104.52,1
+941,Discover Furniture,Home & Garden,Furniture,Initech,4.26,6.39,1
+942,The Educational,Toys,Educational,Globex,85.15,128.3,1
+943,Result Furniture,Home & Garden,Furniture,Hooli,76.28,121.94,1
+944,Policy Snack,Grocery,Snacks,Hooli,11.6,18.15,1
+945,Treat Children,Books,Children,Initech,68.73,123.3,1
+946,Television Beverage,Grocery,Beverages,Umbrella,56.58,103.47,1
+947,Why Action Figure,Toys,Action Figures,Stark,71.14,138.12,1
+948,Tend Educational,Toys,Educational,Hooli,69.87,133.93,1
+949,Because Outdoor Rec,Sports,Outdoor Rec,Hooli,27.61,54.84,1
+950,Respond Phone,Electronics,Phones,Hooli,99.9,150.44,0
+951,System Outdoor,Home & Garden,Outdoor,Initech,79.98,159.3,1
+952,Create Fitnes,Sports,Fitness,Acme,36.42,71.2,1
+953,This Children,Books,Children,Acme,80.4,110.4,1
+954,Child Children,Books,Children,Wayne,44.21,58.18,1
+955,Clearly Fitnes,Sports,Fitness,Wayne,93.2,139.24,1
+956,Less Kitchen,Home & Garden,Kitchen,Umbrella,36.67,67.01,1
+957,Service Children,Books,Children,Soylent,53.52,80.98,1
+958,Lead Skincare,Beauty,Skincare,Stark,88.7,116.78,1
+959,Bit Furniture,Home & Garden,Furniture,Acme,82.62,141.81,1
+960,Have Accessorie,Electronics,Accessories,Wayne,52.31,84.38,1
+961,On Audio,Electronics,Audio,Soylent,21.44,39.13,1
+962,Environmental Pantry,Grocery,Pantry,Soylent,8.79,12.78,1
+963,Start Snack,Grocery,Snacks,Soylent,29.1,57.63,1
+964,City Educational,Toys,Educational,Initech,83.6,151.67,1
+965,Hand Beverage,Grocery,Beverages,Initech,71.75,125.48,0
+966,Save Haircare,Beauty,Haircare,Wayne,26.48,40.02,1
+967,Become Outdoor,Home & Garden,Outdoor,Soylent,69.08,125.81,1
+968,Begin Snack,Grocery,Snacks,Acme,28.26,54.79,1
+969,Where Skincare,Beauty,Skincare,Acme,60.76,92.03,1
+970,Worker Kitchen,Home & Garden,Kitchen,Umbrella,42.99,71.26,1
+971,Number Board Game,Toys,Board Games,Initech,66.51,106.33,1
+972,Society Outdoor Rec,Sports,Outdoor Rec,Soylent,81.3,137.38,1
+973,Truth Action Figure,Toys,Action Figures,Soylent,3.01,4.39,1
+974,Matter Makeup,Beauty,Makeup,Stark,14.1,20.24,1
+975,Room Laptop,Electronics,Laptops,Hooli,54.58,100.82,1
+976,Fine Beverage,Grocery,Beverages,Hooli,20.54,29.9,1
+977,Wonder Snack,Grocery,Snacks,Wayne,47.06,86.27,1
+978,Course Skincare,Beauty,Skincare,Umbrella,25.73,38.94,1
+979,Coach Board Game,Toys,Board Games,Stark,37.73,55.3,1
+980,Edge Decor,Home & Garden,Decor,Stark,69.53,132.05,1
+981,Call Action Figure,Toys,Action Figures,Hooli,88.89,146.35,1
+982,Opportunity Outdoor Rec,Sports,Outdoor Rec,Acme,67.17,123.39,1
+983,Get Non-Fiction,Books,Non-Fiction,Initech,77.93,148.98,1
+984,Movement Audio,Electronics,Audio,Wayne,86.19,142.9,1
+985,Direction Outdoor,Home & Garden,Outdoor,Umbrella,9.09,17.39,1
+986,Begin Skincare,Beauty,Skincare,Soylent,5.39,10.11,1
+987,Young Outdoor Rec,Sports,Outdoor Rec,Initech,33.84,50.4,1
+988,Say Laptop,Electronics,Laptops,Stark,62.68,125.16,1
+989,Something Audio,Electronics,Audio,Hooli,70.79,117.57,1
+990,Director Accessorie,Electronics,Accessories,Stark,41.86,80.45,1
+991,Congress Outdoor,Home & Garden,Outdoor,Soylent,19.06,30.64,1
+992,Price Action Figure,Toys,Action Figures,Globex,56.34,80.87,1
+993,Meeting Snack,Grocery,Snacks,Globex,84.37,133.52,1
+994,Have Team Sport,Sports,Team Sports,Umbrella,93.44,176.73,1
+995,Military Fiction,Books,Fiction,Umbrella,9.12,11.98,1
+996,Agree Footwear,Apparel,Footwear,Globex,44.24,84.37,1
+997,Decision Haircare,Beauty,Haircare,Hooli,68.41,107.95,1
+998,Film Snack,Grocery,Snacks,Initech,93.76,126.88,1
+999,Wife Children,Books,Children,Initech,97.44,169.64,1
+1000,View Pantry,Grocery,Pantry,Hooli,97.59,190.29,1
+1001,Air Fiction,Books,Fiction,Stark,41.07,66.13,1
+1002,Prevent Action Figure,Toys,Action Figures,Wayne,62.14,95.31,1
+1003,Level Team Sport,Sports,Team Sports,Acme,99.67,171.27,0
+1004,Too Laptop,Electronics,Laptops,Soylent,31.35,42.3,1
+1005,Buy Action Figure,Toys,Action Figures,Globex,15.47,23.21,0
+1006,Shoulder Action Figure,Toys,Action Figures,Initech,53.24,76.13,1
+1007,Training Kid,Apparel,Kids,Acme,11.17,15.24,1
+1008,North Accessorie,Electronics,Accessories,Umbrella,47.25,83.03,1
+1009,Better Women,Apparel,Women,Stark,12.43,23.54,1
+1010,Executive Fitnes,Sports,Fitness,Wayne,41.82,63.03,1
+1011,The Laptop,Electronics,Laptops,Initech,96.22,141.58,1
+1012,Nor Men,Apparel,Men,Stark,12.72,19.54,1
+1013,Hope Non-Fiction,Books,Non-Fiction,Stark,77.62,133.28,1
+1014,Foot Board Game,Toys,Board Games,Soylent,77.01,140.9,1
+1015,Drop Footwear,Apparel,Footwear,Initech,3.18,5.09,1
+1016,Interest Fitnes,Sports,Fitness,Umbrella,6.99,13.49,1
+1017,Check Action Figure,Toys,Action Figures,Hooli,81.05,154.4,1
+1018,Pull Team Sport,Sports,Team Sports,Stark,51.55,75.5,0
+1019,Stage Haircare,Beauty,Haircare,Globex,33.01,56.3,1
+1020,Less Snack,Grocery,Snacks,Soylent,75.9,140.32,1
+1021,Read Furniture,Home & Garden,Furniture,Acme,39.57,71.1,1
+1022,Example Skincare,Beauty,Skincare,Globex,62.75,119.52,1
+1023,Near Kitchen,Home & Garden,Kitchen,Wayne,46.35,91.31,1
+1024,Three Children,Books,Children,Umbrella,90.27,121.13,1
+1025,Show Furniture,Home & Garden,Furniture,Umbrella,12.16,23.73,1
+1026,Born Outdoor Rec,Sports,Outdoor Rec,Acme,76.4,151.3,1
+1027,Option Audio,Electronics,Audio,Soylent,63.3,123.95,0
+1028,Majority Footwear,Apparel,Footwear,Hooli,57.2,104.47,1
+1029,Customer Fitnes,Sports,Fitness,Acme,33.1,65.43,1
+1030,Business Board Game,Toys,Board Games,Hooli,98.35,146.45,1
+1031,Measure Women,Apparel,Women,Stark,14.5,27.67,1
+1032,Share Team Sport,Sports,Team Sports,Stark,3.09,4.79,1
+1033,On Men,Apparel,Men,Stark,14.61,29.07,1
+1034,Two Furniture,Home & Garden,Furniture,Globex,76.58,124.96,1
+1035,Speak Phone,Electronics,Phones,Soylent,25.79,38.81,1
+1036,Former Board Game,Toys,Board Games,Wayne,58.19,76.38,0
+1037,Central Haircare,Beauty,Haircare,Acme,64.54,119.42,1
+1038,Person Phone,Electronics,Phones,Globex,43.79,72.86,1
+1039,Measure Board Game,Toys,Board Games,Acme,24.02,43.7,1
+1040,Lay Skincare,Beauty,Skincare,Umbrella,62.02,96.43,1
+1041,Fill Fiction,Books,Fiction,Hooli,15.23,19.83,1
+1042,Commercial Kid,Apparel,Kids,Acme,22.06,31.79,1
+1043,Team Kitchen,Home & Garden,Kitchen,Stark,96.63,176.01,1
+1044,Window Audio,Electronics,Audio,Stark,99.45,163.78,1
+1045,Movie Action Figure,Toys,Action Figures,Hooli,37.56,74.88,1
+1046,Environment Fitnes,Sports,Fitness,Wayne,72.6,95.99,1
+1047,Real Children,Books,Children,Globex,95.48,143.45,1
+1048,Training Team Sport,Sports,Team Sports,Acme,22.31,30.54,1
+1049,Society Footwear,Apparel,Footwear,Soylent,81.99,129.57,1
+1050,In Educational,Toys,Educational,Wayne,10.03,16.6,1
+1051,Oil Pantry,Grocery,Pantry,Umbrella,87.91,116.92,1
+1052,Free Furniture,Home & Garden,Furniture,Initech,6.17,11.45,1
+1053,Capital Action Figure,Toys,Action Figures,Acme,52.85,76.1,1
+1054,Performance Laptop,Electronics,Laptops,Globex,46.86,67.68,1
+1055,Claim Board Game,Toys,Board Games,Stark,79.64,126.36,1
+1056,Interesting Outdoor Rec,Sports,Outdoor Rec,Soylent,8.97,13.24,1
+1057,Attorney Women,Apparel,Women,Wayne,27.87,36.67,1
+1058,Method Kid,Apparel,Kids,Globex,4.38,5.87,1
+1059,Road Outdoor Rec,Sports,Outdoor Rec,Soylent,84.92,133.36,1
+1060,Woman Phone,Electronics,Phones,Wayne,96.93,160.93,1
+1061,Reduce Women,Apparel,Women,Globex,69.16,122.12,1
+1062,Special Haircare,Beauty,Haircare,Umbrella,34.56,52.63,1
+1063,He Snack,Grocery,Snacks,Globex,34.35,53.34,1
+1064,Rich Women,Apparel,Women,Soylent,67.33,121.3,1
+1065,Notice Laptop,Electronics,Laptops,Initech,67.15,92.99,1
+1066,Teach Footwear,Apparel,Footwear,Globex,81.21,111.8,1
+1067,Thank Haircare,Beauty,Haircare,Acme,97.04,136.85,1
+1068,Inside Educational,Toys,Educational,Globex,93.35,148.23,1
+1069,There Beverage,Grocery,Beverages,Globex,99.63,168.82,1
+1070,Plan Phone,Electronics,Phones,Umbrella,10.47,14.82,1
+1071,Church Phone,Electronics,Phones,Hooli,43.72,74.58,1
+1072,Little Board Game,Toys,Board Games,Umbrella,98.73,173.31,1
+1073,Science Team Sport,Sports,Team Sports,Umbrella,51.98,71.19,1
+1074,Seek Snack,Grocery,Snacks,Soylent,20.0,33.07,1
+1075,Federal Audio,Electronics,Audio,Acme,98.2,162.89,1
+1076,College Educational,Toys,Educational,Stark,62.63,121.03,1
+1077,Really Footwear,Apparel,Footwear,Wayne,55.71,87.91,0
+1078,Population Fiction,Books,Fiction,Soylent,11.32,20.26,1
+1079,Apply Skincare,Beauty,Skincare,Wayne,95.48,179.78,1
+1080,Themselves Board Game,Toys,Board Games,Globex,47.68,91.0,1
+1081,Quickly Educational,Toys,Educational,Wayne,56.53,96.95,1
+1082,Argue Beverage,Grocery,Beverages,Initech,26.94,41.01,1
+1083,Door Fitnes,Sports,Fitness,Soylent,56.51,79.06,1
+1084,President Furniture,Home & Garden,Furniture,Initech,67.33,88.59,1
+1085,Today Fiction,Books,Fiction,Umbrella,40.24,74.14,1
+1086,Call Furniture,Home & Garden,Furniture,Soylent,33.3,51.11,1
+1087,Including Women,Apparel,Women,Hooli,13.35,20.75,1
+1088,Campaign Educational,Toys,Educational,Initech,8.87,11.91,1
+1089,Analysis Women,Apparel,Women,Umbrella,4.52,6.24,1
+1090,Certainly Beverage,Grocery,Beverages,Stark,83.79,119.77,1
+1091,Music Children,Books,Children,Wayne,68.76,121.97,1
+1092,Beat Decor,Home & Garden,Decor,Acme,89.48,176.82,1
+1093,Box Outdoor,Home & Garden,Outdoor,Soylent,8.15,12.34,1
+1094,We Children,Books,Children,Soylent,59.62,117.83,1
+1095,Born Action Figure,Toys,Action Figures,Stark,68.17,109.43,1
+1096,Young Team Sport,Sports,Team Sports,Hooli,4.5,7.26,1
+1097,Blood Beverage,Grocery,Beverages,Hooli,19.29,31.12,1
+1098,Might Pantry,Grocery,Pantry,Globex,5.55,7.37,1
+1099,Along Makeup,Beauty,Makeup,Wayne,33.48,58.95,1
+1100,First Furniture,Home & Garden,Furniture,Soylent,12.23,17.13,1
+1101,Again Audio,Electronics,Audio,Wayne,16.81,33.1,1
+1102,Figure Fitnes,Sports,Fitness,Umbrella,65.95,127.74,1
+1103,Seek Kid,Apparel,Kids,Globex,25.53,35.19,1
+1104,Want Pantry,Grocery,Pantry,Soylent,86.67,166.04,1
+1105,Model Makeup,Beauty,Makeup,Globex,59.47,78.96,1
+1106,Off Educational,Toys,Educational,Soylent,79.81,110.33,1
+1107,Reality Fiction,Books,Fiction,Umbrella,26.27,35.25,1
+1108,Really Board Game,Toys,Board Games,Hooli,38.79,75.47,1
+1109,Suddenly Beverage,Grocery,Beverages,Initech,15.63,24.73,1
+1110,Manager Makeup,Beauty,Makeup,Stark,80.31,134.63,1
+1111,Drug Team Sport,Sports,Team Sports,Soylent,9.71,14.53,1
+1112,Maybe Phone,Electronics,Phones,Globex,37.63,67.19,1
+1113,Firm Children,Books,Children,Acme,28.04,42.47,1
+1114,Mrs Non-Fiction,Books,Non-Fiction,Initech,78.07,134.41,1
+1115,Appear Team Sport,Sports,Team Sports,Hooli,61.92,89.38,1
+1116,Hour Audio,Electronics,Audio,Soylent,33.03,60.41,1
+1117,Central Footwear,Apparel,Footwear,Soylent,9.58,13.59,1
+1118,Buy Team Sport,Sports,Team Sports,Hooli,82.89,134.66,1
+1119,Share Makeup,Beauty,Makeup,Umbrella,70.93,115.19,1
+1120,Right Outdoor Rec,Sports,Outdoor Rec,Globex,64.5,88.47,1
+1121,Major Non-Fiction,Books,Non-Fiction,Umbrella,85.93,118.98,1
+1122,Should Haircare,Beauty,Haircare,Wayne,77.45,135.0,1
+1123,About Children,Books,Children,Acme,81.29,146.87,1
+1124,Career Children,Books,Children,Wayne,8.36,12.67,1
+1125,Any Fitnes,Sports,Fitness,Umbrella,99.13,133.81,1
+1126,Money Skincare,Beauty,Skincare,Wayne,17.68,25.11,1
+1127,Whom Women,Apparel,Women,Hooli,58.75,99.17,1
+1128,Effort Kitchen,Home & Garden,Kitchen,Initech,8.07,12.56,1
+1129,Other Footwear,Apparel,Footwear,Wayne,48.51,84.61,1
+1130,To Outdoor,Home & Garden,Outdoor,Stark,32.88,46.33,1
+1131,Meeting Skincare,Beauty,Skincare,Initech,52.01,72.54,1
+1132,Special Furniture,Home & Garden,Furniture,Stark,29.69,38.67,1
+1133,Arrive Snack,Grocery,Snacks,Initech,47.39,74.08,1
+1134,Production Kid,Apparel,Kids,Hooli,52.81,84.16,1
+1135,Base Team Sport,Sports,Team Sports,Umbrella,19.51,25.82,0
+1136,Keep Kid,Apparel,Kids,Umbrella,40.8,77.01,1
+1137,Respond Audio,Electronics,Audio,Wayne,74.05,118.16,1
+1138,Dream Pantry,Grocery,Pantry,Wayne,14.01,25.28,1
+1139,Capital Makeup,Beauty,Makeup,Hooli,67.94,94.34,1
+1140,Land Skincare,Beauty,Skincare,Acme,13.04,23.73,1
+1141,Carry Furniture,Home & Garden,Furniture,Hooli,55.16,86.2,1
+1142,Particular Skincare,Beauty,Skincare,Umbrella,94.92,150.77,1
+1143,Four Kid,Apparel,Kids,Soylent,14.62,28.86,1
+1144,My Beverage,Grocery,Beverages,Hooli,60.25,85.87,1
+1145,You Beverage,Grocery,Beverages,Umbrella,25.73,50.55,1
+1146,Attention Decor,Home & Garden,Decor,Stark,6.18,11.61,1
+1147,Why Accessorie,Electronics,Accessories,Soylent,47.37,67.08,1
+1148,Area Board Game,Toys,Board Games,Soylent,57.94,105.09,1
+1149,Then Outdoor,Home & Garden,Outdoor,Hooli,6.2,10.17,0
+1150,Western Children,Books,Children,Umbrella,87.05,140.6,1
+1151,Live Phone,Electronics,Phones,Acme,13.07,24.37,1
+1152,Measure Decor,Home & Garden,Decor,Wayne,94.66,158.15,1
+1153,Brother Decor,Home & Garden,Decor,Acme,23.41,38.52,1
+1154,Party Accessorie,Electronics,Accessories,Stark,66.34,115.46,1
+1155,Individual Pantry,Grocery,Pantry,Globex,27.28,36.13,1
+1156,Realize Outdoor,Home & Garden,Outdoor,Wayne,13.17,23.8,1
+1157,Whom Skincare,Beauty,Skincare,Soylent,48.31,71.18,1
+1158,Mission Kid,Apparel,Kids,Hooli,68.02,92.11,1
+1159,Leader Audio,Electronics,Audio,Acme,48.94,76.64,1
+1160,Might Pantry,Grocery,Pantry,Wayne,76.51,134.23,1
+1161,Trouble Men,Apparel,Men,Soylent,76.49,113.64,1
+1162,Small Laptop,Electronics,Laptops,Acme,62.94,100.08,1
+1163,Establish Team Sport,Sports,Team Sports,Initech,43.11,81.0,1
+1164,Attorney Fiction,Books,Fiction,Stark,98.1,146.36,1
+1165,Rich Snack,Grocery,Snacks,Wayne,31.53,57.76,1
+1166,Interesting Men,Apparel,Men,Hooli,91.41,139.32,1
+1167,If Decor,Home & Garden,Decor,Globex,68.31,112.0,1
+1168,Them Footwear,Apparel,Footwear,Wayne,52.34,72.22,1
+1169,Approach Outdoor,Home & Garden,Outdoor,Globex,20.32,40.18,1
+1170,Interview Skincare,Beauty,Skincare,Initech,76.99,107.13,1
+1171,Exactly Outdoor Rec,Sports,Outdoor Rec,Wayne,27.95,47.13,1
+1172,Official Non-Fiction,Books,Non-Fiction,Soylent,11.4,18.05,1
+1173,Ground Makeup,Beauty,Makeup,Umbrella,84.54,163.05,1
+1174,Tv Accessorie,Electronics,Accessories,Stark,59.77,86.75,1
+1175,Often Outdoor Rec,Sports,Outdoor Rec,Umbrella,81.92,117.65,1
+1176,Response Kid,Apparel,Kids,Hooli,83.82,142.78,1
+1177,Ten Beverage,Grocery,Beverages,Acme,65.51,86.25,1
+1178,Small Action Figure,Toys,Action Figures,Acme,35.58,47.52,1
+1179,Sound Outdoor,Home & Garden,Outdoor,Umbrella,99.88,130.79,1
+1180,Need Audio,Electronics,Audio,Initech,48.62,63.4,1
+1181,Now Fitnes,Sports,Fitness,Initech,46.9,63.83,1
+1182,Read Team Sport,Sports,Team Sports,Soylent,31.0,58.18,1
+1183,Few Outdoor Rec,Sports,Outdoor Rec,Hooli,20.02,28.04,0
+1184,Stop Haircare,Beauty,Haircare,Hooli,34.79,49.07,1
+1185,Program Decor,Home & Garden,Decor,Hooli,73.71,135.08,1
+1186,Suddenly Fitnes,Sports,Fitness,Soylent,75.94,100.3,1
+1187,Forget Kid,Apparel,Kids,Hooli,62.34,85.62,1
+1188,Exactly Phone,Electronics,Phones,Acme,61.18,103.57,1
+1189,Reduce Fitnes,Sports,Fitness,Initech,41.22,58.69,0
+1190,Century Makeup,Beauty,Makeup,Wayne,83.42,119.29,1
+1191,Few Outdoor,Home & Garden,Outdoor,Soylent,50.39,93.63,1
+1192,Growth Furniture,Home & Garden,Furniture,Umbrella,80.64,161.09,1
+1193,Article Phone,Electronics,Phones,Umbrella,41.06,78.24,1
+1194,Week Outdoor,Home & Garden,Outdoor,Hooli,27.6,37.75,1
+1195,Explain Footwear,Apparel,Footwear,Stark,3.41,5.39,1
+1196,Significant Educational,Toys,Educational,Hooli,24.8,42.33,1
+1197,Practice Audio,Electronics,Audio,Initech,83.31,127.18,1
+1198,Skin Beverage,Grocery,Beverages,Soylent,75.16,145.41,1
+1199,Movement Men,Apparel,Men,Acme,23.58,45.45,1
+1200,Much Outdoor Rec,Sports,Outdoor Rec,Globex,58.62,100.13,1
+1201,International Beverage,Grocery,Beverages,Hooli,92.86,176.64,1
+1202,Film Pantry,Grocery,Pantry,Wayne,70.42,133.83,0
+1203,Together Footwear,Apparel,Footwear,Hooli,47.44,86.16,1
+1204,Health Action Figure,Toys,Action Figures,Globex,63.15,123.6,1
+1205,Doctor Beverage,Grocery,Beverages,Initech,59.77,94.69,1
+1206,Morning Beverage,Grocery,Beverages,Wayne,98.39,167.31,1
+1207,Land Skincare,Beauty,Skincare,Stark,46.68,60.83,1
+1208,Operation Skincare,Beauty,Skincare,Hooli,31.79,43.63,1
+1209,Small Fitnes,Sports,Fitness,Stark,51.25,83.46,1
+1210,Final Skincare,Beauty,Skincare,Initech,20.57,28.16,1
+1211,Four Furniture,Home & Garden,Furniture,Soylent,81.58,151.39,1
+1212,Both Men,Apparel,Men,Umbrella,91.93,136.07,1
+1213,Consider Educational,Toys,Educational,Wayne,6.03,8.58,1
+1214,Keep Educational,Toys,Educational,Initech,52.09,75.22,1
+1215,Girl Audio,Electronics,Audio,Wayne,33.47,60.76,1
+1216,Usually Team Sport,Sports,Team Sports,Stark,66.07,119.74,0
+1217,Cost Footwear,Apparel,Footwear,Globex,96.41,166.19,1
+1218,Minute Snack,Grocery,Snacks,Wayne,93.19,133.91,1
+1219,Wait Kid,Apparel,Kids,Umbrella,87.55,166.85,1
+1220,Just Kitchen,Home & Garden,Kitchen,Hooli,32.36,53.05,1
+1221,Know Decor,Home & Garden,Decor,Initech,6.16,11.99,1
+1222,Yourself Makeup,Beauty,Makeup,Initech,77.93,138.83,1
+1223,Light Makeup,Beauty,Makeup,Hooli,47.7,84.52,1
+1224,Yeah Men,Apparel,Men,Stark,44.44,63.25,1
+1225,Economy Fitnes,Sports,Fitness,Hooli,92.27,140.76,1
+1226,Boy Fitnes,Sports,Fitness,Globex,92.3,182.43,1
+1227,Gun Beverage,Grocery,Beverages,Globex,70.16,132.89,1
+1228,Home Snack,Grocery,Snacks,Soylent,33.92,49.82,1
+1229,Consider Children,Books,Children,Hooli,79.95,150.45,1
+1230,Four Outdoor,Home & Garden,Outdoor,Hooli,70.98,116.32,1
+1231,This Educational,Toys,Educational,Soylent,81.05,115.24,1
+1232,Expect Skincare,Beauty,Skincare,Soylent,67.32,105.79,1
+1233,Best Beverage,Grocery,Beverages,Stark,98.64,187.2,1
+1234,Run Snack,Grocery,Snacks,Globex,62.45,84.03,1
+1235,Man Children,Books,Children,Wayne,92.78,161.71,1
+1236,Themselves Pantry,Grocery,Pantry,Acme,28.01,55.33,1
+1237,Notice Women,Apparel,Women,Globex,64.9,100.02,1
+1238,Difference Action Figure,Toys,Action Figures,Globex,80.53,119.37,1
+1239,Where Haircare,Beauty,Haircare,Stark,25.7,48.62,1
+1240,Court Fiction,Books,Fiction,Stark,85.0,138.87,1
+1241,Behavior Pantry,Grocery,Pantry,Globex,64.33,109.83,1
+1242,Bar Board Game,Toys,Board Games,Hooli,75.98,131.56,1
+1243,City Laptop,Electronics,Laptops,Initech,52.42,91.86,1
+1244,Hundred Decor,Home & Garden,Decor,Hooli,14.24,20.61,1
+1245,Nothing Team Sport,Sports,Team Sports,Wayne,22.66,35.15,1
+1246,Boy Footwear,Apparel,Footwear,Umbrella,88.56,144.02,1
+1247,On Pantry,Grocery,Pantry,Initech,80.68,137.39,1
+1248,Itself Skincare,Beauty,Skincare,Hooli,50.31,79.74,1
+1249,Nation Fiction,Books,Fiction,Hooli,10.45,19.53,1
+1250,Hospital Outdoor Rec,Sports,Outdoor Rec,Wayne,36.22,66.29,0
+1251,Agent Makeup,Beauty,Makeup,Wayne,81.26,129.81,1
+1252,Throw Kitchen,Home & Garden,Kitchen,Acme,55.2,80.86,1
+1253,Include Children,Books,Children,Stark,17.6,26.99,1
+1254,Difficult Outdoor Rec,Sports,Outdoor Rec,Umbrella,83.78,145.05,1
+1255,Fire Kid,Apparel,Kids,Stark,18.41,24.85,1
+1256,Gas Accessorie,Electronics,Accessories,Stark,47.87,75.28,1
+1257,New Action Figure,Toys,Action Figures,Wayne,28.39,43.05,1
+1258,Republican Children,Books,Children,Acme,70.0,139.6,1
+1259,Growth Makeup,Beauty,Makeup,Umbrella,44.81,87.55,1
+1260,Keep Children,Books,Children,Soylent,88.51,150.4,1
+1261,Skin Phone,Electronics,Phones,Globex,41.34,72.71,1
+1262,Rise Skincare,Beauty,Skincare,Umbrella,50.3,94.49,1
+1263,Performance Snack,Grocery,Snacks,Globex,38.17,50.74,1
+1264,Million Footwear,Apparel,Footwear,Initech,7.84,11.03,1
+1265,Why Kitchen,Home & Garden,Kitchen,Acme,11.54,20.66,1
+1266,Memory Educational,Toys,Educational,Stark,9.21,16.72,1
+1267,At Fiction,Books,Fiction,Wayne,62.84,84.1,0
+1268,Ability Educational,Toys,Educational,Acme,26.34,43.54,1
+1269,Fight Non-Fiction,Books,Non-Fiction,Wayne,49.57,91.16,1
+1270,Hold Makeup,Beauty,Makeup,Umbrella,16.23,25.44,1
+1271,Read Outdoor Rec,Sports,Outdoor Rec,Hooli,57.14,109.95,1
+1272,However Laptop,Electronics,Laptops,Acme,72.16,122.17,1
+1273,Mother Skincare,Beauty,Skincare,Acme,23.22,32.1,1
+1274,Third Haircare,Beauty,Haircare,Acme,86.2,127.93,1
+1275,Smile Team Sport,Sports,Team Sports,Soylent,92.94,128.55,1
+1276,Us Fitnes,Sports,Fitness,Umbrella,30.62,54.54,1
+1277,Once Accessorie,Electronics,Accessories,Initech,13.77,24.84,1
+1278,Cover Women,Apparel,Women,Acme,11.93,18.71,1
+1279,Leader Outdoor Rec,Sports,Outdoor Rec,Hooli,19.0,27.62,1
+1280,Whose Men,Apparel,Men,Acme,67.16,126.05,1
+1281,Say Outdoor Rec,Sports,Outdoor Rec,Soylent,57.04,109.58,1
+1282,Eat Kitchen,Home & Garden,Kitchen,Umbrella,46.62,89.41,1
+1283,Five Beverage,Grocery,Beverages,Globex,29.23,39.31,1
+1284,Control Team Sport,Sports,Team Sports,Initech,31.32,57.82,1
+1285,Technology Outdoor Rec,Sports,Outdoor Rec,Initech,98.04,175.59,1
+1286,Fly Laptop,Electronics,Laptops,Initech,25.46,45.62,1
+1287,Cover Footwear,Apparel,Footwear,Stark,64.47,111.93,1
+1288,Describe Phone,Electronics,Phones,Wayne,66.52,115.44,1
+1289,Here Outdoor,Home & Garden,Outdoor,Umbrella,62.72,108.53,1
+1290,Practice Men,Apparel,Men,Umbrella,40.15,72.37,1
+1291,Crime Outdoor,Home & Garden,Outdoor,Umbrella,40.25,80.12,1
+1292,Nice Haircare,Beauty,Haircare,Stark,67.97,129.24,1
+1293,Two Pantry,Grocery,Pantry,Umbrella,62.73,112.48,0
+1294,Nature Board Game,Toys,Board Games,Initech,36.47,55.87,1
+1295,Pull Phone,Electronics,Phones,Wayne,98.25,175.82,1
+1296,Matter Makeup,Beauty,Makeup,Initech,56.41,85.58,1
+1297,Activity Skincare,Beauty,Skincare,Soylent,38.54,71.64,1
+1298,Whether Outdoor Rec,Sports,Outdoor Rec,Soylent,16.06,22.03,1
+1299,Admit Laptop,Electronics,Laptops,Umbrella,36.41,53.73,1
+1300,Glass Laptop,Electronics,Laptops,Globex,20.07,35.8,1
+1301,Central Outdoor Rec,Sports,Outdoor Rec,Globex,50.22,83.15,1
+1302,Happy Outdoor,Home & Garden,Outdoor,Soylent,19.72,30.35,1
+1303,Beautiful Educational,Toys,Educational,Acme,18.11,26.26,1
+1304,Style Children,Books,Children,Umbrella,44.36,86.45,1
+1305,Determine Laptop,Electronics,Laptops,Hooli,18.36,25.2,1
+1306,Indeed Furniture,Home & Garden,Furniture,Hooli,90.89,149.28,1
+1307,Court Fitnes,Sports,Fitness,Wayne,32.38,55.17,1
+1308,Maybe Action Figure,Toys,Action Figures,Globex,93.86,148.15,1
+1309,Wife Kitchen,Home & Garden,Kitchen,Stark,84.96,112.4,1
+1310,Tonight Kid,Apparel,Kids,Soylent,51.35,99.77,1
+1311,Control Team Sport,Sports,Team Sports,Initech,76.8,148.61,1
+1312,Generation Beverage,Grocery,Beverages,Hooli,77.66,120.2,1
+1313,None Non-Fiction,Books,Non-Fiction,Wayne,43.52,67.49,1
+1314,You Children,Books,Children,Hooli,3.43,4.74,1
+1315,Try Accessorie,Electronics,Accessories,Hooli,48.0,86.92,1
+1316,Interesting Educational,Toys,Educational,Acme,12.65,21.63,1
+1317,Buy Kitchen,Home & Garden,Kitchen,Stark,43.04,69.7,1
+1318,Move Beverage,Grocery,Beverages,Wayne,39.66,68.5,1
+1319,Create Audio,Electronics,Audio,Acme,69.8,110.64,1
+1320,Billion Snack,Grocery,Snacks,Initech,52.2,96.44,1
+1321,Attention Audio,Electronics,Audio,Soylent,12.91,18.07,1
+1322,Product Furniture,Home & Garden,Furniture,Wayne,65.02,91.71,1
+1323,Even Decor,Home & Garden,Decor,Stark,57.42,81.66,1
+1324,Action Snack,Grocery,Snacks,Wayne,90.11,140.99,0
+1325,Security Kid,Apparel,Kids,Soylent,52.62,78.11,1
+1326,Official Board Game,Toys,Board Games,Wayne,12.46,22.07,1
+1327,Explain Outdoor Rec,Sports,Outdoor Rec,Umbrella,98.53,149.69,1
+1328,Yet Haircare,Beauty,Haircare,Globex,62.08,117.03,1
+1329,Short Educational,Toys,Educational,Wayne,94.57,183.99,1
+1330,More Children,Books,Children,Acme,68.92,93.42,1
+1331,Manage Phone,Electronics,Phones,Stark,56.18,92.56,1
+1332,Evening Fiction,Books,Fiction,Stark,77.32,107.15,1
+1333,Clear Snack,Grocery,Snacks,Globex,23.37,44.3,1
+1334,Itself Audio,Electronics,Audio,Wayne,67.94,101.73,1
+1335,Build Pantry,Grocery,Pantry,Soylent,85.41,148.01,1
+1336,Hand Skincare,Beauty,Skincare,Soylent,5.72,10.26,1
+1337,Project Team Sport,Sports,Team Sports,Wayne,91.37,182.23,1
+1338,Stay Skincare,Beauty,Skincare,Initech,11.63,20.95,1
+1339,Forget Skincare,Beauty,Skincare,Hooli,88.01,125.93,1
+1340,Manage Accessorie,Electronics,Accessories,Wayne,56.08,79.74,1
+1341,But Action Figure,Toys,Action Figures,Globex,14.58,29.08,1
+1342,Suffer Team Sport,Sports,Team Sports,Soylent,38.86,62.7,0
+1343,Conference Children,Books,Children,Acme,99.54,175.21,0
+1344,Authority Snack,Grocery,Snacks,Stark,91.09,145.44,1
+1345,Special Educational,Toys,Educational,Umbrella,19.67,33.03,1
+1346,Shoulder Action Figure,Toys,Action Figures,Initech,60.03,93.36,1
+1347,How Accessorie,Electronics,Accessories,Initech,59.55,112.7,1
+1348,Wrong Kid,Apparel,Kids,Stark,40.7,72.08,1
+1349,Car Snack,Grocery,Snacks,Soylent,85.54,149.82,1
+1350,Marriage Phone,Electronics,Phones,Globex,19.46,28.37,1
+1351,House Audio,Electronics,Audio,Hooli,38.45,65.77,1
+1352,Look Action Figure,Toys,Action Figures,Stark,22.93,34.0,1
+1353,Professor Board Game,Toys,Board Games,Soylent,67.06,96.59,1
+1354,Dark Haircare,Beauty,Haircare,Soylent,70.19,103.17,1
+1355,Effect Fiction,Books,Fiction,Globex,13.96,23.19,1
+1356,Week Fitnes,Sports,Fitness,Initech,80.25,138.6,1
+1357,Security Kid,Apparel,Kids,Soylent,25.81,38.53,1
+1358,Create Fiction,Books,Fiction,Hooli,17.02,28.12,1
+1359,Alone Children,Books,Children,Globex,65.65,124.02,1
+1360,Ago Decor,Home & Garden,Decor,Initech,74.43,140.03,1
+1361,Kitchen Audio,Electronics,Audio,Umbrella,30.35,45.7,1
+1362,Beyond Footwear,Apparel,Footwear,Globex,52.95,101.33,1
+1363,Budget Haircare,Beauty,Haircare,Acme,37.27,51.36,1
+1364,Tree Kitchen,Home & Garden,Kitchen,Acme,99.19,170.0,1
+1365,Quite Kitchen,Home & Garden,Kitchen,Globex,18.91,28.22,1
+1366,Require Women,Apparel,Women,Umbrella,85.63,158.39,1
+1367,Position Skincare,Beauty,Skincare,Acme,27.97,40.75,1
+1368,Story Children,Books,Children,Globex,19.54,35.08,1
+1369,Dog Fitnes,Sports,Fitness,Umbrella,92.41,153.81,1
+1370,Learn Decor,Home & Garden,Decor,Wayne,7.55,13.13,1
+1371,On Children,Books,Children,Stark,43.59,67.9,1
+1372,Poor Men,Apparel,Men,Acme,40.38,65.26,1
+1373,Hair Laptop,Electronics,Laptops,Stark,94.67,177.64,1
+1374,World Beverage,Grocery,Beverages,Wayne,30.59,53.4,1
+1375,Clearly Team Sport,Sports,Team Sports,Globex,17.78,30.27,1
+1376,Positive Outdoor Rec,Sports,Outdoor Rec,Globex,35.27,61.48,1
+1377,Run Makeup,Beauty,Makeup,Wayne,92.63,144.86,1
+1378,Region Furniture,Home & Garden,Furniture,Stark,84.66,141.27,1
+1379,Success Haircare,Beauty,Haircare,Stark,60.6,84.75,1
+1380,Manager Furniture,Home & Garden,Furniture,Stark,31.02,45.77,0
+1381,Star Footwear,Apparel,Footwear,Stark,84.15,133.66,1
+1382,Federal Makeup,Beauty,Makeup,Stark,34.58,66.09,1
+1383,Take Pantry,Grocery,Pantry,Globex,80.69,132.29,1
+1384,Start Educational,Toys,Educational,Hooli,33.76,60.51,1
+1385,Notice Educational,Toys,Educational,Acme,88.82,153.42,1
+1386,Action Footwear,Apparel,Footwear,Globex,93.06,140.11,1
+1387,Concern Women,Apparel,Women,Soylent,78.36,140.42,1
+1388,Treatment Outdoor Rec,Sports,Outdoor Rec,Initech,23.82,39.05,1
+1389,Serious Children,Books,Children,Initech,14.83,23.04,1
+1390,Daughter Women,Apparel,Women,Acme,99.57,197.1,1
+1391,During Team Sport,Sports,Team Sports,Soylent,76.46,109.36,1
+1392,Prove Team Sport,Sports,Team Sports,Stark,91.63,121.91,1
+1393,Though Non-Fiction,Books,Non-Fiction,Acme,24.0,39.22,1
+1394,Her Fitnes,Sports,Fitness,Soylent,25.77,50.04,1
+1395,Collection Fitnes,Sports,Fitness,Acme,95.74,135.14,1
+1396,Education Outdoor Rec,Sports,Outdoor Rec,Initech,47.62,73.79,0
+1397,From Fitnes,Sports,Fitness,Stark,94.91,158.43,1
+1398,Treat Educational,Toys,Educational,Wayne,73.54,124.26,1
+1399,Name Men,Apparel,Men,Stark,91.46,170.05,1
+1400,Professor Footwear,Apparel,Footwear,Umbrella,82.34,148.01,1
+1401,Environment Accessorie,Electronics,Accessories,Wayne,27.76,39.98,1
+1402,Responsibility Skincare,Beauty,Skincare,Soylent,21.2,35.93,1
+1403,Hour Fiction,Books,Fiction,Umbrella,63.67,94.82,1
+1404,Picture Kitchen,Home & Garden,Kitchen,Acme,78.19,146.96,1
+1405,Lead Footwear,Apparel,Footwear,Umbrella,24.82,38.8,1
+1406,Eat Fitnes,Sports,Fitness,Soylent,66.79,117.47,1
+1407,Suffer Kitchen,Home & Garden,Kitchen,Acme,27.69,45.74,1
+1408,Open Women,Apparel,Women,Wayne,11.11,21.48,1
+1409,Difficult Pantry,Grocery,Pantry,Stark,98.51,131.5,1
+1410,Reduce Outdoor,Home & Garden,Outdoor,Stark,77.23,154.26,1
+1411,Real Educational,Toys,Educational,Globex,99.96,160.78,1
+1412,Name Fitnes,Sports,Fitness,Soylent,11.73,21.61,1
+1413,Foot Educational,Toys,Educational,Acme,44.34,68.76,1
+1414,Include Phone,Electronics,Phones,Acme,39.13,59.0,1
+1415,Assume Non-Fiction,Books,Non-Fiction,Initech,40.82,56.41,1
+1416,Little Snack,Grocery,Snacks,Globex,35.93,58.56,1
+1417,Fight Phone,Electronics,Phones,Wayne,23.91,45.48,1
+1418,Past Skincare,Beauty,Skincare,Soylent,59.8,116.72,0
+1419,Avoid Outdoor Rec,Sports,Outdoor Rec,Globex,29.2,54.27,1
+1420,Increase Makeup,Beauty,Makeup,Umbrella,51.78,98.7,1
+1421,Small Furniture,Home & Garden,Furniture,Initech,19.88,37.05,1
+1422,Popular Team Sport,Sports,Team Sports,Globex,97.3,148.98,1
+1423,Nearly Laptop,Electronics,Laptops,Acme,95.64,172.54,1
+1424,To Decor,Home & Garden,Decor,Hooli,45.74,71.08,1
+1425,Candidate Haircare,Beauty,Haircare,Wayne,73.1,103.95,1
+1426,Free Decor,Home & Garden,Decor,Hooli,34.62,65.58,1
+1427,General Makeup,Beauty,Makeup,Hooli,39.48,73.76,1
+1428,Game Makeup,Beauty,Makeup,Acme,37.33,64.08,1
+1429,Least Educational,Toys,Educational,Stark,37.43,68.25,1
+1430,Blue Team Sport,Sports,Team Sports,Hooli,18.44,36.59,1
+1431,Daughter Pantry,Grocery,Pantry,Soylent,84.97,120.42,1
+1432,Strong Non-Fiction,Books,Non-Fiction,Stark,65.47,112.06,1
+1433,Politics Educational,Toys,Educational,Initech,76.34,114.97,1
+1434,Later Board Game,Toys,Board Games,Initech,78.83,116.87,1
+1435,Soldier Children,Books,Children,Soylent,8.1,12.07,1
+1436,Save Snack,Grocery,Snacks,Soylent,70.38,100.81,1
+1437,Approach Fitnes,Sports,Fitness,Wayne,13.53,18.03,1
+1438,Study Educational,Toys,Educational,Wayne,89.13,151.19,1
+1439,Remain Men,Apparel,Men,Wayne,77.91,136.14,1
+1440,Foreign Kitchen,Home & Garden,Kitchen,Stark,3.47,5.35,1
+1441,Marriage Children,Books,Children,Hooli,97.65,131.1,1
+1442,Race Laptop,Electronics,Laptops,Wayne,35.83,64.59,1
+1443,Game Team Sport,Sports,Team Sports,Soylent,28.3,42.0,1
+1444,Which Children,Books,Children,Soylent,57.82,105.98,1
+1445,Southern Board Game,Toys,Board Games,Acme,31.37,44.34,1
+1446,But Skincare,Beauty,Skincare,Soylent,40.31,57.13,1
+1447,Too Haircare,Beauty,Haircare,Wayne,98.02,188.23,1
+1448,Property Children,Books,Children,Soylent,86.6,165.56,1
+1449,According Educational,Toys,Educational,Wayne,8.5,14.09,1
+1450,Fill Beverage,Grocery,Beverages,Stark,53.68,99.01,1
+1451,Crime Women,Apparel,Women,Stark,68.89,130.85,1
+1452,Exist Women,Apparel,Women,Soylent,48.02,68.18,1
+1453,Structure Phone,Electronics,Phones,Wayne,73.21,132.49,1
+1454,Certain Snack,Grocery,Snacks,Soylent,33.86,63.02,1
+1455,Full Audio,Electronics,Audio,Umbrella,22.78,32.5,1
+1456,Only Outdoor Rec,Sports,Outdoor Rec,Stark,64.23,86.43,1
+1457,Ever Skincare,Beauty,Skincare,Stark,63.31,103.68,1
+1458,Increase Laptop,Electronics,Laptops,Acme,44.45,67.99,1
+1459,House Fitnes,Sports,Fitness,Stark,71.79,132.12,1
+1460,National Footwear,Apparel,Footwear,Acme,10.53,15.09,1
+1461,Your Fiction,Books,Fiction,Stark,63.05,86.44,1
+1462,Person Children,Books,Children,Umbrella,8.54,13.88,1
+1463,Party Footwear,Apparel,Footwear,Soylent,80.79,149.97,1
+1464,Determine Outdoor,Home & Garden,Outdoor,Globex,33.02,64.34,1
+1465,Decision Pantry,Grocery,Pantry,Soylent,62.1,109.06,1
+1466,Election Phone,Electronics,Phones,Globex,60.66,98.47,1
+1467,Structure Kitchen,Home & Garden,Kitchen,Hooli,64.08,114.21,1
+1468,Successful Men,Apparel,Men,Wayne,39.66,51.65,1
+1469,Ground Fiction,Books,Fiction,Acme,3.63,4.88,1
+1470,Me Decor,Home & Garden,Decor,Hooli,15.84,21.89,1
+1471,Best Outdoor Rec,Sports,Outdoor Rec,Acme,7.06,9.65,1
+1472,Line Men,Apparel,Men,Stark,74.19,125.86,1
+1473,Wish Men,Apparel,Men,Hooli,78.94,153.23,1
+1474,Lead Fiction,Books,Fiction,Stark,6.85,13.61,1
+1475,Officer Men,Apparel,Men,Hooli,79.77,156.2,1
+1476,Stay Decor,Home & Garden,Decor,Hooli,75.14,116.76,1
+1477,Seem Kitchen,Home & Garden,Kitchen,Hooli,52.17,81.92,1
+1478,Here Men,Apparel,Men,Initech,90.13,147.75,1
+1479,Dark Makeup,Beauty,Makeup,Wayne,79.31,136.14,1
+1480,Movement Kitchen,Home & Garden,Kitchen,Globex,92.58,130.51,1
+1481,Than Kitchen,Home & Garden,Kitchen,Acme,83.88,124.51,1
+1482,Understand Non-Fiction,Books,Non-Fiction,Acme,62.92,124.56,0
+1483,Two Kitchen,Home & Garden,Kitchen,Initech,16.74,24.71,1
+1484,Experience Team Sport,Sports,Team Sports,Soylent,20.41,28.18,1
+1485,Performance Haircare,Beauty,Haircare,Umbrella,45.94,90.05,1
+1486,Power Furniture,Home & Garden,Furniture,Initech,41.86,74.64,1
+1487,Study Footwear,Apparel,Footwear,Soylent,46.61,87.73,1
+1488,Expect Decor,Home & Garden,Decor,Acme,52.5,86.23,1
+1489,Age Outdoor Rec,Sports,Outdoor Rec,Stark,8.99,17.48,1
+1490,Necessary Fitnes,Sports,Fitness,Hooli,70.7,137.17,1
+1491,Simple Non-Fiction,Books,Non-Fiction,Initech,19.94,31.2,1
+1492,Training Pantry,Grocery,Pantry,Globex,33.25,57.42,1
+1493,Expect Audio,Electronics,Audio,Hooli,79.82,131.3,1
+1494,Sit Action Figure,Toys,Action Figures,Stark,98.78,195.49,1
+1495,Local Beverage,Grocery,Beverages,Globex,48.37,87.16,1
+1496,Majority Fiction,Books,Fiction,Soylent,36.42,53.84,1
+1497,Choose Outdoor Rec,Sports,Outdoor Rec,Soylent,84.71,141.02,1
+1498,Manager Decor,Home & Garden,Decor,Hooli,81.16,149.11,0
+1499,Possible Haircare,Beauty,Haircare,Soylent,54.83,82.39,1
+1500,Wrong Makeup,Beauty,Makeup,Stark,69.79,107.47,1
+1501,Local Outdoor Rec,Sports,Outdoor Rec,Globex,5.92,7.81,1
+1502,Class Team Sport,Sports,Team Sports,Stark,43.32,79.27,1
+1503,Much Outdoor Rec,Sports,Outdoor Rec,Umbrella,99.04,140.69,1
+1504,Agent Team Sport,Sports,Team Sports,Umbrella,79.58,122.0,1
+1505,Pressure Beverage,Grocery,Beverages,Initech,52.93,74.81,1
+1506,Turn Beverage,Grocery,Beverages,Stark,77.73,137.55,1
+1507,Chair Furniture,Home & Garden,Furniture,Acme,97.4,193.28,1
+1508,Modern Outdoor Rec,Sports,Outdoor Rec,Globex,48.27,76.16,1
+1509,Lot Non-Fiction,Books,Non-Fiction,Stark,97.17,133.08,1
+1510,Size Men,Apparel,Men,Globex,37.55,69.11,1
+1511,Back Decor,Home & Garden,Decor,Stark,9.71,14.28,1
+1512,Finish Men,Apparel,Men,Hooli,37.74,61.28,1
+1513,A Footwear,Apparel,Footwear,Wayne,22.59,38.86,1
+1514,Agent Children,Books,Children,Initech,61.73,114.19,1
+1515,Town Educational,Toys,Educational,Globex,6.73,13.17,1
+1516,Return Makeup,Beauty,Makeup,Soylent,24.43,32.37,1
+1517,Feel Furniture,Home & Garden,Furniture,Stark,68.7,105.46,1
+1518,Study Pantry,Grocery,Pantry,Initech,21.3,27.82,1
+1519,However Fitnes,Sports,Fitness,Hooli,87.52,163.39,1
+1520,Wind Men,Apparel,Men,Acme,33.01,44.74,1
+1521,Establish Outdoor Rec,Sports,Outdoor Rec,Soylent,51.79,98.26,0
+1522,Area Skincare,Beauty,Skincare,Initech,28.82,57.17,1
+1523,News Skincare,Beauty,Skincare,Hooli,60.42,79.85,1
+1524,Modern Haircare,Beauty,Haircare,Umbrella,40.0,55.14,1
+1525,Plant Outdoor Rec,Sports,Outdoor Rec,Hooli,52.11,94.95,1
+1526,Number Kitchen,Home & Garden,Kitchen,Wayne,91.1,174.04,1
+1527,Black Non-Fiction,Books,Non-Fiction,Stark,26.87,49.8,1
+1528,Matter Educational,Toys,Educational,Soylent,80.26,157.63,1
+1529,Eat Kitchen,Home & Garden,Kitchen,Initech,35.37,61.01,1
+1530,Lay Makeup,Beauty,Makeup,Stark,36.45,54.91,1
+1531,Break Phone,Electronics,Phones,Hooli,13.94,24.33,1
+1532,Mr Non-Fiction,Books,Non-Fiction,Wayne,54.09,100.62,1
+1533,Network Audio,Electronics,Audio,Hooli,45.7,79.24,1
+1534,Green Outdoor,Home & Garden,Outdoor,Umbrella,60.67,114.95,1
+1535,Listen Educational,Toys,Educational,Acme,92.86,168.23,1
+1536,Small Kitchen,Home & Garden,Kitchen,Wayne,74.61,146.21,1
+1537,Gun Kitchen,Home & Garden,Kitchen,Soylent,41.83,60.42,1
+1538,Church Fitnes,Sports,Fitness,Stark,20.04,31.09,1
+1539,Experience Fiction,Books,Fiction,Globex,14.93,29.86,1
+1540,Various Educational,Toys,Educational,Wayne,50.58,89.37,1
+1541,Himself Snack,Grocery,Snacks,Initech,89.49,168.48,1
+1542,Color Kid,Apparel,Kids,Umbrella,44.59,67.61,1
+1543,Which Fiction,Books,Fiction,Wayne,47.39,63.88,0
+1544,Building Team Sport,Sports,Team Sports,Globex,89.92,159.01,1
+1545,In Action Figure,Toys,Action Figures,Initech,55.24,101.64,1
+1546,Final Outdoor,Home & Garden,Outdoor,Stark,23.65,37.77,1
+1547,Way Fitnes,Sports,Fitness,Acme,44.75,82.21,1
+1548,Community Outdoor,Home & Garden,Outdoor,Soylent,67.11,118.3,1
+1549,Range Outdoor,Home & Garden,Outdoor,Umbrella,49.7,68.19,1
+1550,Already Fiction,Books,Fiction,Wayne,7.57,12.97,1
+1551,Room Beverage,Grocery,Beverages,Initech,62.75,86.14,0
+1552,Better Board Game,Toys,Board Games,Stark,41.39,63.36,1
+1553,Bring Beverage,Grocery,Beverages,Globex,82.7,121.21,1
+1554,Simple Men,Apparel,Men,Wayne,34.02,62.25,1
+1555,Nation Laptop,Electronics,Laptops,Globex,40.52,76.59,1
+1556,Apply Pantry,Grocery,Pantry,Umbrella,70.24,129.91,1
+1557,Network Snack,Grocery,Snacks,Globex,19.47,34.64,1
+1558,Concern Decor,Home & Garden,Decor,Wayne,60.69,82.68,1
+1559,Staff Outdoor Rec,Sports,Outdoor Rec,Umbrella,89.82,169.36,1
+1560,Right Fiction,Books,Fiction,Stark,65.85,99.02,1
+1561,Theory Makeup,Beauty,Makeup,Acme,92.6,133.27,1
+1562,Real Makeup,Beauty,Makeup,Soylent,82.04,150.49,1
+1563,Pm Non-Fiction,Books,Non-Fiction,Hooli,14.75,28.35,1
+1564,Gas Educational,Toys,Educational,Umbrella,51.64,70.64,1
+1565,Entire Kitchen,Home & Garden,Kitchen,Umbrella,24.5,45.32,1
+1566,Professor Fitnes,Sports,Fitness,Soylent,35.25,63.95,1
+1567,Or Beverage,Grocery,Beverages,Acme,87.85,142.08,1
+1568,Yard Educational,Toys,Educational,Hooli,47.28,94.18,1
+1569,Range Pantry,Grocery,Pantry,Wayne,65.15,100.98,1
+1570,From Snack,Grocery,Snacks,Hooli,95.01,151.5,1
+1571,Cell Fitnes,Sports,Fitness,Soylent,40.39,80.16,1
+1572,Because Kid,Apparel,Kids,Acme,9.22,16.33,1
+1573,Sign Skincare,Beauty,Skincare,Umbrella,58.17,96.81,1
+1574,Year Snack,Grocery,Snacks,Initech,3.69,7.07,1
+1575,Whole Fiction,Books,Fiction,Globex,40.59,58.92,1
+1576,Beat Outdoor,Home & Garden,Outdoor,Umbrella,10.88,14.87,1
+1577,Rather Footwear,Apparel,Footwear,Hooli,87.9,122.18,1
+1578,Certain Men,Apparel,Men,Hooli,48.14,74.78,1
+1579,Budget Men,Apparel,Men,Soylent,96.63,154.78,1
+1580,Sure Board Game,Toys,Board Games,Stark,15.14,24.04,1
+1581,Rule Kid,Apparel,Kids,Umbrella,15.48,25.74,1
+1582,His Footwear,Apparel,Footwear,Globex,87.61,134.56,1
+1583,Part Fiction,Books,Fiction,Soylent,10.54,14.32,1
+1584,Very Fitnes,Sports,Fitness,Soylent,26.21,36.6,1
+1585,Foreign Snack,Grocery,Snacks,Umbrella,78.99,121.74,0
+1586,Stop Pantry,Grocery,Pantry,Initech,38.88,53.07,1
+1587,Knowledge Pantry,Grocery,Pantry,Umbrella,78.08,107.53,1
+1588,Else Fiction,Books,Fiction,Stark,48.47,89.04,1
+1589,Cup Team Sport,Sports,Team Sports,Umbrella,19.7,26.89,1
+1590,End Team Sport,Sports,Team Sports,Hooli,5.28,7.61,1
+1591,Or Non-Fiction,Books,Non-Fiction,Soylent,99.2,157.83,1
+1592,Both Haircare,Beauty,Haircare,Wayne,75.26,120.38,1
+1593,Social Haircare,Beauty,Haircare,Soylent,16.81,27.92,1
+1594,Wide Furniture,Home & Garden,Furniture,Wayne,76.54,147.42,1
+1595,Size Non-Fiction,Books,Non-Fiction,Wayne,30.11,39.99,1
+1596,Material Kid,Apparel,Kids,Hooli,9.43,14.31,1
+1597,Outside Beverage,Grocery,Beverages,Hooli,70.25,121.8,1
+1598,Religious Outdoor Rec,Sports,Outdoor Rec,Soylent,50.57,75.17,1
+1599,North Women,Apparel,Women,Umbrella,32.87,46.54,1
+1600,Entire Team Sport,Sports,Team Sports,Hooli,86.8,118.14,1
+1601,Choose Fiction,Books,Fiction,Soylent,62.26,112.53,1
+1602,Left Beverage,Grocery,Beverages,Acme,43.92,61.92,1
+1603,Kitchen Children,Books,Children,Umbrella,7.78,11.4,1
+1604,Whatever Beverage,Grocery,Beverages,Stark,85.93,141.0,1
+1605,Personal Men,Apparel,Men,Stark,86.65,166.99,1
+1606,Whatever Fiction,Books,Fiction,Initech,75.69,138.77,0
+1607,Answer Phone,Electronics,Phones,Stark,24.13,46.86,1
+1608,Blood Team Sport,Sports,Team Sports,Soylent,74.49,123.49,1
+1609,Manage Footwear,Apparel,Footwear,Initech,22.22,40.24,1
+1610,Manage Laptop,Electronics,Laptops,Hooli,10.73,14.03,1
+1611,Agree Pantry,Grocery,Pantry,Stark,37.88,71.58,1
+1612,Very Children,Books,Children,Stark,90.88,157.73,1
+1613,How Children,Books,Children,Soylent,74.05,114.69,1
+1614,Pretty Haircare,Beauty,Haircare,Stark,11.4,22.14,1
+1615,Question Accessorie,Electronics,Accessories,Initech,60.12,116.36,1
+1616,Area Educational,Toys,Educational,Umbrella,5.01,9.53,1
+1617,Rock Children,Books,Children,Hooli,53.12,83.84,1
+1618,Success Skincare,Beauty,Skincare,Hooli,4.72,6.89,1
+1619,Girl Educational,Toys,Educational,Wayne,65.22,130.26,1
+1620,Write Skincare,Beauty,Skincare,Acme,12.37,22.62,1
+1621,Drop Beverage,Grocery,Beverages,Umbrella,84.86,169.63,1
+1622,Whatever Kitchen,Home & Garden,Kitchen,Acme,61.22,100.0,1
+1623,Debate Pantry,Grocery,Pantry,Stark,9.85,13.01,1
+1624,Manage Outdoor,Home & Garden,Outdoor,Umbrella,8.21,15.11,1
+1625,Ask Pantry,Grocery,Pantry,Soylent,46.09,62.17,1
+1626,Reveal Snack,Grocery,Snacks,Umbrella,14.01,24.46,1
+1627,Candidate Action Figure,Toys,Action Figures,Umbrella,75.81,151.25,0
+1628,Place Kid,Apparel,Kids,Umbrella,74.88,146.33,1
+1629,Property Haircare,Beauty,Haircare,Wayne,82.84,144.85,1
+1630,Eat Women,Apparel,Women,Acme,87.4,169.43,1
+1631,Hundred Board Game,Toys,Board Games,Acme,92.49,140.42,1
+1632,Dream Skincare,Beauty,Skincare,Umbrella,97.77,157.98,1
+1633,Player Skincare,Beauty,Skincare,Umbrella,88.79,165.04,1
+1634,Speak Team Sport,Sports,Team Sports,Globex,82.27,115.54,1
+1635,Sing Fiction,Books,Fiction,Soylent,80.78,137.38,1
+1636,Poor Snack,Grocery,Snacks,Soylent,84.97,155.64,1
+1637,Necessary Haircare,Beauty,Haircare,Initech,16.69,32.75,1
+1638,Sure Footwear,Apparel,Footwear,Initech,16.17,31.12,1
+1639,Story Educational,Toys,Educational,Acme,90.58,166.36,1
+1640,Rock Children,Books,Children,Umbrella,58.04,85.04,1
+1641,Investment Audio,Electronics,Audio,Hooli,59.92,112.14,1
+1642,Simple Educational,Toys,Educational,Soylent,62.2,97.94,1
+1643,Group Action Figure,Toys,Action Figures,Hooli,8.0,12.78,1
+1644,Wide Snack,Grocery,Snacks,Umbrella,84.08,163.63,1
+1645,At Board Game,Toys,Board Games,Soylent,75.83,123.13,1
+1646,Wait Women,Apparel,Women,Globex,85.86,151.03,1
+1647,Event Fiction,Books,Fiction,Soylent,67.59,123.45,1
+1648,Push Laptop,Electronics,Laptops,Hooli,19.61,31.51,1
+1649,Wear Makeup,Beauty,Makeup,Stark,35.67,57.42,1
+1650,Weight Phone,Electronics,Phones,Acme,24.28,40.83,1
+1651,Word Makeup,Beauty,Makeup,Stark,90.11,138.62,1
+1652,Direction Footwear,Apparel,Footwear,Stark,55.65,100.88,1
+1653,Involve Children,Books,Children,Initech,29.36,52.77,1
+1654,Enough Decor,Home & Garden,Decor,Hooli,39.67,75.42,1
+1655,Law Laptop,Electronics,Laptops,Soylent,48.63,75.89,1
+1656,Create Makeup,Beauty,Makeup,Hooli,49.96,89.21,1
+1657,Outside Fitnes,Sports,Fitness,Hooli,59.26,87.85,1
+1658,I Phone,Electronics,Phones,Wayne,24.58,34.54,0
+1659,Sell Educational,Toys,Educational,Hooli,28.09,39.23,1
+1660,Say Outdoor Rec,Sports,Outdoor Rec,Acme,80.38,145.62,1
+1661,Owner Action Figure,Toys,Action Figures,Soylent,96.87,169.79,1
+1662,Around Haircare,Beauty,Haircare,Hooli,17.62,34.71,1
+1663,Hair Makeup,Beauty,Makeup,Initech,45.52,59.25,1
+1664,Forget Accessorie,Electronics,Accessories,Initech,96.29,129.28,1
+1665,Serious Beverage,Grocery,Beverages,Umbrella,13.98,22.67,1
+1666,Grow Pantry,Grocery,Pantry,Umbrella,49.4,72.68,1
+1667,Couple Fitnes,Sports,Fitness,Soylent,52.03,94.02,1
+1668,Bad Outdoor Rec,Sports,Outdoor Rec,Initech,72.81,114.97,1
+1669,Perform Footwear,Apparel,Footwear,Hooli,23.41,44.7,0
+1670,Amount Footwear,Apparel,Footwear,Umbrella,36.81,66.99,1
+1671,Stay Children,Books,Children,Umbrella,61.51,110.57,1
+1672,Pass Fiction,Books,Fiction,Globex,74.08,114.97,1
+1673,Compare Accessorie,Electronics,Accessories,Hooli,94.37,139.57,1
+1674,Individual Fitnes,Sports,Fitness,Wayne,93.13,132.58,1
+1675,Matter Beverage,Grocery,Beverages,Hooli,17.93,32.34,1
+1676,Capital Snack,Grocery,Snacks,Soylent,54.86,105.81,1
+1677,Culture Children,Books,Children,Hooli,98.15,183.01,0
+1678,From Outdoor Rec,Sports,Outdoor Rec,Globex,61.37,83.01,0
+1679,Not Audio,Electronics,Audio,Hooli,66.25,106.43,1
+1680,Step Fitnes,Sports,Fitness,Soylent,6.2,9.0,1
+1681,Third Snack,Grocery,Snacks,Globex,97.53,136.37,1
+1682,Walk Fitnes,Sports,Fitness,Soylent,17.69,35.18,1
+1683,Face Beverage,Grocery,Beverages,Globex,13.54,22.69,1
+1684,Activity Beverage,Grocery,Beverages,Stark,10.86,15.19,1
+1685,Find Team Sport,Sports,Team Sports,Soylent,97.26,138.86,1
+1686,Successful Outdoor Rec,Sports,Outdoor Rec,Initech,56.42,92.14,1
+1687,Miss Educational,Toys,Educational,Stark,4.09,5.72,1
+1688,Join Board Game,Toys,Board Games,Acme,78.15,144.93,1
+1689,Take Beverage,Grocery,Beverages,Initech,90.24,176.24,1
+1690,Article Haircare,Beauty,Haircare,Acme,80.35,160.08,1
+1691,Movement Kid,Apparel,Kids,Soylent,62.79,95.27,1
+1692,Really Board Game,Toys,Board Games,Umbrella,61.91,96.72,1
+1693,End Educational,Toys,Educational,Hooli,99.17,187.29,1
+1694,Talk Accessorie,Electronics,Accessories,Soylent,51.45,99.95,1
+1695,Since Decor,Home & Garden,Decor,Hooli,16.71,26.74,1
+1696,Agreement Kid,Apparel,Kids,Acme,93.63,137.25,1
+1697,Left Fiction,Books,Fiction,Acme,16.17,29.8,1
+1698,Employee Non-Fiction,Books,Non-Fiction,Soylent,81.08,161.23,1
+1699,Girl Pantry,Grocery,Pantry,Acme,57.61,109.43,1
+1700,Weight Kid,Apparel,Kids,Hooli,37.76,72.11,1
+1701,Family Phone,Electronics,Phones,Globex,93.27,154.92,1
+1702,Kitchen Accessorie,Electronics,Accessories,Acme,36.18,47.2,1
+1703,Anything Kid,Apparel,Kids,Wayne,38.5,73.89,1
+1704,Administration Outdoor Rec,Sports,Outdoor Rec,Initech,89.69,126.44,1
+1705,Six Makeup,Beauty,Makeup,Initech,37.52,60.23,1
+1706,Method Furniture,Home & Garden,Furniture,Stark,32.46,64.3,1
+1707,Party Women,Apparel,Women,Wayne,63.32,116.61,1
+1708,Magazine Non-Fiction,Books,Non-Fiction,Acme,57.71,83.07,1
+1709,Season Kid,Apparel,Kids,Acme,45.09,68.94,1
+1710,Environmental Board Game,Toys,Board Games,Wayne,66.95,122.83,1
+1711,Artist Accessorie,Electronics,Accessories,Globex,82.76,119.68,1
+1712,Protect Women,Apparel,Women,Acme,53.33,87.42,1
+1713,Trade Men,Apparel,Men,Acme,46.98,67.35,1
+1714,Why Outdoor Rec,Sports,Outdoor Rec,Initech,17.09,25.51,1
+1715,Market Snack,Grocery,Snacks,Umbrella,52.02,102.65,1
+1716,Story Kitchen,Home & Garden,Kitchen,Wayne,8.47,11.87,1
+1717,Technology Snack,Grocery,Snacks,Globex,57.28,82.07,1
+1718,Leave Outdoor,Home & Garden,Outdoor,Wayne,8.18,14.65,1
+1719,Name Beverage,Grocery,Beverages,Globex,28.55,55.82,1
+1720,Hard Makeup,Beauty,Makeup,Umbrella,96.25,165.16,1
+1721,Son Beverage,Grocery,Beverages,Initech,99.04,160.58,1
+1722,Idea Audio,Electronics,Audio,Soylent,27.59,44.7,1
+1723,Expect Beverage,Grocery,Beverages,Acme,17.86,23.56,1
+1724,Evening Snack,Grocery,Snacks,Stark,59.69,119.35,1
+1725,Think Kid,Apparel,Kids,Umbrella,4.02,5.5,1
+1726,Something Accessorie,Electronics,Accessories,Hooli,41.29,64.51,1
+1727,Phone Audio,Electronics,Audio,Acme,5.82,8.99,1
+1728,Rock Board Game,Toys,Board Games,Wayne,39.14,63.42,1
+1729,Civil Team Sport,Sports,Team Sports,Globex,58.57,115.8,1
+1730,Form Makeup,Beauty,Makeup,Acme,28.86,46.84,1
+1731,Study Educational,Toys,Educational,Hooli,11.02,20.43,1
+1732,Group Phone,Electronics,Phones,Stark,5.61,9.08,1
+1733,Part Skincare,Beauty,Skincare,Initech,27.36,48.06,1
+1734,During Men,Apparel,Men,Initech,15.68,27.5,1
+1735,Employee Fiction,Books,Fiction,Globex,99.23,193.72,1
+1736,Environment Fitnes,Sports,Fitness,Umbrella,62.37,123.99,1
+1737,No Makeup,Beauty,Makeup,Acme,97.89,144.38,1
+1738,Visit Snack,Grocery,Snacks,Initech,80.62,146.44,1
+1739,Most Haircare,Beauty,Haircare,Wayne,17.88,27.8,1
+1740,I Beverage,Grocery,Beverages,Wayne,76.76,101.62,1
+1741,Out Phone,Electronics,Phones,Wayne,7.81,12.12,1
+1742,From Outdoor Rec,Sports,Outdoor Rec,Wayne,14.24,23.19,1
+1743,Foot Phone,Electronics,Phones,Wayne,85.76,127.67,1
+1744,Investment Men,Apparel,Men,Stark,96.25,155.72,1
+1745,Office Kid,Apparel,Kids,Globex,88.35,175.46,1
+1746,As Kid,Apparel,Kids,Wayne,29.3,46.42,1
+1747,Accept Fiction,Books,Fiction,Hooli,6.45,12.3,1
+1748,Car Snack,Grocery,Snacks,Wayne,91.34,143.73,1
+1749,Cost Board Game,Toys,Board Games,Hooli,35.26,65.02,1
+1750,Administration Non-Fiction,Books,Non-Fiction,Wayne,45.06,77.64,1
+1751,Reduce Laptop,Electronics,Laptops,Initech,67.28,100.44,1
+1752,Position Footwear,Apparel,Footwear,Stark,20.56,32.21,1
+1753,Level Haircare,Beauty,Haircare,Hooli,65.68,109.59,1
+1754,Knowledge Snack,Grocery,Snacks,Umbrella,56.22,82.28,1
+1755,Face Audio,Electronics,Audio,Wayne,75.93,109.38,1
+1756,In Fitnes,Sports,Fitness,Hooli,68.72,98.81,1
+1757,Him Footwear,Apparel,Footwear,Stark,89.98,127.29,1
+1758,Defense Makeup,Beauty,Makeup,Umbrella,47.26,88.91,1
+1759,Authority Decor,Home & Garden,Decor,Globex,77.67,149.3,1
+1760,Section Snack,Grocery,Snacks,Hooli,62.18,123.14,1
+1761,Short Kitchen,Home & Garden,Kitchen,Stark,53.66,82.57,1
+1762,Modern Women,Apparel,Women,Soylent,64.56,117.88,1
+1763,Way Non-Fiction,Books,Non-Fiction,Soylent,46.36,61.16,1
+1764,Reduce Fiction,Books,Fiction,Soylent,58.75,93.64,1
+1765,Hour Action Figure,Toys,Action Figures,Acme,50.06,85.11,1
+1766,Rise Outdoor Rec,Sports,Outdoor Rec,Globex,31.05,43.61,1
+1767,Visit Audio,Electronics,Audio,Initech,28.29,42.98,1
+1768,Practice Educational,Toys,Educational,Stark,52.85,84.69,1
+1769,Ground Phone,Electronics,Phones,Globex,96.39,182.31,1
+1770,Others Accessorie,Electronics,Accessories,Stark,27.44,53.15,1
+1771,Kid Fitnes,Sports,Fitness,Initech,50.75,100.09,1
+1772,Cell Action Figure,Toys,Action Figures,Globex,62.46,93.27,1
+1773,Rich Skincare,Beauty,Skincare,Umbrella,37.02,60.41,1
+1774,Remain Skincare,Beauty,Skincare,Stark,73.21,99.72,1
+1775,Professor Children,Books,Children,Soylent,9.67,16.76,1
+1776,Material Action Figure,Toys,Action Figures,Stark,65.31,114.94,1
+1777,Everything Kid,Apparel,Kids,Wayne,59.54,81.51,1
+1778,Care Outdoor Rec,Sports,Outdoor Rec,Acme,50.17,72.69,0
+1779,Thank Fiction,Books,Fiction,Globex,60.69,97.01,1
+1780,Direction Audio,Electronics,Audio,Globex,26.4,43.94,1
+1781,Each Haircare,Beauty,Haircare,Initech,16.57,26.97,0
+1782,First Phone,Electronics,Phones,Stark,47.2,61.94,1
+1783,Year Beverage,Grocery,Beverages,Acme,27.32,35.58,1
+1784,Reason Pantry,Grocery,Pantry,Globex,3.25,5.04,1
+1785,Can Phone,Electronics,Phones,Umbrella,84.35,137.96,1
+1786,Wall Outdoor,Home & Garden,Outdoor,Initech,64.9,101.53,1
+1787,Threat Fiction,Books,Fiction,Umbrella,19.13,35.34,1
+1788,Claim Educational,Toys,Educational,Hooli,28.39,41.03,1
+1789,Offer Board Game,Toys,Board Games,Wayne,7.66,12.45,1
+1790,Rock Decor,Home & Garden,Decor,Wayne,43.58,81.8,1
+1791,Effect Fitnes,Sports,Fitness,Wayne,96.64,180.85,1
+1792,Field Fiction,Books,Fiction,Globex,77.58,146.66,1
+1793,Term Board Game,Toys,Board Games,Hooli,59.98,90.4,1
+1794,Will Snack,Grocery,Snacks,Soylent,72.36,124.97,1
+1795,Economy Skincare,Beauty,Skincare,Umbrella,70.96,96.7,1
+1796,Public Beverage,Grocery,Beverages,Globex,11.84,15.96,1
+1797,True Beverage,Grocery,Beverages,Initech,43.73,78.8,1
+1798,Many Skincare,Beauty,Skincare,Initech,44.52,59.19,1
+1799,Agency Decor,Home & Garden,Decor,Wayne,21.37,31.67,1
+1800,Effect Outdoor Rec,Sports,Outdoor Rec,Stark,65.69,100.07,1
+1801,Main Decor,Home & Garden,Decor,Stark,34.63,60.56,1
+1802,Grow Educational,Toys,Educational,Soylent,60.86,105.65,1
+1803,Culture Action Figure,Toys,Action Figures,Wayne,12.91,21.44,0
+1804,Including Outdoor Rec,Sports,Outdoor Rec,Hooli,21.25,34.92,1
+1805,Trip Fiction,Books,Fiction,Globex,23.39,42.44,1
+1806,Position Women,Apparel,Women,Soylent,24.78,45.4,1
+1807,Table Outdoor Rec,Sports,Outdoor Rec,Initech,78.37,144.95,1
+1808,Keep Haircare,Beauty,Haircare,Wayne,52.6,98.74,1
+1809,Music Action Figure,Toys,Action Figures,Umbrella,30.99,51.27,1
+1810,House Outdoor Rec,Sports,Outdoor Rec,Wayne,70.23,109.1,1
+1811,Mean Fitnes,Sports,Fitness,Wayne,63.46,91.04,1
+1812,Heart Educational,Toys,Educational,Soylent,96.55,149.3,1
+1813,Drive Makeup,Beauty,Makeup,Hooli,43.74,82.88,0
+1814,Yard Kitchen,Home & Garden,Kitchen,Soylent,48.61,95.94,1
+1815,Picture Snack,Grocery,Snacks,Globex,4.67,6.22,1
+1816,Attention Fitnes,Sports,Fitness,Initech,18.75,36.06,1
+1817,Idea Action Figure,Toys,Action Figures,Hooli,13.34,18.24,1
+1818,Question Fitnes,Sports,Fitness,Stark,21.53,36.36,1
+1819,Politics Decor,Home & Garden,Decor,Initech,42.7,62.4,1
+1820,Body Furniture,Home & Garden,Furniture,Soylent,31.61,48.16,1
+1821,Current Audio,Electronics,Audio,Hooli,34.22,64.48,1
+1822,Pretty Non-Fiction,Books,Non-Fiction,Globex,56.39,105.27,1
+1823,Everyone Board Game,Toys,Board Games,Stark,12.74,18.15,1
+1824,Hundred Outdoor,Home & Garden,Outdoor,Stark,21.45,33.22,1
+1825,Ok Laptop,Electronics,Laptops,Umbrella,21.65,34.01,1
+1826,Station Action Figure,Toys,Action Figures,Initech,11.04,17.87,1
+1827,Politics Kid,Apparel,Kids,Soylent,31.45,48.34,0
+1828,During Non-Fiction,Books,Non-Fiction,Hooli,64.97,91.81,1
+1829,Easy Decor,Home & Garden,Decor,Umbrella,34.98,52.43,1
+1830,Care Pantry,Grocery,Pantry,Wayne,61.88,83.84,1
+1831,Member Beverage,Grocery,Beverages,Umbrella,93.99,187.4,1
+1832,Include Men,Apparel,Men,Stark,89.03,154.86,1
+1833,Industry Non-Fiction,Books,Non-Fiction,Globex,40.71,57.86,1
+1834,Worry Phone,Electronics,Phones,Wayne,16.78,22.88,1
+1835,Technology Board Game,Toys,Board Games,Soylent,76.77,148.49,1
+1836,Behavior Fitnes,Sports,Fitness,Initech,19.08,31.13,1
+1837,However Beverage,Grocery,Beverages,Wayne,96.39,159.15,1
+1838,Director Skincare,Beauty,Skincare,Globex,9.75,15.3,1
+1839,Prevent Beverage,Grocery,Beverages,Stark,86.73,158.56,1
+1840,More Makeup,Beauty,Makeup,Hooli,23.05,39.87,1
+1841,Fast Haircare,Beauty,Haircare,Wayne,22.49,29.52,1
+1842,Need Men,Apparel,Men,Initech,93.43,165.95,1
+1843,Body Snack,Grocery,Snacks,Wayne,57.05,99.31,1
+1844,Stop Children,Books,Children,Stark,21.34,32.7,1
+1845,Camera Decor,Home & Garden,Decor,Wayne,12.68,21.52,1
+1846,Low Women,Apparel,Women,Hooli,36.52,69.71,1
+1847,Civil Furniture,Home & Garden,Furniture,Globex,76.39,147.19,1
+1848,Spring Skincare,Beauty,Skincare,Globex,66.37,126.83,1
+1849,State Haircare,Beauty,Haircare,Acme,13.07,17.01,1
+1850,Church Phone,Electronics,Phones,Soylent,71.29,126.34,1
+1851,Ground Outdoor,Home & Garden,Outdoor,Stark,91.16,168.51,1
+1852,Buy Decor,Home & Garden,Decor,Initech,80.96,122.43,1
+1853,Contain Haircare,Beauty,Haircare,Initech,24.26,41.3,1
+1854,Such Outdoor Rec,Sports,Outdoor Rec,Stark,93.03,146.85,1
+1855,Garden Phone,Electronics,Phones,Stark,46.99,84.37,1
+1856,Medical Outdoor Rec,Sports,Outdoor Rec,Hooli,70.83,132.86,1
+1857,Focus Board Game,Toys,Board Games,Hooli,21.02,39.0,1
+1858,National Furniture,Home & Garden,Furniture,Globex,58.13,97.87,1
+1859,By Makeup,Beauty,Makeup,Initech,40.81,79.78,1
+1860,Traditional Accessorie,Electronics,Accessories,Soylent,3.16,4.13,1
+1861,Happy Accessorie,Electronics,Accessories,Globex,68.39,106.04,1
+1862,Step Board Game,Toys,Board Games,Umbrella,10.51,17.11,1
+1863,Detail Fiction,Books,Fiction,Umbrella,16.12,30.5,1
+1864,Country Fiction,Books,Fiction,Umbrella,54.54,72.87,1
+1865,Foot Non-Fiction,Books,Non-Fiction,Wayne,56.38,80.4,1
+1866,Lead Footwear,Apparel,Footwear,Wayne,16.42,29.22,1
+1867,Protect Fitnes,Sports,Fitness,Initech,3.72,7.24,1
+1868,Area Pantry,Grocery,Pantry,Soylent,91.53,145.62,1
+1869,Public Women,Apparel,Women,Globex,92.62,135.7,1
+1870,Huge Pantry,Grocery,Pantry,Stark,25.0,37.59,1
+1871,Total Pantry,Grocery,Pantry,Stark,44.94,61.16,1
+1872,Dream Phone,Electronics,Phones,Stark,99.69,174.4,1
+1873,Point Women,Apparel,Women,Wayne,10.38,19.46,1
+1874,My Beverage,Grocery,Beverages,Stark,51.13,73.88,1
+1875,Box Team Sport,Sports,Team Sports,Wayne,11.1,21.64,1
+1876,Process Decor,Home & Garden,Decor,Umbrella,16.5,25.21,1
+1877,Need Board Game,Toys,Board Games,Soylent,21.14,38.09,1
+1878,Accept Outdoor Rec,Sports,Outdoor Rec,Wayne,27.8,52.66,0
+1879,New Non-Fiction,Books,Non-Fiction,Umbrella,56.33,112.6,1
+1880,Give Footwear,Apparel,Footwear,Stark,3.01,5.35,1
+1881,Have Beverage,Grocery,Beverages,Globex,11.57,16.63,1
+1882,Expert Laptop,Electronics,Laptops,Umbrella,32.89,65.32,1
+1883,Consider Non-Fiction,Books,Non-Fiction,Initech,4.41,6.97,1
+1884,Already Laptop,Electronics,Laptops,Stark,66.12,112.39,1
+1885,Staff Audio,Electronics,Audio,Hooli,15.16,29.77,1
+1886,Include Beverage,Grocery,Beverages,Globex,19.21,37.51,1
+1887,Able Beverage,Grocery,Beverages,Umbrella,69.37,135.88,1
+1888,Popular Pantry,Grocery,Pantry,Hooli,65.84,120.98,1
+1889,Product Makeup,Beauty,Makeup,Initech,49.5,93.99,1
+1890,Police Pantry,Grocery,Pantry,Globex,21.86,42.07,1
+1891,Send Fitnes,Sports,Fitness,Initech,15.86,27.45,1
+1892,Enjoy Fiction,Books,Fiction,Soylent,19.59,38.49,1
+1893,Poor Snack,Grocery,Snacks,Globex,31.77,54.71,1
+1894,Successful Educational,Toys,Educational,Hooli,32.89,53.34,0
+1895,Process Pantry,Grocery,Pantry,Stark,7.04,10.18,1
+1896,Travel Board Game,Toys,Board Games,Hooli,17.57,23.2,1
+1897,Indicate Decor,Home & Garden,Decor,Wayne,97.16,157.49,1
+1898,Argue Kid,Apparel,Kids,Hooli,78.53,143.5,1
+1899,Around Board Game,Toys,Board Games,Initech,19.46,37.29,1
+1900,Season Children,Books,Children,Wayne,61.11,118.42,1
+1901,Mention Accessorie,Electronics,Accessories,Umbrella,58.14,83.36,1
+1902,Officer Children,Books,Children,Globex,84.18,152.4,1
+1903,Page Laptop,Electronics,Laptops,Initech,48.47,63.84,1
+1904,Size Board Game,Toys,Board Games,Globex,58.61,89.75,1
+1905,Evening Decor,Home & Garden,Decor,Initech,98.21,130.09,1
+1906,Part Laptop,Electronics,Laptops,Initech,26.52,48.14,1
+1907,Speak Educational,Toys,Educational,Umbrella,13.24,18.32,1
+1908,Soon Children,Books,Children,Soylent,48.55,90.14,1
+1909,Difficult Children,Books,Children,Soylent,99.15,155.96,1
+1910,Ground Decor,Home & Garden,Decor,Stark,40.98,71.48,1
+1911,Special Beverage,Grocery,Beverages,Stark,34.92,52.84,1
+1912,According Beverage,Grocery,Beverages,Hooli,47.57,68.43,1
+1913,Institution Accessorie,Electronics,Accessories,Stark,54.2,82.2,1
+1914,Billion Footwear,Apparel,Footwear,Globex,16.7,23.73,1
+1915,Value Phone,Electronics,Phones,Umbrella,53.22,78.04,1
+1916,Message Skincare,Beauty,Skincare,Globex,59.18,99.71,1
+1917,Long Children,Books,Children,Acme,42.79,82.37,1
+1918,Course Accessorie,Electronics,Accessories,Wayne,76.05,113.75,1
+1919,Yard Makeup,Beauty,Makeup,Soylent,26.19,50.06,1
+1920,Democratic Furniture,Home & Garden,Furniture,Stark,16.78,27.92,1
+1921,War Footwear,Apparel,Footwear,Umbrella,11.39,17.82,0
+1922,Much Snack,Grocery,Snacks,Wayne,29.48,39.53,0
+1923,Center Footwear,Apparel,Footwear,Globex,25.57,37.55,1
+1924,Almost Audio,Electronics,Audio,Globex,49.83,87.97,1
+1925,Lose Non-Fiction,Books,Non-Fiction,Wayne,92.94,132.22,1
+1926,Have Kid,Apparel,Kids,Umbrella,15.48,30.21,1
+1927,Baby Footwear,Apparel,Footwear,Globex,25.72,42.31,0
+1928,Budget Footwear,Apparel,Footwear,Hooli,30.44,56.11,1
+1929,Education Makeup,Beauty,Makeup,Acme,13.32,19.09,1
+1930,First Men,Apparel,Men,Globex,89.07,167.67,1
+1931,Operation Board Game,Toys,Board Games,Wayne,14.72,20.15,1
+1932,Stage Men,Apparel,Men,Initech,12.09,18.97,1
+1933,Law Educational,Toys,Educational,Hooli,89.33,155.76,1
+1934,Group Phone,Electronics,Phones,Globex,79.11,156.11,1
+1935,Little Team Sport,Sports,Team Sports,Hooli,44.59,83.32,1
+1936,Perhaps Beverage,Grocery,Beverages,Hooli,7.76,12.55,1
+1937,Kid Outdoor,Home & Garden,Outdoor,Stark,54.28,94.61,1
+1938,Seat Fiction,Books,Fiction,Umbrella,55.89,106.06,1
+1939,Onto Team Sport,Sports,Team Sports,Acme,51.37,99.08,1
+1940,Budget Men,Apparel,Men,Stark,65.89,120.84,1
+1941,Actually Phone,Electronics,Phones,Globex,20.92,34.77,1
+1942,Either Kid,Apparel,Kids,Globex,84.34,119.84,1
+1943,Cultural Haircare,Beauty,Haircare,Stark,25.7,38.34,1
+1944,Ask Children,Books,Children,Wayne,63.8,96.19,1
+1945,Certain Team Sport,Sports,Team Sports,Acme,59.23,111.68,1
+1946,Common Footwear,Apparel,Footwear,Umbrella,43.72,78.87,1
+1947,Event Educational,Toys,Educational,Wayne,8.93,12.26,1
+1948,About Women,Apparel,Women,Soylent,64.07,92.91,1
+1949,Bit Snack,Grocery,Snacks,Globex,49.24,77.35,1
+1950,Message Pantry,Grocery,Pantry,Stark,74.17,140.8,1
+1951,Doctor Furniture,Home & Garden,Furniture,Initech,93.32,155.43,1
+1952,Respond Men,Apparel,Men,Initech,54.85,93.35,1
+1953,College Makeup,Beauty,Makeup,Wayne,89.99,120.5,1
+1954,Operation Makeup,Beauty,Makeup,Umbrella,76.34,108.39,1
+1955,Beautiful Snack,Grocery,Snacks,Acme,66.06,104.55,1
+1956,From Footwear,Apparel,Footwear,Stark,3.74,6.59,1
+1957,Position Skincare,Beauty,Skincare,Umbrella,49.28,88.24,1
+1958,Rise Phone,Electronics,Phones,Hooli,45.57,81.53,1
+1959,Two Snack,Grocery,Snacks,Wayne,82.32,114.75,1
+1960,Production Team Sport,Sports,Team Sports,Acme,52.82,77.92,1
+1961,Who Makeup,Beauty,Makeup,Wayne,6.82,12.99,1
+1962,Fund Women,Apparel,Women,Wayne,83.68,127.39,1
+1963,Son Skincare,Beauty,Skincare,Hooli,69.02,104.97,1
+1964,Same Kid,Apparel,Kids,Globex,47.46,88.03,0
+1965,Foot Women,Apparel,Women,Globex,6.78,11.16,1
+1966,Determine Audio,Electronics,Audio,Umbrella,63.72,117.09,1
+1967,Wrong Beverage,Grocery,Beverages,Hooli,64.22,119.82,1
+1968,Attention Educational,Toys,Educational,Wayne,36.48,58.18,1
+1969,Character Fitnes,Sports,Fitness,Stark,36.68,68.86,1
+1970,Ever Snack,Grocery,Snacks,Umbrella,51.89,91.88,1
+1971,Protect Skincare,Beauty,Skincare,Soylent,30.19,42.31,1
+1972,Involve Fitnes,Sports,Fitness,Acme,83.14,115.29,1
+1973,Middle Fitnes,Sports,Fitness,Umbrella,90.4,151.95,1
+1974,Enough Audio,Electronics,Audio,Hooli,3.71,5.47,1
+1975,Act Haircare,Beauty,Haircare,Acme,92.23,162.27,1
+1976,Scene Skincare,Beauty,Skincare,Acme,87.94,140.96,1
+1977,Above Action Figure,Toys,Action Figures,Acme,56.18,74.5,1
+1978,Training Laptop,Electronics,Laptops,Acme,69.17,112.24,1
+1979,Prepare Team Sport,Sports,Team Sports,Globex,61.65,83.08,1
+1980,Fight Outdoor Rec,Sports,Outdoor Rec,Umbrella,43.74,65.03,1
+1981,According Pantry,Grocery,Pantry,Hooli,91.21,145.05,1
+1982,First Beverage,Grocery,Beverages,Globex,68.16,111.27,1
+1983,Either Non-Fiction,Books,Non-Fiction,Stark,20.97,33.29,1
+1984,List Outdoor,Home & Garden,Outdoor,Stark,63.41,98.3,1
+1985,Official Children,Books,Children,Stark,55.79,75.96,1
+1986,Blood Kitchen,Home & Garden,Kitchen,Soylent,34.81,49.25,1
+1987,Trip Fiction,Books,Fiction,Soylent,38.08,70.63,1
+1988,Feel Educational,Toys,Educational,Stark,34.24,48.42,1
+1989,Available Footwear,Apparel,Footwear,Wayne,45.86,90.47,1
+1990,But Women,Apparel,Women,Umbrella,89.05,122.8,1
+1991,Past Accessorie,Electronics,Accessories,Globex,92.33,174.18,1
+1992,House Furniture,Home & Garden,Furniture,Stark,12.82,19.15,1
+1993,Newspaper Furniture,Home & Garden,Furniture,Stark,93.75,142.26,1
+1994,Manage Makeup,Beauty,Makeup,Umbrella,54.7,97.43,1
+1995,Serious Fiction,Books,Fiction,Soylent,23.92,42.2,1
+1996,Within Fitnes,Sports,Fitness,Umbrella,51.65,87.77,1
+1997,Though Makeup,Beauty,Makeup,Umbrella,41.49,68.46,0
+1998,Door Furniture,Home & Garden,Furniture,Acme,97.72,191.45,1
+1999,Kind Action Figure,Toys,Action Figures,Hooli,95.96,150.75,1
+2000,Want Children,Books,Children,Soylent,67.53,90.49,1
