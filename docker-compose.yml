@@ -25,10 +25,28 @@ x-airflow-common: &airflow-common
     AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW__WEBSERVER__SECRET_KEY}
     AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     AIRFLOW_UID: ${AIRFLOW_UID:-50000}
+    # SparkSubmitOperator needs a local spark-submit binary, which this
+    # image deliberately doesn't ship (see docker/airflow/Dockerfile) —
+    # the DAG instead shells out to `docker exec master spark-submit`,
+    # since `master` already has every jar/config a Spark client needs.
+    # This connection string tells TrinoOperator/TrinoHook (used for the
+    # post-Gold validation task) where to reach Trino.
+    AIRFLOW_CONN_TRINO_DEFAULT: trino://trino:8080
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./spark/jobs:/opt/airflow/spark_jobs
     - airflow_logs:/opt/airflow/logs
+    # Docker-outside-of-Docker: lets DAG tasks run `docker exec master ...`
+    # against the SAME Docker daemon this whole stack runs under, instead
+    # of duplicating a full Spark client inside the Airflow image.
+    # SECURITY NOTE, said plainly rather than glossed over: this grants
+    # whoever can exec into the Airflow containers effective control of
+    # the host's Docker daemon (equivalent to root on the host). Fine for
+    # a local single-user portfolio demo; NOT how you'd do this in
+    # production — there you'd either ship a real Spark client in the
+    # Airflow image and use SparkSubmitOperator properly, or run Spark in
+    # cluster/Livy mode so Airflow only ever talks to it over HTTP.
+    - /var/run/docker.sock:/var/run/docker.sock
   networks: [lakehouse-net]
   depends_on:
     airflow-db:
