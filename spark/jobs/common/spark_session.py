@@ -48,5 +48,11 @@ def get_spark_session(app_name: str) -> SparkSession:
         .config(f"spark.sql.catalog.{ICEBERG_CATALOG}.warehouse", ICEBERG_WAREHOUSE)
         .getOrCreate()
     )
-    spark.sql(f"CREATE DATABASE IF NOT EXISTS {ICEBERG_CATALOG}.bronze")
+    # Idempotent — cheap to run on every job rather than assuming setup ran
+    # first. quarantine holds DQ-failed rows from Silver transforms (see
+    # common/dq.py); kept as its own database, not a suffix on silver
+    # tables, so it can have different retention/access rules later
+    # without touching the silver schema.
+    for db in ("bronze", "silver", "gold", "quarantine"):
+        spark.sql(f"CREATE DATABASE IF NOT EXISTS {ICEBERG_CATALOG}.{db}")
     return spark
