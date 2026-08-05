@@ -106,6 +106,11 @@ services:
       - ./docker/hadoop/hdfs-site.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml:ro
       - ./docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:/opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:ro
       - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
+      # Same flat-file Bronze source mount as `master`. Spark standalone
+      # runs the driver on `master` but executes tasks on `worker` — a
+      # CSV-reading job's actual file read happens here, not on master,
+      # so this mount has to be duplicated rather than assumed inherited.
+      - ./generator/output:/opt/spark-jobs-data:ro
     networks: [lakehouse-net]
     depends_on:
       - master
