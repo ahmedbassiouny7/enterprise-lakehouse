@@ -47,6 +47,14 @@ x-airflow-common: &airflow-common
     # Airflow image and use SparkSubmitOperator properly, or run Spark in
     # cluster/Livy mode so Airflow only ever talks to it over HTTP.
     - /var/run/docker.sock:/var/run/docker.sock
+  # Membership in the host's `docker` group, not a socket permission
+  # override — `chmod 666 /var/run/docker.sock` doesn't survive a daemon
+  # restart (it's reset each time), which meant reapplying it by hand
+  # after every restart. GID is host-specific — 984 is this host's
+  # `docker` group (confirm with `getent group docker` on any other
+  # machine and update this value before relying on it there).
+  group_add:
+    - "984"
   networks: [lakehouse-net]
   depends_on:
     airflow-db:
