@@ -8,7 +8,7 @@ every operational table into the warehouse.
 ## Architecture
 
 ```
- Postgres (orders)  MySQL (customers)  CSV (products)  REST API (fx rates)
+ Postgres (orders)  MySQL (customers)  CSV (products)   CSV (fx rates)*
           │                 │                │                │
           └─────────────────┴───────┬────────┴────────────────┘
                                      │  extract (Spark, orchestrated by Airflow)
@@ -30,11 +30,21 @@ every operational table into the warehouse.
                  └───────────────────┬───────────────────┘
                                      │
                                      ▼
-                                 Power BI
+                              Superset (BI)*
 ```
+*fx rates is a documented CSV stand-in for a REST source; BI layer isn't
+built. Both are scope cuts, not gaps: they're consumption-edge concerns
+(how data gets out, how one source arrives) rather than the platform's
+core problem — moving and transforming data through a governed Medallion
+architecture with real DQ gating and multi-engine virtualization, which is
+what the rest of this repo demonstrates and where the remaining time went.
+If built, BI would be Superset over Trino (Dockerized, native Trino
+connector, queries Gold through the same virtualization layer proven
+above) rather than Power BI; fx rates would be a small Flask/FastAPI mock
+replacing the CSV read with an HTTP GET, same data, different mechanism.
 
-Full rationale for each component — and the alternatives that were rejected
-— is in [`docs/design-decisions.md`](docs/design-decisions.md).
+Full rationale for each built component — and the alternatives that were
+rejected — is in [`docs/design-decisions.md`](docs/design-decisions.md).
 
 ## Quickstart
 
@@ -86,22 +96,22 @@ enterprise-lakehouse/
 ├── hive/                 HQL reference queries against Iceberg tables via Hive
 ├── iceberg/              time travel / schema evolution / MERGE demos and notes
 ├── generator/            synthetic data generator for the operational sources
-├── dashboards/           Power BI files / exported specs
+├── dashboards/           not built — see the Architecture note above
 ├── tests/                unit tests for Spark transformation logic
 └── docs/                 architecture, ER diagrams, KPIs, deployment guide, lessons learned
 ```
 
 ## Build status
 
-- [x] Repo scaffolding + `docker-compose.yml` skeleton (this phase)
-- [ ] Synthetic data generator (`generator/`)
-- [ ] Bronze ingestion jobs (Spark reading Postgres/MySQL/CSV/API)
-- [ ] Silver transformations (dedupe, validation, standardization)
-- [ ] Gold aggregates (`daily_sales`, `customer_360`, etc.)
-- [ ] Airflow DAG wiring the above together with data-quality gates
-- [ ] Trino cross-catalog query demos
-- [ ] Power BI dashboards
-- [ ] Full documentation set
+- [x] Repo scaffolding + `docker-compose.yml`
+- [x] Synthetic data generator (`generator/`)
+- [x] Bronze ingestion jobs (Spark reading Postgres/MySQL/CSV)
+- [x] Silver transformations (dedupe, validation, quarantine)
+- [x] Gold aggregates (`daily_sales`, `customer_360`, `monthly_revenue`, `inventory_summary`, `product_performance`)
+- [x] Airflow DAG wiring the above together with a data-quality gate
+- [x] Trino cross-catalog query demos (live federated Postgres ⋈ MySQL join, plus all Iceberg tables)
+- [x] Full end-to-end DAG run, verified
+- [ ] BI dashboard, mock REST API for fx rates — scope cut, not gaps: see the note under Architecture above
 
 ## A note on this being a portfolio project, not production
 
