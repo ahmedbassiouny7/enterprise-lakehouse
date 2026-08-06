@@ -23,7 +23,8 @@ DAG structure:
         -> silver.{products, customers, exchange_rates}  (parallel)
             -> silver.orders
                 -> silver.order_items
-                    -> dq_quality_gate  (logs quarantine %, never fails)
+                    -> dq_quality_gate  (logs quarantine %, only fails on a
+                                          broken check itself — see below)
                         -> gold.{daily_sales, customer_360, monthly_revenue,
                                  inventory_summary, product_performance}  (parallel)
                             -> validate_trino_catalog
@@ -45,6 +46,16 @@ awareness via the quarantine tables and this log line. A production
 version of this DAG would branch here: hard-fail (or page someone) above
 a threshold instead of only logging. Said explicitly rather than silently
 picked, since it's a real, debatable tradeoff.
+
+That tolerance applies only to a genuine quarantine percentage, not to the
+check itself failing. dq_quality_gate DOES fail the task (and therefore
+the DAG run) if it can't actually determine that percentage — a broken
+Trino connection, a missing Silver table, or an auth error. Earlier this
+silently defaulted such failures to "0% quarantined" via a blanket
+except/pass, which is strictly worse than not having the gate at all: it
+reports clean data during an outage. Fixed so only a real "table not
+found" (expected when a Silver job quarantined nothing) is swallowed;
+everything else raises.
 """
 from datetime import datetime
 
@@ -91,28 +102,64 @@ SILVER_TABLES_WITH_QUARANTINE = [
 DQ_WARN_THRESHOLD_PCT = 2.0  # matches the "more than a few percent" framing used to decide this
 
 
+def _is_table_not_found(exc: Exception) -> bool:
+    """True only for a genuine 'table doesn't exist' response from Trino,
+    never for auth/connection/permission failures. Checked by error text
+    rather than a specific trino-client exception class so this doesn't
+    silently stop matching after a client library bump — but that also
+    means it's a soft match, not a guarantee; if Trino ever phrases this
+    differently the fallback below still fails loud instead of masking it,
+    which is the safe direction to be wrong in."""
+    msg = str(exc)
+    return "TABLE_NOT_FOUND" in msg or "does not exist" in msg
+
+
 def _check_dq_quarantine(**context):
-    """Logs quarantine % per Silver table via Trino. Never raises — see
-    DQ-gate behavior in the module docstring for why this doesn't fail the
-    task even when a table is well above threshold."""
+    """Logs quarantine % per Silver table via Trino. Deliberately still
+    never fails the DAG on a *quarantine %* above threshold — see DQ-gate
+    behavior in the module docstring. It DOES now fail loud on anything
+    that isn't a genuine DQ signal (a broken Trino connection, a missing
+    Silver table, a permissions error) rather than folding those into a
+    false '0% quarantined'. A gate that can't tell 'clean data' apart from
+    'couldn't check' is worse than no gate."""
     hook = TrinoHook(trino_conn_id="trino_default")
     log = context["ti"].log
 
     for table in SILVER_TABLES_WITH_QUARANTINE:
         try:
             silver_count = hook.get_first(f"SELECT count(*) FROM iceberg.silver.{table}")[0]
-        except Exception:
-            silver_count = 0
+        except Exception as e:
+            # Silver tables are guaranteed to exist by this point in the
+            # DAG (silver_order_items_task has already succeeded) — there
+            # is no legitimate reason this query fails. Anything here is
+            # a real problem (auth, connection, permissions, typo'd table
+            # name) and must not be silently treated as "0 rows".
+            raise RuntimeError(
+                f"[dq_quality_gate] could not query iceberg.silver.{table} — "
+                f"treating as a hard failure rather than defaulting to 0 "
+                f"rows, since a Silver table missing at this point in the "
+                f"DAG is never expected: {e}"
+            ) from e
 
         try:
             quarantine_count = hook.get_first(
                 f"SELECT count(*) FROM iceberg.quarantine.{table}"
             )[0]
-        except Exception:
-            # Quarantine table doesn't exist -> that Silver job quarantined
-            # zero rows (write_quarantine_table is only called when there
-            # are rows to write). Not an error condition.
-            quarantine_count = 0
+        except Exception as e:
+            if _is_table_not_found(e):
+                # Quarantine table genuinely doesn't exist -> that Silver
+                # job quarantined zero rows (write_quarantine_table is only
+                # called when there are rows to write). Not an error.
+                quarantine_count = 0
+            else:
+                # Anything else (auth failure, connection drop, permissions)
+                # must not be silently reinterpreted as "zero quarantined".
+                raise RuntimeError(
+                    f"[dq_quality_gate] could not query "
+                    f"iceberg.quarantine.{table} and the failure doesn't "
+                    f"look like 'table not found' — refusing to default "
+                    f"this to 0 rows quarantined: {e}"
+                ) from e
 
         total = silver_count + quarantine_count
         pct = round((quarantine_count / total) * 100, 2) if total > 0 else 0.0
