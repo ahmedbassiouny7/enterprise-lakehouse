@@ -90,6 +90,25 @@ services:
     depends_on:
       metastore:
         condition: service_healthy
+    # Container start != Hive Metastore ready. `master` runs NameNode +
+    # Spark Master + Hive Metastore + HiveServer2 as separate processes
+    # inside one container with no single "I'm up" signal from Compose's
+    # perspective, so everything downstream (worker, trino, spark-submit
+    # via docker exec) was only ever waiting on "container started", not
+    # "metastore actually accepting connections". That race is the root
+    # cause behind two bugs already hit in adjacent forms (DAG-file
+    # permission timing, docker.sock permission timing) — closing it here
+    # instead of waiting for a third. Probing the thrift port directly
+    # (9083) rather than an HTTP endpoint since that's the actual
+    # dependency every downstream service cares about; no curl/nc assumed
+    # present in this custom image, so /dev/tcp (a bash builtin) is used
+    # instead of relying on an external binary.
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/localhost/9083' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 60s
 
   # HARDCODED IN IMAGE: connects to spark://master:7077 and joins HDFS via
   # fs.defaultFS=hdfs://master (baked into core-site.xml) — no config
@@ -113,7 +132,8 @@ services:
       - ./generator/output:/opt/spark-jobs-data:ro
     networks: [lakehouse-net]
     depends_on:
-      - master
+      master:
+        condition: service_healthy
 
   history:
     image: hadoop-hive-spark-history:latest
@@ -125,7 +145,8 @@ services:
       - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
     networks: [lakehouse-net]
     depends_on:
-      - master
+      master:
+        condition: service_healthy
 
   # --------------------------------------------------------------------
   # Hive Metastore's backing database. Db/user/password and the service
@@ -260,9 +281,12 @@ services:
       - ./docker/hadoop:/etc/trino/catalog/hadoop-conf:ro
     networks: [lakehouse-net]
     depends_on:
-      - master
-      - postgres-orders
-      - mysql-customers
+      master:
+        condition: service_healthy
+      postgres-orders:
+        condition: service_healthy
+      mysql-customers:
+        condition: service_healthy
 
   # --------------------------------------------------------------------
   # Airflow — orchestration. LocalExecutor + its own Postgres metadata DB.
