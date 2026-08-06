@@ -31,7 +31,7 @@ x-airflow-common: &airflow-common
     # since `master` already has every jar/config a Spark client needs.
     # This connection string tells TrinoOperator/TrinoHook (used for the
     # post-Gold validation task) where to reach Trino.
-    AIRFLOW_CONN_TRINO_DEFAULT: trino://trino:8080
+    AIRFLOW_CONN_TRINO_DEFAULT: trino://airflow@trino:8080
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./spark/jobs:/opt/airflow/spark_jobs

@@ -27,9 +27,15 @@ def write_silver_table(
     # optional — this bit real data (customers) on first live run despite
     # looking fine against products/exchange_rates, whose read order
     # happened to already be grouped by coincidence.
+    #
+    # Sort by the raw date column, NOT months(business_date_col) — months()
+    # is a write-time partition-transform marker, not a real expression;
+    # handing it to orderBy() throws "Cannot evaluate expression: months(...)".
+    # Sorting by the underlying date achieves the same grouping, since
+    # months(date) is monotonic non-decreasing as date increases.
     df = df.withColumn("_silver_processed_at", current_timestamp())
     (
-        df.orderBy(months(business_date_col))
+        df.orderBy(business_date_col)
         .writeTo(f"{catalog}.silver.{table_name}")
         .partitionedBy(months(business_date_col))
         .createOrReplace()
