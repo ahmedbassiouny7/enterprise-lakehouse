@@ -217,6 +217,7 @@ with DAG(
     schedule="@daily",
     start_date=datetime(2026, 1, 1),
     catchup=False,
+    max_active_runs=1,
     default_args={"retries": 1},
     tags=["lakehouse", "medallion"],
 ) as dag:
