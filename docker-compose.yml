@@ -1,5 +1,14 @@
 # Enterprise Lakehouse Docker Compose stack.
 # Requires the extra Spark/Iceberg jars from docker/spark-jars before first launch.
+#
+# The three hadoop-hive-spark-* images are local-only (no upstream registry —
+# see docs/design-decisions.md, "Adopting Ahmed's existing images"), so they
+# can't be pinned to a published version. Pinned to :v1 here instead of
+# :latest so a later rebuild can't silently swap out what's running without
+# a deliberate tag bump. One-time setup if you haven't already:
+#   docker tag hadoop-hive-spark-master:latest  hadoop-hive-spark-master:v1
+#   docker tag hadoop-hive-spark-worker:latest  hadoop-hive-spark-worker:v1
+#   docker tag hadoop-hive-spark-history:latest hadoop-hive-spark-history:v1
 
 x-airflow-common: &airflow-common
   build: ./docker/airflow
@@ -16,10 +25,6 @@ x-airflow-common: &airflow-common
     - ./airflow/dags:/opt/airflow/dags
     - ./spark/jobs:/opt/airflow/spark_jobs
     - airflow_logs:/opt/airflow/logs
-    # Mount the host Docker socket so Airflow can execute Spark submit commands.
-    - /var/run/docker.sock:/var/run/docker.sock
-  group_add:
-    - "984"
   networks: [lakehouse-net]
   depends_on:
     airflow-db:
@@ -28,7 +33,7 @@ x-airflow-common: &airflow-common
 services:
   # Hadoop/Spark/Hive master container with Hive Metastore.
   master:
-    image: hadoop-hive-spark-master:latest
+    image: hadoop-hive-spark-master:v1
     container_name: master
     hostname: master
     environment:
@@ -59,10 +64,18 @@ services:
       timeout: 5s
       retries: 12
       start_period: 60s
+    # Flat keys instead of deploy.resources.limits: deploy: is only
+    # guaranteed honored by plain `docker compose up` on the newer
+    # Compose V2 CLI — older `docker-compose` (V1) silently ignores it.
+    # This is local-only Compose, no Swarm involved, so mem_limit/cpus
+    # apply unambiguously regardless of which Compose you're running.
+    mem_limit: 4g
+    cpus: 2.0
+    restart: unless-stopped
 
   # Spark worker container.
   worker:
-    image: hadoop-hive-spark-worker:latest
+    image: hadoop-hive-spark-worker:v1
     container_name: worker
     hostname: worker
     ports:
@@ -77,9 +90,12 @@ services:
     depends_on:
       master:
         condition: service_healthy
+    mem_limit: 4g
+    cpus: 2.0
+    restart: unless-stopped
 
   history:
-    image: hadoop-hive-spark-history:latest
+    image: hadoop-hive-spark-history:v1
     container_name: history
     ports:
       - "${SPARK_HISTORY_UI_PORT}:18080"
@@ -90,10 +106,11 @@ services:
     depends_on:
       master:
         condition: service_healthy
+    restart: unless-stopped
 
   # Hive Metastore database.
   metastore:
-    image: postgres:15
+    image: postgres:15.8
     container_name: metastore
     environment:
       - POSTGRES_DB=${METASTORE_DB}
@@ -111,12 +128,13 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+    restart: unless-stopped
 
   # --------------------------------------------------------------------
   # Operational source systems (what the pipeline reads FROM)
   # --------------------------------------------------------------------
   postgres-orders:
-    image: postgres:15
+    image: postgres:15.8
     container_name: postgres-orders
     environment:
       - POSTGRES_DB=${POSTGRES_ORDERS_DB}
@@ -132,9 +150,10 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+    restart: unless-stopped
 
   mysql-customers:
-    image: mysql:8.0
+    image: mysql:8.0.39
     container_name: mysql-customers
     environment:
       - MYSQL_DATABASE=${MYSQL_CUSTOMERS_DB}
@@ -151,6 +170,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+    restart: unless-stopped
 
   # --------------------------------------------------------------------
   # data-generator — one-shot job container. Generates the synthetic
@@ -219,6 +239,17 @@ services:
         condition: service_healthy
       mysql-customers:
         condition: service_healthy
+    # Trino's own readiness endpoint. Assumes curl is present in the
+    # trinodb/trino image (it is, as of trino:465) — verify with
+    # `docker exec trino curl -sf http://localhost:8080/v1/info` if this
+    # image version ever changes.
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8080/v1/info || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    restart: unless-stopped
 
   # --------------------------------------------------------------------
   # Airflow — orchestration. LocalExecutor + its own Postgres metadata DB.
@@ -226,7 +257,7 @@ services:
   # adding the Spark/Trino providers — see docker/airflow/Dockerfile.
   # --------------------------------------------------------------------
   airflow-db:
-    image: postgres:15
+    image: postgres:15.8
     container_name: airflow-db
     environment:
       - POSTGRES_DB=${AIRFLOW_DB}
@@ -240,6 +271,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+    restart: unless-stopped
 
   airflow-init:
     <<: *airflow-common
@@ -267,16 +299,45 @@ services:
         condition: service_healthy
       airflow-init:
         condition: service_completed_successfully
+    # Airflow's own recommended webserver healthcheck (curl against /health).
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:8080/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    restart: unless-stopped
 
   airflow-scheduler:
     <<: *airflow-common
     container_name: airflow-scheduler
     command: scheduler
+    # Only the scheduler gets the Docker socket + group membership.
+    # With LocalExecutor, BashOperator tasks (the `docker exec master
+    # spark-submit ...` calls) run as subprocesses of the scheduler
+    # process — webserver/triggerer/init never touch Docker, so giving
+    # them host-daemon access would be unnecessary root-equivalent
+    # exposure for no functional reason.
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./spark/jobs:/opt/airflow/spark_jobs
+      - airflow_logs:/opt/airflow/logs
+      - /var/run/docker.sock:/var/run/docker.sock
+    group_add:
+      - "984"
     depends_on:
       airflow-db:
         condition: service_healthy
       airflow-init:
         condition: service_completed_successfully
+    # Airflow's own documented scheduler healthcheck.
+    healthcheck:
+      test: ["CMD-SHELL", "airflow jobs check --job-type SchedulerJob --hostname \"$$(hostname)\""]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+    restart: unless-stopped
 
   airflow-triggerer:
     <<: *airflow-common
@@ -287,6 +348,14 @@ services:
         condition: service_healthy
       airflow-init:
         condition: service_completed_successfully
+    # Airflow's own documented triggerer healthcheck.
+    healthcheck:
+      test: ["CMD-SHELL", "airflow jobs check --job-type TriggererJob --hostname \"$$(hostname)\""]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+    restart: unless-stopped
 
 networks:
   lakehouse-net:
