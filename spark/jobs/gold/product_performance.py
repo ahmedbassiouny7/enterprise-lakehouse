@@ -1,19 +1,4 @@
-"""
-Gold: product_performance. Grain: one row per product, but the metrics
-are RELATIVE — rank within category and % of category revenue — computed
-via window functions partitioned by category. This is the BI-facing
-"what are our top sellers per category" table, distinct from
-inventory_summary.py's flat catalog+lifetime-sales view.
-
-Products with zero sales get rank = NULL (dense_rank over a revenue-only
-window naturally excludes them unless explicitly included) — handled by
-building the ranking on all products via a left join first, so a
-never-sold product still appears in the table (worth knowing "this exists
-and has sold nothing," not just silently absent from a performance view).
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/gold/product_performance.py
-"""
+"""Gold product_performance aggregation by product."""
 import os
 import sys
 

@@ -1,21 +1,5 @@
 #!/usr/bin/env python3
-"""
-Enterprise Lakehouse — synthetic data generator + loader (containerized).
-
-Runs inside the `data-generator` service on the same docker-compose network
-as your `orders` (Postgres) and `customers` (MySQL) services. Generates in
-dependency order (customers, products -> orders, order_items sample from
-their real generated IDs) so referential integrity is guaranteed by
-construction. Loads orders/order_items/products into Postgres via COPY
-(fast, no intermediate file) and customers into MySQL via batched
-executemany (avoids needing LOCAL INFILE enabled on the server).
-
-products.csv and exchange_rates.csv are written to /data/output (mount a
-volume there) instead of loaded into a DB — per the project spec they're a
-flat-file feed and a REST API payload, not live database sources.
-
-Config: all via env vars, see docker-compose.yml / .env.example.
-"""
+"""Generate synthetic source data and load it into the test databases."""
 import csv
 import io
 import os

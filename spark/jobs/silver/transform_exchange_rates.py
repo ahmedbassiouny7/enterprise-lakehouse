@@ -1,12 +1,4 @@
-"""
-Silver transform: exchange_rates. No FK dependency — runs first.
-
-Feeds transform_orders.py's USD conversion, so this must complete before
-that job runs (see silver task ordering in the Airflow DAG).
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/silver/transform_exchange_rates.py
-"""
+"""Silver transform for exchange_rates."""
 import os
 import sys
 
@@ -25,9 +17,6 @@ def main():
 
     bronze = spark.table("lakehouse.bronze.exchange_rates")
 
-    # Dedupe on the natural key (rate_date, base_currency, quote_currency) —
-    # this is the key transform_orders.py joins on, so duplicates here would
-    # silently fan out order rows on join. Keep latest-ingested per key.
     key_cols = ["rate_date", "base_currency", "quote_currency"]
     w = Window.partitionBy(*key_cols).orderBy(F.col("_bronze_ingested_at").desc())
     deduped = (

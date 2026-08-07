@@ -1,14 +1,4 @@
-"""
-Bronze extraction: customers, from mysql-customers.
-
-Same rationale as extract_orders.py: direct Spark JDBC, not through Trino.
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/bronze/extract_customers.py
-
-Requires the MySQL Connector/J jar, already bind-mounted onto master's
-classpath per docker/spark-jars/README.md — no --jars flag needed.
-"""
+"""Bronze extraction for customers from MySQL."""
 import os
 import sys
 

@@ -1,10 +1,4 @@
-"""
-Silver transform: customers. No FK dependency — runs first, alongside
-products and exchange_rates.
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/silver/transform_customers.py
-"""
+"""Silver transform for customers."""
 import os
 import sys
 
@@ -18,7 +12,7 @@ from common.silver_writer import write_quarantine_table, write_silver_table  # n
 from common.spark_session import get_spark_session  # noqa: E402
 
 EMAIL_REGEX = r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
-VALID_SEGMENTS = ["VIP", "RETAIL", "WHOLESALE"]  # matches generator's customer_segment values
+VALID_SEGMENTS = ["VIP", "RETAIL", "WHOLESALE"]
 
 
 def main():

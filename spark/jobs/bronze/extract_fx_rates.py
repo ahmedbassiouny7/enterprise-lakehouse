@@ -1,20 +1,4 @@
-"""
-Bronze extraction: exchange_rates.
-
-KNOWN GAP, not an oversight: the project spec calls for exchange_rates to
-come from a REST API, but that mock API isn't built yet (see
-session-handoff-v2.md, "Open / unconfirmed"). This job reads the CSV
-data-generator already produces for that payload as a stand-in, from the
-same mounted path as products.csv. When the mock API exists, only this
-job's read path changes (CSV read -> HTTP GET + JSON parse) — the audit
-columns, write path, and partitioning strategy stay identical, and
-_bronze_source below should change from "exchange-rates-csv" to whatever
-the API is called, so lineage stays honest about where the data actually
-came from at the time of each run.
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/bronze/extract_fx_rates.py
-"""
+"""Bronze extraction for exchange_rates from the CSV source."""
 import os
 import sys
 
@@ -23,7 +7,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from common.bronze_writer import add_audit_columns, write_bronze_table  # noqa: E402
 from common.spark_session import get_spark_session  # noqa: E402
 
-SOURCE_NAME = "exchange-rates-csv"  # update when the mock REST API replaces this
+SOURCE_NAME = "exchange-rates-csv"
 CSV_PATH = "file:///opt/spark-jobs-data/exchange_rates.csv"
 
 FX_SCHEMA = "rate_date DATE, base_currency STRING, quote_currency STRING, rate DECIMAL(12,6)"

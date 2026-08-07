@@ -1,13 +1,4 @@
-"""
-Silver transform: products.
-
-No FK dependency on another Silver table, so this (along with customers
-and exchange_rates) is safe to run first / in parallel — orders and
-order_items depend on this one for referential checks.
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/silver/transform_products.py
-"""
+"""Silver transform for products."""
 import os
 import sys
 
@@ -25,10 +16,6 @@ def main():
 
     bronze = spark.table("lakehouse.bronze.products")
 
-    # Dedupe: keep the most-recently-ingested row per product_id. Bronze is
-    # a full overwrite each run so duplicates shouldn't occur in practice,
-    # but Silver shouldn't silently assume that holds forever — dedupe
-    # defensively rather than trust an upstream invariant.
     from pyspark.sql import Window
 
     w = Window.partitionBy("product_id").orderBy(F.col("_bronze_ingested_at").desc())
@@ -50,11 +37,6 @@ def main():
     good_count, bad_count = good.count(), quarantined.count()
     print(f"[transform_products] {good_count:,} rows passed, {bad_count:,} quarantined")
 
-    # No natural business date on products; partition by a constant
-    # "epoch" column via current ingestion run instead of forcing a
-    # meaningless date field to exist. Simpler: reuse _bronze_ingested_at,
-    # since this table is small and full-reload anyway — partitioning
-    # buys nothing here beyond consistency with the write helper's shape.
     write_silver_table(good, "products", business_date_col="_bronze_ingested_at")
     if bad_count > 0:
         write_quarantine_table(quarantined, "products")

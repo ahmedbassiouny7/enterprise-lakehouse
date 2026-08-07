@@ -1,13 +1,4 @@
-"""
-Gold: inventory_summary. Grain: one row per product. Catalog-facing view —
-margin economics + lifetime sales, for "what's in the catalog and how is
-it doing" questions. Distinct from product_performance.py, which ranks
-products within category using a window function; this one is a flat
-per-product rollup, deliberately a different shape.
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/gold/inventory_summary.py
-"""
+"""Gold inventory_summary aggregation by product."""
 import os
 import sys
 

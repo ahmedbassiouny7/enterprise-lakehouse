@@ -18,7 +18,13 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 USER airflow
+# Not installing great-expectations here: nothing in this repo imports it.
+# DQ validation is deliberately handled the simpler way instead — Silver
+# writes flag/quarantine bad rows directly (see common/dq.py), and
+# dq_quality_gate in the DAG queries those quarantine tables via Trino.
+# A real GE integration would be a legitimate next step to point to in an
+# interview, but installing the dependency without using it just bloats
+# the image and build time for nothing.
 RUN pip install --no-cache-dir \
       apache-airflow-providers-apache-spark==4.11.0 \
-      apache-airflow-providers-trino==5.7.1 \
-      great-expectations==0.18.19
+      apache-airflow-providers-trino==5.7.1

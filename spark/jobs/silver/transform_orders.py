@@ -1,22 +1,4 @@
-"""
-Silver transform: orders.
-
-Depends on silver.customers (referential check) and silver.exchange_rates
-(USD conversion) — must run AFTER both of those, not in parallel with them.
-transform_order_items.py depends on THIS job's output, so the DAG order is:
-    {products, customers, exchange_rates} -> orders -> order_items
-
-Currency conversion: the generator's exchange_rates are always base=USD,
-quote=<currency>, meaning "1 USD = <rate> <currency>". An order_total in a
-non-USD currency converts back to USD as order_total / rate. USD orders
-need no conversion (rate is implicitly 1). This is a real business
-decision worth stating explicitly: Gold-layer revenue metrics need one
-consistent currency to sum across, and USD (the FX table's base) is the
-natural choice rather than picking an arbitrary target currency.
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/silver/transform_orders.py
-"""
+"""Silver transform for orders with referential and FX validation."""
 import os
 import sys
 
@@ -43,18 +25,12 @@ def main():
         F.col("rate_date"), F.col("quote_currency"), F.col("rate")
     )
 
-    # Referential check against silver.customers, not bronze.customers —
-    # an order referencing a customer that itself got quarantined in Silver
-    # (bad email, invalid segment, etc.) should also be flagged, not treated
-    # as valid just because it existed in raw Bronze.
     with_fk_check = bronze_orders.join(
         silver_customers,
         bronze_orders.customer_id == silver_customers._known_customer_id,
         how="left",
     )
 
-    # USD conversion: left-join on (order_date, currency_code) for non-USD
-    # orders; USD orders get rate=1 directly without needing a join match.
     with_fx = with_fk_check.join(
         silver_fx,
         (with_fk_check.order_date == silver_fx.rate_date)
@@ -77,10 +53,6 @@ def main():
         DQCheck("order_status_valid", F.col("order_status").isin(VALID_STATUSES)),
         DQCheck("sales_channel_valid", F.col("sales_channel").isin(VALID_CHANNELS)),
         DQCheck("order_total_non_negative", F.col("order_total") >= 0),
-        # A non-USD order with no fx match for its (order_date, currency)
-        # would silently divide by a null rate and produce a null USD
-        # total — catch that explicitly instead of letting it slip through
-        # as a silent null in a downstream revenue sum.
         DQCheck("fx_conversion_resolved", F.col("order_total_usd").isNotNull()),
     ]
     good, quarantined = apply_dq_checks(transformed, checks)

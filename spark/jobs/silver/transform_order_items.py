@@ -1,12 +1,4 @@
-"""
-Silver transform: order_items. Last in the Silver DAG order — depends on
-both silver.orders (for the referential check AND to inherit order_date
-for partitioning, since order_items itself has no date column) and
-silver.products.
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/silver/transform_order_items.py
-"""
+"""Silver transform for order_items."""
 import os
 import sys
 
@@ -25,7 +17,7 @@ def main():
     bronze_items = spark.table("lakehouse.bronze.order_items")
     silver_orders = spark.table("lakehouse.silver.orders").select(
         F.col("order_id").alias("_known_order_id"),
-        F.col("order_date"),  # inherited for partitioning — see module docstring
+        F.col("order_date"),
         F.col("fx_rate_to_usd"),
     )
     silver_products = spark.table("lakehouse.silver.products").select(
@@ -61,10 +53,6 @@ def main():
     good_count, bad_count = good.count(), quarantined.count()
     print(f"[transform_order_items] {good_count:,} rows passed, {bad_count:,} quarantined")
 
-    # order_date came from the join with silver.orders; a row that failed
-    # the order_id_exists check has a null order_date, which is exactly
-    # why quarantined rows go to their OWN un-partitioned table rather than
-    # sharing this partitioned write.
     write_silver_table(good, "order_items", business_date_col="order_date")
     if bad_count > 0:
         write_quarantine_table(quarantined, "order_items")

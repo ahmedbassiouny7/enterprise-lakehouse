@@ -1,12 +1,4 @@
-"""
-Gold: daily_sales. Grain: one row per (order_date, sales_channel).
-Kept at channel grain rather than collapsed to just order_date, since
-"is ONLINE outgrowing STORE" is exactly the kind of question this table
-should answer without a re-aggregation.
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/gold/daily_sales.py
-"""
+"""Gold daily_sales aggregation by order_date and sales_channel."""
 import os
 import sys
 

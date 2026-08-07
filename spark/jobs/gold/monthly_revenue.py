@@ -1,12 +1,4 @@
-"""
-Gold: monthly_revenue. Grain: one row per calendar month. Adds
-month-over-month revenue growth via a window LAG — the one Gold table
-using a window function for a trend metric rather than a flat rollup,
-which is a deliberately different aggregation shape from daily_sales.
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/gold/monthly_revenue.py
-"""
+"""Gold monthly_revenue aggregation by month."""
 import os
 import sys
 

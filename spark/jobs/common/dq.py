@@ -1,24 +1,4 @@
-"""
-Shared data-quality framework for Silver transforms.
-
-Design: rows that fail a check are NOT silently dropped. They're routed to
-a quarantine table (lakehouse.quarantine.<table>) with a record of exactly
-which check(s) failed, and only rows that pass everything reach Silver.
-This is deliberate — a pipeline that quietly drops "bad" rows makes data
-loss invisible, and "how many rows did DQ reject and why" is exactly the
-kind of question a senior interviewer asks. Quarantining answers it with a
-queryable table instead of a shrug.
-
-Usage:
-    from common.dq import DQCheck, apply_dq_checks
-    import pyspark.sql.functions as F
-
-    checks = [
-        DQCheck("customer_id_not_null", F.col("customer_id").isNotNull()),
-        DQCheck("order_total_non_negative", F.col("order_total") >= 0),
-    ]
-    good_df, quarantined_df = apply_dq_checks(df, checks)
-"""
+"""Shared data-quality framework for Silver transforms."""
 from dataclasses import dataclass
 from typing import List, Tuple
 
@@ -33,10 +13,7 @@ class DQCheck:
 
 
 def apply_dq_checks(df: DataFrame, checks: List[DQCheck]) -> Tuple[DataFrame, DataFrame]:
-    """Returns (good_df, quarantine_df). quarantine_df gains a
-    `_dq_failed_checks` column: a comma-separated list of every check name
-    that failed for that row (a row can fail more than one check at once —
-    worth seeing all of them, not just the first)."""
+    """Split rows into good and quarantine outputs."""
     working = df
     flag_cols = []
     for check in checks:

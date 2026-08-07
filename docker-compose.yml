@@ -1,20 +1,5 @@
-# ============================================================================
-# Enterprise Lakehouse & Data Virtualization Platform
-#
-# One command brings the whole stack up:  docker compose up -d
-#
-# The Hadoop/Spark/Hive corner of this file reuses Ahmed's existing
-# hadoop-hive-spark-{master,worker,history} images rather than pulling
-# separate bde2020/bitnami/apache-hive containers. Those images bundle
-# HDFS + Spark + Hive together per-role, with several hostnames and
-# credentials hardcoded inside them (not env-configurable) — every comment
-# below tagged "HARDCODED IN IMAGE" reflects something reverse-engineered
-# from their entrypoint/run scripts and config files, not a free choice.
-# Full writeup: docs/design-decisions.md.
-#
-# Before first boot: fetch the two jars in docker/spark-jars/ (see the
-# README there) — everything else here uses images already on this machine.
-# ============================================================================
+# Enterprise Lakehouse Docker Compose stack.
+# Requires the extra Spark/Iceberg jars from docker/spark-jars before first launch.
 
 x-airflow-common: &airflow-common
   build: ./docker/airflow
@@ -25,34 +10,14 @@ x-airflow-common: &airflow-common
     AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW__WEBSERVER__SECRET_KEY}
     AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     AIRFLOW_UID: ${AIRFLOW_UID:-50000}
-    # SparkSubmitOperator needs a local spark-submit binary, which this
-    # image deliberately doesn't ship (see docker/airflow/Dockerfile) —
-    # the DAG instead shells out to `docker exec master spark-submit`,
-    # since `master` already has every jar/config a Spark client needs.
-    # This connection string tells TrinoOperator/TrinoHook (used for the
-    # post-Gold validation task) where to reach Trino.
+    # Airflow uses trino_default for Trino validation tasks.
     AIRFLOW_CONN_TRINO_DEFAULT: trino://airflow@trino:8080
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./spark/jobs:/opt/airflow/spark_jobs
     - airflow_logs:/opt/airflow/logs
-    # Docker-outside-of-Docker: lets DAG tasks run `docker exec master ...`
-    # against the SAME Docker daemon this whole stack runs under, instead
-    # of duplicating a full Spark client inside the Airflow image.
-    # SECURITY NOTE, said plainly rather than glossed over: this grants
-    # whoever can exec into the Airflow containers effective control of
-    # the host's Docker daemon (equivalent to root on the host). Fine for
-    # a local single-user portfolio demo; NOT how you'd do this in
-    # production — there you'd either ship a real Spark client in the
-    # Airflow image and use SparkSubmitOperator properly, or run Spark in
-    # cluster/Livy mode so Airflow only ever talks to it over HTTP.
+    # Mount the host Docker socket so Airflow can execute Spark submit commands.
     - /var/run/docker.sock:/var/run/docker.sock
-  # Membership in the host's `docker` group, not a socket permission
-  # override — `chmod 666 /var/run/docker.sock` doesn't survive a daemon
-  # restart (it's reset each time), which meant reapplying it by hand
-  # after every restart. GID is host-specific — 984 is this host's
-  # `docker` group (confirm with `getent group docker` on any other
-  # machine and update this value before relying on it there).
   group_add:
     - "984"
   networks: [lakehouse-net]
@@ -61,18 +26,7 @@ x-airflow-common: &airflow-common
       condition: service_healthy
 
 services:
-  # --------------------------------------------------------------------
-  # Hadoop NameNode + YARN ResourceManager + Hive Metastore + HiveServer2
-  # + Spark Master — all one container. This is how Ahmed's image is
-  # built (see docker/spark-jars/README.md); not a design choice made
-  # for this project.
-  #
-  # HARDCODED IN IMAGE: fs.defaultFS=hdfs://master, hive.metastore.uris=
-  # thrift://master:9083, metastore JDBC target jdbc:postgresql://
-  # metastore:5432/metastore — meaning this service MUST be named
-  # exactly "master" and a Postgres service named exactly "metastore"
-  # MUST exist on this network.
-  # --------------------------------------------------------------------
+  # Hadoop/Spark/Hive master container with Hive Metastore.
   master:
     image: hadoop-hive-spark-master:latest
     container_name: master
@@ -98,19 +52,7 @@ services:
     depends_on:
       metastore:
         condition: service_healthy
-    # Container start != Hive Metastore ready. `master` runs NameNode +
-    # Spark Master + Hive Metastore + HiveServer2 as separate processes
-    # inside one container with no single "I'm up" signal from Compose's
-    # perspective, so everything downstream (worker, trino, spark-submit
-    # via docker exec) was only ever waiting on "container started", not
-    # "metastore actually accepting connections". That race is the root
-    # cause behind two bugs already hit in adjacent forms (DAG-file
-    # permission timing, docker.sock permission timing) — closing it here
-    # instead of waiting for a third. Probing the thrift port directly
-    # (9083) rather than an HTTP endpoint since that's the actual
-    # dependency every downstream service cares about; no curl/nc assumed
-    # present in this custom image, so /dev/tcp (a bash builtin) is used
-    # instead of relying on an external binary.
+    # Wait until Hive Metastore thrift is accepting connections.
     healthcheck:
       test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/localhost/9083' || exit 1"]
       interval: 10s
@@ -118,10 +60,7 @@ services:
       retries: 12
       start_period: 60s
 
-  # HARDCODED IN IMAGE: connects to spark://master:7077 and joins HDFS via
-  # fs.defaultFS=hdfs://master (baked into core-site.xml) — no config
-  # needed on our side beyond making sure "master" resolves on the network,
-  # which Compose already guarantees via the service name above.
+  # Spark worker container.
   worker:
     image: hadoop-hive-spark-worker:latest
     container_name: worker
@@ -133,10 +72,6 @@ services:
       - ./docker/hadoop/hdfs-site.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml:ro
       - ./docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:/opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:ro
       - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
-      # Same flat-file Bronze source mount as `master`. Spark standalone
-      # runs the driver on `master` but executes tasks on `worker` — a
-      # CSV-reading job's actual file read happens here, not on master,
-      # so this mount has to be duplicated rather than assumed inherited.
       - ./generator/output:/opt/spark-jobs-data:ro
     networks: [lakehouse-net]
     depends_on:
@@ -156,14 +91,7 @@ services:
       master:
         condition: service_healthy
 
-  # --------------------------------------------------------------------
-  # Hive Metastore's backing database. Db/user/password and the service
-  # name itself are all fixed by the JDBC URL baked into master's
-  # hive-site.xml (jdbc:postgresql://metastore:5432/metastore) — none of
-  # these four values are free to change without rebuilding master.
-  # `master`'s first-boot script runs `schematool -initSchema` against
-  # this automatically — no manual init needed on our side.
-  # --------------------------------------------------------------------
+  # Hive Metastore database.
   metastore:
     image: postgres:15
     container_name: metastore
@@ -171,10 +99,6 @@ services:
       - POSTGRES_DB=${METASTORE_DB}
       - POSTGRES_USER=${METASTORE_USER}
       - POSTGRES_PASSWORD=${METASTORE_PASSWORD}
-      # The inherited Hive 3.1.3 image includes an older PostgreSQL JDBC
-      # driver that cannot perform PostgreSQL's SCRAM-SHA-256 authentication.
-      # This is a local compatibility setting for the metastore only; the
-      # operational Postgres source keeps its normal PostgreSQL 15 defaults.
       - POSTGRES_HOST_AUTH_METHOD=md5
     command: ["postgres", "-c", "password_encryption=md5"]
     ports:

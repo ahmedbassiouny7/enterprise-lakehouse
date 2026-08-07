@@ -91,14 +91,9 @@ enterprise-lakehouse/
 │   └── trino/catalog/    iceberg / postgresql / mysql catalog configs
 ├── airflow/dags/         pipeline DAGs
 ├── spark/jobs/           bronze/, silver/, gold/, common/ — PySpark jobs, one file per table
-├── bronze/ silver/ gold/   SQL: DDL + table docs for each Iceberg layer (not the data itself)
-├── trino/                cross-catalog query examples, virtualization demos
-├── hive/                 HQL reference queries against Iceberg tables via Hive
-├── iceberg/              time travel / schema evolution / MERGE demos and notes
 ├── generator/            synthetic data generator for the operational sources
 ├── dashboards/           not built — see the Architecture note above
-├── tests/                unit tests for Spark transformation logic
-└── docs/                 architecture, ER diagrams, KPIs, deployment guide, lessons learned
+└── docs/                 design decisions and rationale (docs/design-decisions.md)
 ```
 
 ## Build status

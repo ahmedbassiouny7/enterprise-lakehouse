@@ -1,62 +1,4 @@
-"""
-lakehouse_pipeline — Bronze -> Silver -> Gold, daily batch.
-
-Execution model: every Spark task shells out to
-    docker exec master spark-submit /opt/spark-jobs/<path>
-rather than using SparkSubmitOperator directly from the Airflow container.
-Why, and the real tradeoff that comes with it, is documented next to the
-docker.sock volume mount in docker-compose.yml and in
-docs/design-decisions.md — read that before treating this pattern as a
-default choice rather than a deliberate one for this specific stack.
-
-Known local-dev setup step, not automated here: the Airflow containers
-need permission to talk to the mounted host Docker socket. On most Linux
-hosts the socket is group-owned by `docker` with a host-specific GID, so a
-fresh clone may need one of:
-    sudo chmod 666 /var/run/docker.sock        # simplest, dev-only
-or matching AIRFLOW_UID/GID to the host docker group's GID before build.
-Not needed on Docker Desktop (macOS/Windows), where the socket is already
-world-accessible inside the VM.
-
-DAG structure:
-    bronze.{orders, customers, products, fx_rates}      (parallel)
-        -> silver.{products, customers, exchange_rates}  (parallel)
-            -> silver.orders
-                -> silver.order_items
-                    -> dq_quality_gate  (logs quarantine %, only fails on a
-                                          broken check itself — see below)
-                        -> gold.{daily_sales, customer_360, monthly_revenue,
-                                 inventory_summary, product_performance}  (parallel)
-                            -> validate_trino_catalog
-
-Gold tasks all wait on silver.order_items rather than their true minimal
-per-table dependency (e.g. customer_360 only actually needs silver.orders
-+ silver.customers, not order_items). Deliberate simplification: a single
-join point after all of Silver is done is easier to reason about and
-debug than five slightly-different dependency graphs, and at this data
-volume the extra wait time is seconds, not minutes. Worth revisiting if
-Gold ever needs to start before all of Silver finishes.
-
-DQ-gate behavior (explicit decision, not a default): a Silver transform
-that quarantines a meaningful share of its rows does NOT halt the DAG.
-dq_quality_gate logs a WARNING with the exact quarantine percentage per
-table and lets the DAG continue into Gold regardless. This is a
-portfolio-appropriate choice — simpler to build, still demonstrates DQ
-awareness via the quarantine tables and this log line. A production
-version of this DAG would branch here: hard-fail (or page someone) above
-a threshold instead of only logging. Said explicitly rather than silently
-picked, since it's a real, debatable tradeoff.
-
-That tolerance applies only to a genuine quarantine percentage, not to the
-check itself failing. dq_quality_gate DOES fail the task (and therefore
-the DAG run) if it can't actually determine that percentage — a broken
-Trino connection, a missing Silver table, or an auth error. Earlier this
-silently defaulted such failures to "0% quarantined" via a blanket
-except/pass, which is strictly worse than not having the gate at all: it
-reports clean data during an outage. Fixed so only a real "table not
-found" (expected when a Silver job quarantined nothing) is swallowed;
-everything else raises.
-"""
+"""Airflow DAG for the Bronze/Silver/Gold pipeline."""
 from datetime import datetime
 
 from airflow import DAG
@@ -115,13 +57,7 @@ def _is_table_not_found(exc: Exception) -> bool:
 
 
 def _check_dq_quarantine(**context):
-    """Logs quarantine % per Silver table via Trino. Deliberately still
-    never fails the DAG on a *quarantine %* above threshold — see DQ-gate
-    behavior in the module docstring. It DOES now fail loud on anything
-    that isn't a genuine DQ signal (a broken Trino connection, a missing
-    Silver table, a permissions error) rather than folding those into a
-    false '0% quarantined'. A gate that can't tell 'clean data' apart from
-    'couldn't check' is worse than no gate."""
+    """Log quarantine counts for Silver tables via Trino."""
     hook = TrinoHook(trino_conn_id="trino_default")
     log = context["ti"].log
 
@@ -186,12 +122,7 @@ def _check_dq_quarantine(**context):
 
 
 def _validate_trino_catalog(**context):
-    """Post-Gold sanity check: every Gold table should have rows and be
-    reachable through Trino, since Trino is the query layer this whole
-    project is meant to demonstrate. Raises (fails the task) if a Gold
-    table is missing or empty — unlike the DQ gate, an empty Gold table
-    means the pipeline produced nothing usable, which should be visible
-    as a DAG failure, not a warning."""
+    """Verify each Gold table is present and non-empty via Trino."""
     hook = TrinoHook(trino_conn_id="trino_default")
     log = context["ti"].log
     problems = []

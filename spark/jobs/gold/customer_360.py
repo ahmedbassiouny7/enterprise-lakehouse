@@ -1,13 +1,4 @@
-"""
-Gold: customer_360. Grain: one row per customer. Left-joins orders onto
-the full customer list (not inner) so customers with zero orders still
-appear with zeroed-out metrics — a "customer with no purchases yet" is a
-real, meaningful row for retention/marketing use cases, not something to
-silently drop.
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/gold/customer_360.py
-"""
+"""Gold customer_360 aggregation, one row per customer."""
 import os
 import sys
 

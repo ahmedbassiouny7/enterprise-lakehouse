@@ -1,14 +1,4 @@
-"""
-Bronze extraction: products, from the flat-file CSV.
-
-products.csv is written by data-generator to ./generator/output, which is
-bind-mounted read-only into master at /opt/spark-jobs-data (see
-docker-compose.yml). This models a genuine flat-file source per the
-project spec, distinct from the two live JDBC sources.
-
-Run:
-    docker exec master spark-submit /opt/spark-jobs/bronze/extract_products.py
-"""
+"""Bronze extraction for products from the flat-file CSV."""
 import os
 import sys
 
@@ -20,11 +10,6 @@ from common.spark_session import get_spark_session  # noqa: E402
 SOURCE_NAME = "products-csv"
 CSV_PATH = "file:///opt/spark-jobs-data/products.csv"
 
-# Explicit schema rather than inferSchema=True: inferSchema forces Spark to
-# do a full pre-read pass over the file just to guess types, and silently
-# guessing wrong (e.g. is_active landing as a string "1"/"0" instead of a
-# proper flag) is exactly the kind of thing that should be caught at
-# extraction time, not discovered three layers downstream in Gold.
 PRODUCTS_SCHEMA = (
     "product_id INT, product_name STRING, category STRING, subcategory STRING, "
     "brand STRING, unit_cost DECIMAL(10,2), list_price DECIMAL(10,2), is_active BOOLEAN"
