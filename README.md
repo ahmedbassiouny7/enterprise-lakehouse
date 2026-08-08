@@ -7,6 +7,11 @@ every operational table into the warehouse.
 
 ## Architecture
 
+![Enterprise Lakehouse architecture diagram](docs/Architecture.png)
+
+<details>
+<summary>Text version</summary>
+
 ```
  Postgres (orders)  MySQL (customers)  CSV (products)   CSV (fx rates)*
           │                 │                │                │
@@ -32,6 +37,9 @@ every operational table into the warehouse.
                                      ▼
                               Superset (BI)*
 ```
+
+</details>
+
 *fx rates is a documented CSV stand-in for a REST source; BI layer isn't
 built. Both are scope cuts, not gaps: they're consumption-edge concerns
 (how data gets out, how one source arrives) rather than the platform's
