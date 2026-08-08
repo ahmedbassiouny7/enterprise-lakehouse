@@ -1,3 +1,5 @@
 .env
 generator/output/*.csv
 docker/spark-jars/*.jar
+__pycache__/
+*.pyc
