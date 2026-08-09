@@ -217,33 +217,15 @@ is a lab-scale shortcut, not a production pattern, and the README's
 ## 8. Airflow submits Spark jobs through `SparkSubmitOperator` against the standalone cluster
 
 **Decision:** every Bronze/Silver/Gold task is a `SparkSubmitOperator`
-that submits the job to the existing Spark standalone cluster at
+that submits to the existing Spark standalone cluster at
 `spark://master:7077` via the Airflow connection `spark_default`.
-This keeps the pipeline architecture aligned with how Airflow normally
-orchestrates Spark while preserving the repository's existing cluster
-layout and job paths.
 
-**Why this is the right fit here:** the project already has a dedicated
-Spark standalone cluster (`master` + `worker`) and a single Spark client
-installed in the Airflow image for local `spark-submit` invocation. The
-jobs themselves are unchanged; only the orchestration mechanism moves from
-`docker exec ... spark-submit` to Airflow's native Spark operator. The
-Spark jobs still run against the same master/worker cluster and still use
-the same Python entrypoints and application arguments, but without Airflow
-needing host-level Docker access.
+**Why:** the repo already has a dedicated Spark master/worker cluster, and
+Airflow no longer needs Docker daemon access to reach it. The job logic is
+unchanged; only the orchestration mechanism is different.
 
-**Trade-off, stated plainly:** this removes the previous reliance on the
-scheduler owning the host Docker socket. Instead, the Airflow container
-runs the Spark client locally and submits to the cluster over the shared
-Compose network. That is the more portable, production-style pattern for
-this stack and doesn't require Kubernetes or any change to the business
-logic in the Bronze/Silver/Gold steps.
-
-**Common mistake:** assuming every Spark stack requires a custom
-`docker exec` path from the orchestrator. This project does not: the
-service name is `master`, the Spark master port is `7077`, and Airflow
-can reach it directly over the Docker network with the `spark_default`
-connection.
+**Trade-off:** this keeps the stack aligned with a normal Airflow + Spark
+pattern while preserving the existing Compose topology and job paths.
 
 ---
 
