@@ -290,7 +290,7 @@ services:
       interval: 15s
       timeout: 5s
       retries: 10
-      start_period: 60s
+      start_period: 180s
     restart: unless-stopped
 
   airflow-scheduler:
