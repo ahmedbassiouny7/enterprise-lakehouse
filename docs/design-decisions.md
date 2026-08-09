@@ -1,10 +1,9 @@
-# Design Decisions — Infrastructure Layer
+# Design Decisions — Infrastructure & Pipeline Layer
 
 Each section: the decision, why, the alternative(s) considered, and a
-common mistake to avoid. This file grows as later phases add more
-decisions (Spark job design, Silver validation rules, Airflow DAG
-structure, etc.) — this pass covers only what `docker-compose.yml`
-commits us to.
+common mistake to avoid. Sections 1–7 cover what `docker-compose.yml`
+commits us to; sections 8–9 cover the Airflow DAG and Spark job design
+choices layered on top of it.
 
 ---
 
@@ -212,5 +211,95 @@ YARN, Hive Metastore, and Spark Master all in a single container)
 reflects how this would be architected in production. It doesn't — this
 is a lab-scale shortcut, not a production pattern, and the README's
 "not production" section says so explicitly.
+
+---
+
+## 8. Airflow triggers Spark via `docker exec` + BashOperator, not SparkSubmitOperator
+
+**Decision:** every Bronze/Silver/Gold task is a `BashOperator` running
+`docker exec master spark-submit /opt/spark-jobs/<path>` from the
+scheduler container, rather than Airflow's own `SparkSubmitOperator`.
+
+**Why not `SparkSubmitOperator`:** that operator shells out to a local
+`spark-submit` binary (or a configured Spark connection), which means the
+Spark client — the actual `spark-submit` executable, matching Hadoop/Spark
+version, and enough config to resolve `spark://master:7077` and the Hive
+Metastore thrift URI — would need to be installed *inside the Airflow
+image itself*. That's a second place carrying Spark client version drift
+against the real Spark cluster, for a benefit this project doesn't need
+(the operator's main value — structured `conf`/`packages` args instead of
+a raw string — doesn't matter when every job's spark-submit invocation is
+identical apart from the file path). `docker exec` reuses the
+already-correct Spark client that ships inside the `master` image, so
+there is exactly one Spark installation in the whole stack to keep
+consistent.
+
+**Trade-off, stated plainly:** this only works because Airflow's
+scheduler has the Docker socket mounted (see the `airflow-scheduler`
+service in `docker-compose.yml`) — i.e. the scheduler container can
+control sibling containers on the same Docker host. That's a reasonable
+shape for one-laptop Compose, but doesn't generalize past it: it assumes
+Airflow and the Spark cluster share a Docker daemon, which stops being
+true the moment either one moves to a separate host or a Kubernetes
+cluster. A production deployment would run `SparkSubmitOperator` (or
+`SparkKubernetesOperator`) against a Spark client actually colocated with
+or reachable from Airflow, precisely because "reach across to a sibling
+container on the same host" isn't available anymore.
+
+**Common mistake:** treating `docker exec` from Airflow as "how you'd
+call Spark from an orchestrator" in general — it's specific to this
+project's single-Docker-host topology.
+
+---
+
+## 9. Incremental extraction and its limits
+
+**Decision:** Bronze extraction for `orders`, `order_items`, `customers`,
+and `exchange_rates` is watermark-based (see
+`spark/jobs/common/incremental.py`): each run only reads source rows past
+a stored watermark and appends them to Bronze, instead of re-reading and
+overwriting the entire source table every run. `products` stays
+full-refresh — see the docstring in `bronze/extract_products.py` for why
+(no usable watermark column, and cheap to fully re-read at ~2,000 rows).
+
+**What the watermark is, per table:**
+
+| Table | Watermark column | What it is |
+|---|---|---|
+| `orders` | `order_ts` | the row's own creation timestamp |
+| `order_items` | `order_item_id` | monotonic surrogate PK (no timestamp column exists on this table) |
+| `customers` | `customer_id` | monotonic surrogate PK (same reason) |
+| `exchange_rates` | `rate_date` | the row's own business date |
+
+**What this does NOT do — and why that's a real limitation, not a rounding
+error:** none of these source tables expose an `updated_at`/`modified_at`
+column. A watermark comparison (`WHERE col > last_watermark`) can only
+ever find rows that are *new* relative to what's already been extracted —
+it structurally cannot distinguish "this row didn't exist before" from
+"this row existed before and was edited in place," because there is
+nothing in the row to compare against a prior version. Concretely: if an
+order's `order_status` changes from `PLACED` to `SHIPPED` after that order
+has already been extracted into Bronze, this pipeline will never see that
+change. The stale `PLACED` row sits in Bronze (and downstream Silver/Gold)
+indefinitely.
+
+**What closing that gap actually requires** (neither is a Bronze-job
+change — both are source-system changes):
+1. **An `updated_at` column**, maintained by every write path that can
+   mutate a row (the application, any admin tooling, migrations) — and
+   then watermarking on `updated_at` instead of the creation timestamp.
+   This only works if that column is *reliably* set on every mutation;
+   one un-instrumented write path silently reintroduces the same gap.
+2. **CDC** (e.g. Debezium reading Postgres's WAL / MySQL's binlog) —
+   captures every row-level change, including updates and deletes, by
+   reading the database's own replication stream rather than querying
+   application tables at all. This is the production-grade answer, and
+   the one that scales past "which columns happen to exist."
+
+**Common mistake:** describing watermark-based extraction as "CDC" or
+"catches all changes." It doesn't — it's insert-only-aware incremental
+extraction, a real and useful improvement over full-refresh, but not a
+substitute for genuine change-data-capture when source rows are mutated
+in place.
 
 ---

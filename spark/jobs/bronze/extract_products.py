@@ -1,4 +1,16 @@
-"""Bronze extraction for products from the flat-file CSV."""
+"""Bronze extraction for products from the flat-file CSV.
+
+Deliberately NOT incremental, unlike orders/order_items/customers/
+exchange_rates. Two reasons together, not one alone:
+  1. No usable watermark column — products has no updated_at, and unlike
+     customers/order_items it also has no monotonic surrogate that would
+     stand in for one (product_id is stable/reused, not append-only, once
+     is_active toggles are considered).
+  2. It's a small dimension table (~2,000 rows) — a full re-read costs
+     nothing next to a 100k-row fact table, so there's no performance
+     problem incremental extraction would be solving here.
+See docs/design-decisions.md, "Incremental extraction and its limits."
+"""
 import os
 import sys
 

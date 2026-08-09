@@ -5,8 +5,8 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 import pyspark.sql.functions as F  # noqa: E402
-from pyspark.sql import Window  # noqa: E402
 
+from common.dedupe import dedupe_latest  # noqa: E402
 from common.dq import DQCheck, apply_dq_checks  # noqa: E402
 from common.silver_writer import write_quarantine_table, write_silver_table  # noqa: E402
 from common.spark_session import get_spark_session  # noqa: E402
@@ -17,15 +17,12 @@ def main():
 
     bronze = spark.table("lakehouse.bronze.exchange_rates")
 
+    # Now load-bearing: bronze.exchange_rates is append-only across runs
+    # (see bronze/extract_fx_rates.py), so the same (rate_date,
+    # base_currency, quote_currency) can appear more than once if
+    # extraction ever re-reads an already-seen date.
     key_cols = ["rate_date", "base_currency", "quote_currency"]
-    w = Window.partitionBy(*key_cols).orderBy(F.col("_bronze_ingested_at").desc())
-    # Defensive, not currently load-bearing — see transform_customers.py
-    # for why (Bronze is full-overwrite, not accumulating, as of today).
-    deduped = (
-        bronze.withColumn("_rn", F.row_number().over(w))
-        .filter(F.col("_rn") == 1)
-        .drop("_rn")
-    )
+    deduped = dedupe_latest(bronze, key_cols=key_cols)
 
     checks = [
         DQCheck("rate_date_not_null", F.col("rate_date").isNotNull()),

@@ -27,6 +27,10 @@ def get_spark_session(app_name: str) -> SparkSession:
         .getOrCreate()
     )
     # Ensure all required Iceberg databases exist.
-    for db in ("bronze", "silver", "gold", "quarantine"):
+    # "control" holds pipeline-internal bookkeeping (extraction watermarks
+    # — see common/incremental.py), not business data; kept as its own
+    # database rather than dumped into bronze/ so it's obvious it isn't a
+    # source table if someone browses the catalog.
+    for db in ("bronze", "silver", "gold", "quarantine", "control"):
         spark.sql(f"CREATE DATABASE IF NOT EXISTS {ICEBERG_CATALOG}.{db}")
     return spark

@@ -1,0 +1,6 @@
+# Pinned to match the Spark version baked into the hadoop-hive-spark-*
+# images (Spark 3.3.1 — see docker/spark-jars/README.md). These tests run
+# a local[1] SparkSession with no Iceberg/Hive config, so no other part
+# of the stack needs to be running.
+pyspark==3.3.1
+pytest>=7.4,<8

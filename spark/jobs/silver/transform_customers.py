@@ -5,8 +5,8 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 import pyspark.sql.functions as F  # noqa: E402
-from pyspark.sql import Window  # noqa: E402
 
+from common.dedupe import dedupe_latest  # noqa: E402
 from common.dq import DQCheck, apply_dq_checks  # noqa: E402
 from common.silver_writer import write_quarantine_table, write_silver_table  # noqa: E402
 from common.spark_session import get_spark_session  # noqa: E402
@@ -20,17 +20,10 @@ def main():
 
     bronze = spark.table("lakehouse.bronze.customers")
 
-    w = Window.partitionBy("customer_id").orderBy(F.col("_bronze_ingested_at").desc())
-    # Defensive, not currently load-bearing: Bronze is a full-overwrite
-    # snapshot each run (see common/bronze_writer.py), so a given run's
-    # bronze.customers can't itself contain two _bronze_ingested_at values
-    # for one customer_id today. Kept here so this stays correct the
-    # moment Bronze ever becomes incremental/accumulating.
-    deduped = (
-        bronze.withColumn("_rn", F.row_number().over(w))
-        .filter(F.col("_rn") == 1)
-        .drop("_rn")
-    )
+    # Now load-bearing: bronze.customers is append-only across runs (see
+    # bronze/extract_customers.py), so the same customer_id can appear
+    # more than once here if extraction ever re-reads an already-seen id.
+    deduped = dedupe_latest(bronze, key_cols=["customer_id"])
 
     checks = [
         DQCheck("customer_id_not_null", F.col("customer_id").isNotNull()),

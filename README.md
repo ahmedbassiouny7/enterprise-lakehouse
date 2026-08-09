@@ -100,8 +100,20 @@ enterprise-lakehouse/
 ├── airflow/dags/         pipeline DAGs
 ├── spark/jobs/           bronze/, silver/, gold/, common/ — PySpark jobs, one file per table
 ├── generator/            synthetic data generator for the operational sources
+├── tests/                unit tests for spark/jobs/common/ (pytest, local SparkSession — no Docker needed)
 ├── dashboards/           not built — see the Architecture note above
 └── docs/                 design decisions and rationale (docs/design-decisions.md)
+```
+
+## Running the unit tests
+
+Unit tests cover the pure-DataFrame logic in `spark/jobs/common/` (the DQ
+check framework and the Silver dedup helper) against a local `local[1]`
+SparkSession — no Docker, HDFS, or Iceberg catalog required:
+
+```bash
+pip install -r tests/requirements.txt
+pytest tests/
 ```
 
 ## Build status
@@ -111,7 +123,14 @@ enterprise-lakehouse/
 - [x] Bronze ingestion jobs (Spark reading Postgres/MySQL/CSV)
 - [x] Silver transformations (dedupe, validation, quarantine)
 - [x] Gold aggregates (`daily_sales`, `customer_360`, `monthly_revenue`, `inventory_summary`, `product_performance`)
-- [x] Airflow DAG wiring the above together with a data-quality gate
+- [x] Airflow DAG wiring the above together with a data-quality gate that
+      actually blocks Gold on breach (per-table thresholds — see
+      `DQ_THRESHOLDS_PCT` in the DAG), not just a logged warning
+- [x] Incremental (watermark-based) Bronze extraction for orders,
+      order_items, customers, exchange_rates; products stays full-refresh
+      by design — see docs/design-decisions.md, "Incremental extraction
+      and its limits," for what this does and does not catch
+- [x] Unit tests for the DQ framework and Silver dedup logic (`tests/`)
 - [x] Trino cross-catalog query demos (live federated Postgres ⋈ MySQL join, plus all Iceberg tables)
 - [x] Full end-to-end DAG run, verified
 - [ ] BI dashboard, mock REST API for fx rates — scope cut, not gaps: see the note under Architecture above

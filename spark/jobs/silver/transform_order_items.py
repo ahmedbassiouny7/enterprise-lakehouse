@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 import pyspark.sql.functions as F  # noqa: E402
 
+from common.dedupe import dedupe_latest  # noqa: E402
 from common.dq import DQCheck, apply_dq_checks  # noqa: E402
 from common.silver_writer import write_quarantine_table, write_silver_table  # noqa: E402
 from common.spark_session import get_spark_session  # noqa: E402
@@ -14,7 +15,13 @@ from common.spark_session import get_spark_session  # noqa: E402
 def main():
     spark = get_spark_session("silver_transform_order_items")
 
-    bronze_items = spark.table("lakehouse.bronze.order_items")
+    # Load-bearing: bronze.order_items is append-only across runs (see
+    # bronze/extract_orders.py), so a re-run or backfill overlapping an
+    # already-extracted order_item_id watermark can put the same
+    # order_item_id in Bronze twice.
+    bronze_items = dedupe_latest(
+        spark.table("lakehouse.bronze.order_items"), key_cols=["order_item_id"]
+    )
     silver_orders = spark.table("lakehouse.silver.orders").select(
         F.col("order_id").alias("_known_order_id"),
         F.col("order_date"),

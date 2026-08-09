@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 import pyspark.sql.functions as F  # noqa: E402
 
+from common.dedupe import dedupe_latest  # noqa: E402
 from common.dq import DQCheck, apply_dq_checks  # noqa: E402
 from common.silver_writer import write_quarantine_table, write_silver_table  # noqa: E402
 from common.spark_session import get_spark_session  # noqa: E402
@@ -16,16 +17,13 @@ def main():
 
     bronze = spark.table("lakehouse.bronze.products")
 
-    from pyspark.sql import Window
-
-    w = Window.partitionBy("product_id").orderBy(F.col("_bronze_ingested_at").desc())
-    # Defensive, not currently load-bearing — see transform_customers.py
-    # for why (Bronze is full-overwrite, not accumulating, as of today).
-    deduped = (
-        bronze.withColumn("_rn", F.row_number().over(w))
-        .filter(F.col("_rn") == 1)
-        .drop("_rn")
-    )
+    # Defensive, not currently load-bearing: bronze.products is still a
+    # full-overwrite snapshot each run (see bronze/extract_products.py —
+    # products deliberately stayed non-incremental), so a given run's
+    # bronze.products can't contain two _bronze_ingested_at values for one
+    # product_id today. Kept here so this stays correct if products ever
+    # does move to incremental extraction.
+    deduped = dedupe_latest(bronze, key_cols=["product_id"])
 
     checks = [
         DQCheck("product_id_not_null", F.col("product_id").isNotNull()),

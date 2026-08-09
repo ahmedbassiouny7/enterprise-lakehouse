@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 import pyspark.sql.functions as F  # noqa: E402
 
+from common.dedupe import dedupe_latest  # noqa: E402
 from common.dq import DQCheck, apply_dq_checks  # noqa: E402
 from common.silver_writer import write_quarantine_table, write_silver_table  # noqa: E402
 from common.spark_session import get_spark_session  # noqa: E402
@@ -17,7 +18,11 @@ VALID_CHANNELS = ["ONLINE", "STORE"]
 def main():
     spark = get_spark_session("silver_transform_orders")
 
-    bronze_orders = spark.table("lakehouse.bronze.orders")
+    # Load-bearing: bronze.orders is append-only across runs (see
+    # bronze/extract_orders.py), so a re-run or backfill overlapping an
+    # already-extracted order_ts window can put the same order_id in
+    # Bronze twice.
+    bronze_orders = dedupe_latest(spark.table("lakehouse.bronze.orders"), key_cols=["order_id"])
     silver_customers = spark.table("lakehouse.silver.customers").select(
         F.col("customer_id").alias("_known_customer_id")
     )

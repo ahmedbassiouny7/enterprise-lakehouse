@@ -31,17 +31,29 @@ GOLD_JOBS = [
     ("product_performance", "gold/product_performance.py"),
 ]
 
-# Silver table name -> quarantine table name are identical (see
-# common/dq.py / silver_writer.py); listed here just for the DQ gate query.
-SILVER_TABLES_WITH_QUARANTINE = [
-    "products",
-    "customers",
-    "exchange_rates",
-    "orders",
-    "order_items",
-]
-
-DQ_WARN_THRESHOLD_PCT = 2.0  # matches the "more than a few percent" framing used to decide this
+# Silver table name -> max acceptable quarantine %, checked per table
+# rather than one global number because these tables don't carry equal
+# risk when they fail:
+#   orders / order_items  — core transactional facts feeding every Gold
+#                            revenue metric; tightest tolerance.
+#   customers              — a bad customer_id breaks the FK check on
+#                            every order for that customer, so errors
+#                            here cascade; kept tight for that reason.
+#   exchange_rates          — tightest of all: a single bad FX row
+#                            silently mis-converts every order_total_usd
+#                            for that currency/day, and nothing downstream
+#                            would ever flag it as wrong.
+#   products                — small, low-cardinality reference data;
+#                            slightly more tolerance is acceptable because
+#                            a bad row here affects one SKU, not a whole
+#                            day's revenue.
+DQ_THRESHOLDS_PCT = {
+    "products": 3.0,
+    "customers": 1.5,
+    "exchange_rates": 0.5,
+    "orders": 1.0,
+    "order_items": 1.0,
+}
 
 
 def _is_table_not_found(exc: Exception) -> bool:
@@ -57,11 +69,24 @@ def _is_table_not_found(exc: Exception) -> bool:
 
 
 def _check_dq_quarantine(**context):
-    """Log quarantine counts for Silver tables via Trino."""
+    """Quality gate: fail the DAG (blocking Gold) if any Silver table's
+    quarantine rate exceeds its per-table threshold in DQ_THRESHOLDS_PCT.
+
+    This used to only log a warning and let the pipeline continue
+    regardless — that meant "quality gate" was aspirational, not actual:
+    Gold would compute over bad data the same way whether the gate passed
+    or failed. Failing loud here means a bad run stops before Gold
+    recomputes on top of it, at the cost of the whole DAG going red for a
+    problem that might genuinely be transient (e.g. a one-off source
+    hiccup) — a deliberate trade of availability for correctness, made
+    explicit here rather than left as a silent side effect of "it's just
+    a log line."
+    """
     hook = TrinoHook(trino_conn_id="trino_default")
     log = context["ti"].log
+    violations = []
 
-    for table in SILVER_TABLES_WITH_QUARANTINE:
+    for table, threshold_pct in DQ_THRESHOLDS_PCT.items():
         try:
             silver_count = hook.get_first(f"SELECT count(*) FROM iceberg.silver.{table}")[0]
         except Exception as e:
@@ -100,25 +125,32 @@ def _check_dq_quarantine(**context):
         total = silver_count + quarantine_count
         pct = round((quarantine_count / total) * 100, 2) if total > 0 else 0.0
 
-        if pct > DQ_WARN_THRESHOLD_PCT:
-            log.warning(
+        if pct > threshold_pct:
+            log.error(
                 "[dq_quality_gate] %s: %s/%s rows quarantined (%.2f%%) — "
-                "above %s%% threshold, continuing anyway per DQ-gate policy "
-                "(see DAG docstring)",
+                "ABOVE %s%% threshold",
                 table,
                 quarantine_count,
                 total,
                 pct,
-                DQ_WARN_THRESHOLD_PCT,
+                threshold_pct,
             )
+            violations.append(f"{table}: {pct:.2f}% quarantined (threshold {threshold_pct}%)")
         else:
             log.info(
-                "[dq_quality_gate] %s: %s/%s rows quarantined (%.2f%%) — within threshold",
+                "[dq_quality_gate] %s: %s/%s rows quarantined (%.2f%%) — within %s%% threshold",
                 table,
                 quarantine_count,
                 total,
                 pct,
+                threshold_pct,
             )
+
+    if violations:
+        raise RuntimeError(
+            "[dq_quality_gate] Gold blocked — quarantine rate exceeded threshold for: "
+            + "; ".join(violations)
+        )
 
 
 def _validate_trino_catalog(**context):
