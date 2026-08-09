@@ -13,10 +13,15 @@ x-airflow-common: &airflow-common
     SPARK_HOME: /opt/spark
     # Airflow uses these standard connections for validation and Spark submission.
     AIRFLOW_CONN_TRINO_DEFAULT: trino://airflow@trino:8080
-    AIRFLOW_CONN_SPARK_DEFAULT: spark://master:7077
+    AIRFLOW_CONN_SPARK_DEFAULT: '{"conn_type": "spark", "host": "spark://master", "port": 7077}'
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./spark/jobs:/opt/airflow/spark_jobs
+    - ./generator/output:/opt/spark-jobs-data:ro
+    # SparkSubmitOperator runs the driver inside the Airflow container, so it
+    # needs the same Iceberg and JDBC dependencies as the Spark cluster.
+    - ./docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:/opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:ro
+    - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
     - airflow_logs:/opt/airflow/logs
   networks: [lakehouse-net]
   depends_on:
@@ -300,6 +305,9 @@ services:
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./spark/jobs:/opt/airflow/spark_jobs
+      - ./generator/output:/opt/spark-jobs-data:ro
+      - ./docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:/opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:ro
+      - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
       - airflow_logs:/opt/airflow/logs
     depends_on:
       airflow-db:
