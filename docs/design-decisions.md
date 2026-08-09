@@ -214,41 +214,36 @@ is a lab-scale shortcut, not a production pattern, and the README's
 
 ---
 
-## 8. Airflow triggers Spark via `docker exec` + BashOperator, not SparkSubmitOperator
+## 8. Airflow submits Spark jobs through `SparkSubmitOperator` against the standalone cluster
 
-**Decision:** every Bronze/Silver/Gold task is a `BashOperator` running
-`docker exec master spark-submit /opt/spark-jobs/<path>` from the
-scheduler container, rather than Airflow's own `SparkSubmitOperator`.
+**Decision:** every Bronze/Silver/Gold task is a `SparkSubmitOperator`
+that submits the job to the existing Spark standalone cluster at
+`spark://master:7077` via the Airflow connection `spark_default`.
+This keeps the pipeline architecture aligned with how Airflow normally
+orchestrates Spark while preserving the repository's existing cluster
+layout and job paths.
 
-**Why not `SparkSubmitOperator`:** that operator shells out to a local
-`spark-submit` binary (or a configured Spark connection), which means the
-Spark client — the actual `spark-submit` executable, matching Hadoop/Spark
-version, and enough config to resolve `spark://master:7077` and the Hive
-Metastore thrift URI — would need to be installed *inside the Airflow
-image itself*. That's a second place carrying Spark client version drift
-against the real Spark cluster, for a benefit this project doesn't need
-(the operator's main value — structured `conf`/`packages` args instead of
-a raw string — doesn't matter when every job's spark-submit invocation is
-identical apart from the file path). `docker exec` reuses the
-already-correct Spark client that ships inside the `master` image, so
-there is exactly one Spark installation in the whole stack to keep
-consistent.
+**Why this is the right fit here:** the project already has a dedicated
+Spark standalone cluster (`master` + `worker`) and a single Spark client
+installed in the Airflow image for local `spark-submit` invocation. The
+jobs themselves are unchanged; only the orchestration mechanism moves from
+`docker exec ... spark-submit` to Airflow's native Spark operator. The
+Spark jobs still run against the same master/worker cluster and still use
+the same Python entrypoints and application arguments, but without Airflow
+needing host-level Docker access.
 
-**Trade-off, stated plainly:** this only works because Airflow's
-scheduler has the Docker socket mounted (see the `airflow-scheduler`
-service in `docker-compose.yml`) — i.e. the scheduler container can
-control sibling containers on the same Docker host. That's a reasonable
-shape for one-laptop Compose, but doesn't generalize past it: it assumes
-Airflow and the Spark cluster share a Docker daemon, which stops being
-true the moment either one moves to a separate host or a Kubernetes
-cluster. A production deployment would run `SparkSubmitOperator` (or
-`SparkKubernetesOperator`) against a Spark client actually colocated with
-or reachable from Airflow, precisely because "reach across to a sibling
-container on the same host" isn't available anymore.
+**Trade-off, stated plainly:** this removes the previous reliance on the
+scheduler owning the host Docker socket. Instead, the Airflow container
+runs the Spark client locally and submits to the cluster over the shared
+Compose network. That is the more portable, production-style pattern for
+this stack and doesn't require Kubernetes or any change to the business
+logic in the Bronze/Silver/Gold steps.
 
-**Common mistake:** treating `docker exec` from Airflow as "how you'd
-call Spark from an orchestrator" in general — it's specific to this
-project's single-Docker-host topology.
+**Common mistake:** assuming every Spark stack requires a custom
+`docker exec` path from the orchestrator. This project does not: the
+service name is `master`, the Spark master port is `7077`, and Airflow
+can reach it directly over the Docker network with the `spark_default`
+connection.
 
 ---
 

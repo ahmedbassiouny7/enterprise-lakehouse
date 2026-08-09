@@ -7,13 +7,16 @@ FROM apache/airflow:2.9.3-python3.11
 USER root
 # openjdk headless: SparkSubmitOperator shells out to spark-submit, which
 # needs a local JVM even though the actual job runs on the remote cluster.
-# docker.io: gives this container the `docker` CLI so DAG tasks can run
-# `docker exec master spark-submit ...` against the host's Docker socket
-# (mounted in docker-compose.yml) — see the socket-mount comment there for
-# why this exists instead of a full local Spark client. Only the CLI
-# binary is actually used; the bundled dockerd is never started here.
+# The local Spark client is installed in /opt/spark so the operator can
+# submit directly to spark://master:7077 without Docker socket access.
+ENV SPARK_HOME=/opt/spark
+ENV PATH=${SPARK_HOME}/bin:${PATH}
 RUN apt-get update \
- && apt-get install -y --no-install-recommends openjdk-17-jre-headless docker.io \
+ && apt-get install -y --no-install-recommends curl openjdk-17-jre-headless \
+ && curl -fsSL https://archive.apache.org/dist/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz -o /tmp/spark.tgz \
+ && tar -xzf /tmp/spark.tgz -C /opt \
+ && mv /opt/spark-3.3.1-bin-hadoop3 ${SPARK_HOME} \
+ && rm -f /tmp/spark.tgz \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 

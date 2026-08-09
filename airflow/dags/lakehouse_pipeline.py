@@ -2,12 +2,25 @@
 from datetime import datetime
 
 from airflow import DAG
-from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
+from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 from airflow.providers.trino.hooks.trino import TrinoHook
 from airflow.utils.task_group import TaskGroup
 
-SPARK_SUBMIT = "docker exec master spark-submit /opt/spark-jobs/{path}"
+SPARK_MASTER_CONN_ID = "spark_default"
+SPARK_JOB_ROOT = "/opt/airflow/spark_jobs"
+
+
+def _spark_submit_task(task_id: str, path: str) -> SparkSubmitOperator:
+    return SparkSubmitOperator(
+        task_id=task_id,
+        application=f"{SPARK_JOB_ROOT}/{path}",
+        conn_id=SPARK_MASTER_CONN_ID,
+        deploy_mode="client",
+        name=f"lakehouse_{task_id}",
+        verbose=True,
+        application_args=[],
+    )
 
 # (job_name, relative path under spark/jobs/) — kept as one list per layer
 # so task-group wiring below stays a simple loop instead of repeated
@@ -187,30 +200,18 @@ with DAG(
 
     with TaskGroup("bronze") as bronze_group:
         bronze_tasks = {
-            name: BashOperator(
-                task_id=f"extract_{name}",
-                bash_command=SPARK_SUBMIT.format(path=path),
-            )
+            name: _spark_submit_task(f"extract_{name}", path)
             for name, path in BRONZE_JOBS
         }
 
     with TaskGroup("silver") as silver_group:
         silver_independent_tasks = {
-            name: BashOperator(
-                task_id=f"transform_{name}",
-                bash_command=SPARK_SUBMIT.format(path=path),
-            )
+            name: _spark_submit_task(f"transform_{name}", path)
             for name, path in SILVER_INDEPENDENT_JOBS
         }
 
-        silver_orders_task = BashOperator(
-            task_id="transform_orders",
-            bash_command=SPARK_SUBMIT.format(path="silver/transform_orders.py"),
-        )
-        silver_order_items_task = BashOperator(
-            task_id="transform_order_items",
-            bash_command=SPARK_SUBMIT.format(path="silver/transform_order_items.py"),
-        )
+        silver_orders_task = _spark_submit_task("transform_orders", "silver/transform_orders.py")
+        silver_order_items_task = _spark_submit_task("transform_order_items", "silver/transform_order_items.py")
 
         # orders needs silver.customers (FK check) + silver.exchange_rates (fx conversion)
         [silver_independent_tasks["customers"], silver_independent_tasks["exchange_rates"]] >> silver_orders_task
@@ -224,10 +225,7 @@ with DAG(
 
     with TaskGroup("gold") as gold_group:
         gold_tasks = [
-            BashOperator(
-                task_id=f"compute_{name}",
-                bash_command=SPARK_SUBMIT.format(path=path),
-            )
+            _spark_submit_task(f"compute_{name}", path)
             for name, path in GOLD_JOBS
         ]
 

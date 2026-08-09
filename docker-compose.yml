@@ -19,8 +19,11 @@ x-airflow-common: &airflow-common
     AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW__WEBSERVER__SECRET_KEY}
     AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     AIRFLOW_UID: ${AIRFLOW_UID:-50000}
-    # Airflow uses trino_default for Trino validation tasks.
+    SPARK_HOME: /opt/spark
+    PATH: /opt/spark/bin:${PATH}
+    # Airflow uses these standard connections for validation and Spark submission.
     AIRFLOW_CONN_TRINO_DEFAULT: trino://airflow@trino:8080
+    AIRFLOW_CONN_SPARK_DEFAULT: spark://master:7077
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./spark/jobs:/opt/airflow/spark_jobs
@@ -312,19 +315,10 @@ services:
     <<: *airflow-common
     container_name: airflow-scheduler
     command: scheduler
-    # Only the scheduler gets the Docker socket + group membership.
-    # With LocalExecutor, BashOperator tasks (the `docker exec master
-    # spark-submit ...` calls) run as subprocesses of the scheduler
-    # process — webserver/triggerer/init never touch Docker, so giving
-    # them host-daemon access would be unnecessary root-equivalent
-    # exposure for no functional reason.
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./spark/jobs:/opt/airflow/spark_jobs
       - airflow_logs:/opt/airflow/logs
-      - /var/run/docker.sock:/var/run/docker.sock
-    group_add:
-      - "984"
     depends_on:
       airflow-db:
         condition: service_healthy
