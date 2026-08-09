@@ -18,6 +18,9 @@ curl -fLo docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar \
 
 curl -fLo docker/spark-jars/mysql-connector-j-8.4.0.jar \
   https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.4.0/mysql-connector-j-8.4.0.jar
+
+curl -fLo docker/spark-jars/postgresql-42.7.3.jar \
+  https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar
 ```
 
 **Why 1.4.3 specifically:** it's the last `iceberg-spark-runtime-3.3_2.12`

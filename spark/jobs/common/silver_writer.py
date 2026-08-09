@@ -8,15 +8,19 @@ def write_silver_table(
 ) -> None:
     # Sort by business date before writing.
     df = df.withColumn("_silver_processed_at", current_timestamp())
+    full_name = f"{catalog}.silver.{table_name}"
+    df.sparkSession.sql(f"DROP TABLE IF EXISTS {full_name}")
     (
         df.orderBy(business_date_col)
-        .writeTo(f"{catalog}.silver.{table_name}")
+        .writeTo(full_name)
         .partitionedBy(months(business_date_col))
-        .createOrReplace()
+        .create()
     )
 
 
 def write_quarantine_table(df: DataFrame, table_name: str, catalog: str = "lakehouse") -> None:
     """Write quarantine rows without partitioning."""
     df = df.withColumn("_silver_processed_at", current_timestamp())
-    df.writeTo(f"{catalog}.quarantine.{table_name}").createOrReplace()
+    full_name = f"{catalog}.quarantine.{table_name}"
+    df.sparkSession.sql(f"DROP TABLE IF EXISTS {full_name}")
+    df.writeTo(full_name).create()

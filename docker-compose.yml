@@ -22,6 +22,7 @@ x-airflow-common: &airflow-common
     # needs the same Iceberg and JDBC dependencies as the Spark cluster.
     - ./docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:/opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:ro
     - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
+    - ./docker/spark-jars/postgresql-42.7.3.jar:/opt/spark/jars/postgresql-42.7.3.jar:ro
     - airflow_logs:/opt/airflow/logs
   networks: [lakehouse-net]
   depends_on:
@@ -47,6 +48,7 @@ services:
       - ./docker/hadoop/hdfs-site.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml:ro
       - ./docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:/opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:ro
       - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
+      - ./docker/spark-jars/postgresql-42.7.3.jar:/opt/spark/jars/postgresql-42.7.3.jar:ro
       - ./spark/jobs:/opt/spark-jobs
       # Flat-file Bronze sources (products.csv, exchange_rates.csv) written by
       # data-generator. Read-only: Bronze jobs consume these, never write here.
@@ -83,6 +85,7 @@ services:
       - ./docker/hadoop/hdfs-site.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml:ro
       - ./docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:/opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:ro
       - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
+      - ./docker/spark-jars/postgresql-42.7.3.jar:/opt/spark/jars/postgresql-42.7.3.jar:ro
       - ./generator/output:/opt/spark-jobs-data:ro
     networks: [lakehouse-net]
     depends_on:
@@ -100,6 +103,7 @@ services:
     volumes:
       - ./docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:/opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:ro
       - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
+      - ./docker/spark-jars/postgresql-42.7.3.jar:/opt/spark/jars/postgresql-42.7.3.jar:ro
     networks: [lakehouse-net]
     depends_on:
       master:
@@ -212,6 +216,7 @@ services:
     image: trinodb/trino:465
     container_name: trino
     environment:
+      - POSTGRES_ORDERS_DB=${POSTGRES_ORDERS_DB}
       - POSTGRES_ORDERS_USER=${POSTGRES_ORDERS_USER}
       - POSTGRES_ORDERS_PASSWORD=${POSTGRES_ORDERS_PASSWORD}
       - MYSQL_CUSTOMERS_USER=${MYSQL_CUSTOMERS_USER}
@@ -308,6 +313,7 @@ services:
       - ./generator/output:/opt/spark-jobs-data:ro
       - ./docker/spark-jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:/opt/spark/jars/iceberg-spark-runtime-3.3_2.12-1.4.3.jar:ro
       - ./docker/spark-jars/mysql-connector-j-8.4.0.jar:/opt/spark/jars/mysql-connector-j-8.4.0.jar:ro
+      - ./docker/spark-jars/postgresql-42.7.3.jar:/opt/spark/jars/postgresql-42.7.3.jar:ro
       - airflow_logs:/opt/airflow/logs
     depends_on:
       airflow-db:
