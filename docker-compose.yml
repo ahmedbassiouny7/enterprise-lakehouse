@@ -1,14 +1,5 @@
-# Enterprise Lakehouse Docker Compose stack.
-# Requires the extra Spark/Iceberg jars from docker/spark-jars before first launch.
-#
-# The three hadoop-hive-spark-* images are local-only (no upstream registry —
-# see docs/design-decisions.md, "Adopting Ahmed's existing images"), so they
-# can't be pinned to a published version. Pinned to :v1 here instead of
-# :latest so a later rebuild can't silently swap out what's running without
-# a deliberate tag bump. One-time setup if you haven't already:
-#   docker tag hadoop-hive-spark-master:latest  hadoop-hive-spark-master:v1
-#   docker tag hadoop-hive-spark-worker:latest  hadoop-hive-spark-worker:v1
-#   docker tag hadoop-hive-spark-history:latest hadoop-hive-spark-history:v1
+# Local Lakehouse stack. Requires the Spark jars from docker/spark-jars before first boot.
+# The inherited hadoop-hive-spark-* images are tagged as v1 to avoid silent drift.
 
 x-airflow-common: &airflow-common
   build: ./docker/airflow
@@ -175,16 +166,8 @@ services:
       retries: 10
     restart: unless-stopped
 
-  # --------------------------------------------------------------------
-  # data-generator — one-shot job container. Generates the synthetic
-  # dataset (Faker/numpy, seed 42, correlated distributions) and loads it
-  # directly into postgres-orders and mysql-customers over lakehouse-net.
-  # Not a long-running service: it runs once, exits 0, and sits stopped
-  # (same pattern as airflow-init below). Re-run any time with:
-  #   docker compose run --rm data-generator
-  # products.csv / exchange_rates.csv (flat-file/API sources, not live
-  # DB tables) land in ./generator/output on the host via the volume mount.
-  # --------------------------------------------------------------------
+  # Synthetic data generator; runs once and exits.
+  # Reads source systems and writes flat files into ./generator/output.
   data-generator:
     build: ./generator
     container_name: data-generator

@@ -44,22 +44,7 @@ GOLD_JOBS = [
     ("product_performance", "gold/product_performance.py"),
 ]
 
-# Silver table name -> max acceptable quarantine %, checked per table
-# rather than one global number because these tables don't carry equal
-# risk when they fail:
-#   orders / order_items  — core transactional facts feeding every Gold
-#                            revenue metric; tightest tolerance.
-#   customers              — a bad customer_id breaks the FK check on
-#                            every order for that customer, so errors
-#                            here cascade; kept tight for that reason.
-#   exchange_rates          — tightest of all: a single bad FX row
-#                            silently mis-converts every order_total_usd
-#                            for that currency/day, and nothing downstream
-#                            would ever flag it as wrong.
-#   products                — small, low-cardinality reference data;
-#                            slightly more tolerance is acceptable because
-#                            a bad row here affects one SKU, not a whole
-#                            day's revenue.
+# Per-table quarantine thresholds; each table carries a different downstream risk.
 DQ_THRESHOLDS_PCT = {
     "products": 3.0,
     "customers": 1.5,
@@ -70,31 +55,13 @@ DQ_THRESHOLDS_PCT = {
 
 
 def _is_table_not_found(exc: Exception) -> bool:
-    """True only for a genuine 'table doesn't exist' response from Trino,
-    never for auth/connection/permission failures. Checked by error text
-    rather than a specific trino-client exception class so this doesn't
-    silently stop matching after a client library bump — but that also
-    means it's a soft match, not a guarantee; if Trino ever phrases this
-    differently the fallback below still fails loud instead of masking it,
-    which is the safe direction to be wrong in."""
+    """Treat 'table not found' as a non-fatal quarantine condition."""
     msg = str(exc)
     return "TABLE_NOT_FOUND" in msg or "does not exist" in msg
 
 
 def _check_dq_quarantine(**context):
-    """Quality gate: fail the DAG (blocking Gold) if any Silver table's
-    quarantine rate exceeds its per-table threshold in DQ_THRESHOLDS_PCT.
-
-    This used to only log a warning and let the pipeline continue
-    regardless — that meant "quality gate" was aspirational, not actual:
-    Gold would compute over bad data the same way whether the gate passed
-    or failed. Failing loud here means a bad run stops before Gold
-    recomputes on top of it, at the cost of the whole DAG going red for a
-    problem that might genuinely be transient (e.g. a one-off source
-    hiccup) — a deliberate trade of availability for correctness, made
-    explicit here rather than left as a silent side effect of "it's just
-    a log line."
-    """
+    """Fail the DAG if a Silver table exceeds its quarantine threshold."""
     hook = TrinoHook(trino_conn_id="trino_default")
     log = context["ti"].log
     violations = []
@@ -213,9 +180,9 @@ with DAG(
         silver_orders_task = _spark_submit_task("transform_orders", "silver/transform_orders.py")
         silver_order_items_task = _spark_submit_task("transform_order_items", "silver/transform_order_items.py")
 
-        # orders needs silver.customers (FK check) + silver.exchange_rates (fx conversion)
+        # orders depends on customer and FX lookups
         [silver_independent_tasks["customers"], silver_independent_tasks["exchange_rates"]] >> silver_orders_task
-        # order_items needs silver.orders (FK + inherited order_date) + silver.products (FK)
+        # order_items depends on orders and products
         [silver_orders_task, silver_independent_tasks["products"]] >> silver_order_items_task
 
     dq_quality_gate = PythonOperator(
