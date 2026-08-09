@@ -123,6 +123,17 @@ traffic. The `.env.example` credentials here are separate per catalog for
 exactly this reason, even though in this portfolio project they happen to
 have the same privileges.
 
+**Operational note:** the catalog properties files reference their
+connection details as `${ENV:VAR_NAME}`, not plaintext — which means the
+`trino` service's `environment:` block in `docker-compose.yml` must
+explicitly pass through `POSTGRES_ORDERS_DB`/`POSTGRES_ORDERS_USER`/
+`POSTGRES_ORDERS_PASSWORD` (and the MySQL equivalents). This isn't
+inherited automatically just because those variables exist in `.env` —
+Trino only sees what the Compose service definition forwards to it. Easy
+to miss when adding a new catalog or renaming a variable, since the
+failure mode is Trino refusing to start rather than a clear "missing
+env var" message.
+
 ---
 
 ## 5. Hive Metastore's backing database is its own Postgres instance
@@ -227,6 +238,16 @@ unchanged; only the orchestration mechanism is different.
 **Trade-off:** this keeps the stack aligned with a normal Airflow + Spark
 pattern while preserving the existing Compose topology and job paths.
 
+**Gotcha:** setting `AIRFLOW_CONN_SPARK_DEFAULT` to a bare
+`spark://master:7077` is not safe to assume works as-is — Airflow's Spark
+provider can strip or mishandle the `spark://` scheme depending on exactly
+how the connection URI/extras are structured, and when that happens the
+failure is silent: the task doesn't error, it just doesn't submit to the
+standalone cluster the way you'd expect. If this connection is ever
+reconfigured, verify the resulting `--master` value the operator actually
+submits with (e.g. via the task log's rendered spark-submit command)
+rather than trusting the connection string alone.
+
 ---
 
 ## 9. Incremental extraction and its limits
@@ -278,5 +299,18 @@ change — both are source-system changes):
 extraction, a real and useful improvement over full-refresh, but not a
 substitute for genuine change-data-capture when source rows are mutated
 in place.
+
+**Related trade-off — Silver has no history between runs:**
+`silver_writer.py`'s write path is `DROP TABLE IF EXISTS` followed by a
+fresh `create()`, for both the main Silver tables and the quarantine
+tables. So even though Bronze accumulates incrementally, each Silver run
+fully rebuilds its output from whatever is in Bronze at that moment —
+there's no append-only history at the Silver layer, and a bad run
+overwrites the previous good one with no built-in rollback. This is a
+deliberate simplicity choice for a portfolio project (no SCD/versioning
+logic to maintain), but it's a real design trade-off worth being able to
+name: a production system would likely want Silver to be append-only or
+merge-based (Iceberg's `MERGE INTO`) so a bad run doesn't destroy the last
+known-good state.
 
 ---

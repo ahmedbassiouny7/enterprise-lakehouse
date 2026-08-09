@@ -1,13 +1,15 @@
 # Extra Spark jars
 
-Your `hadoop-hive-spark-*` images ship Spark 3.3.1 with the Postgres JDBC
-driver already in `$SPARK_HOME/jars` — but no Iceberg runtime and no MySQL
-driver. Rather than rebuild your images (which would re-trigger a big
-layer download), the two missing jars are fetched once to your host here
-and bind-mounted straight into `/opt/spark/jars/` on `master`, `worker`,
-and `history` in `docker-compose.yml`. Spark loads everything in that
-directory onto the classpath automatically — no `--jars` flag needed on
-every `spark-submit`.
+Your `hadoop-hive-spark-*` images ship Spark 3.3.1 but **do not** include a
+Postgres JDBC driver, an Iceberg runtime, or a MySQL driver — all three are
+missing from `$SPARK_HOME/jars` out of the box. (This was confirmed the hard
+way: `bronze.extract_orders` failed with `ClassNotFoundException:
+org.postgresql.Driver` until the Postgres jar below was added.) Rather than
+rebuild your images (which would re-trigger a big layer download), all three
+missing jars are fetched once to your host here and bind-mounted straight
+into `/opt/spark/jars/` on `master`, `worker`, and `history` in
+`docker-compose.yml`. Spark loads everything in that directory onto the
+classpath automatically — no `--jars` flag needed on every `spark-submit`.
 
 Run this once, from the repo root, before your first `docker compose up`:
 
