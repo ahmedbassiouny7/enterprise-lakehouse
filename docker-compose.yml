@@ -11,7 +11,6 @@ x-airflow-common: &airflow-common
     AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     AIRFLOW_UID: ${AIRFLOW_UID:-50000}
     SPARK_HOME: /opt/spark
-    PATH: /opt/spark/bin:${PATH}
     # Airflow uses these standard connections for validation and Spark submission.
     AIRFLOW_CONN_TRINO_DEFAULT: trino://airflow@trino:8080
     AIRFLOW_CONN_SPARK_DEFAULT: spark://master:7077
