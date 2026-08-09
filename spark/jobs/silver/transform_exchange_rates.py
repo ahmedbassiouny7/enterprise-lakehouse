@@ -19,6 +19,8 @@ def main():
 
     key_cols = ["rate_date", "base_currency", "quote_currency"]
     w = Window.partitionBy(*key_cols).orderBy(F.col("_bronze_ingested_at").desc())
+    # Defensive, not currently load-bearing — see transform_customers.py
+    # for why (Bronze is full-overwrite, not accumulating, as of today).
     deduped = (
         bronze.withColumn("_rn", F.row_number().over(w))
         .filter(F.col("_rn") == 1)

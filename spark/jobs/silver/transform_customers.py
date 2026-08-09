@@ -21,6 +21,11 @@ def main():
     bronze = spark.table("lakehouse.bronze.customers")
 
     w = Window.partitionBy("customer_id").orderBy(F.col("_bronze_ingested_at").desc())
+    # Defensive, not currently load-bearing: Bronze is a full-overwrite
+    # snapshot each run (see common/bronze_writer.py), so a given run's
+    # bronze.customers can't itself contain two _bronze_ingested_at values
+    # for one customer_id today. Kept here so this stays correct the
+    # moment Bronze ever becomes incremental/accumulating.
     deduped = (
         bronze.withColumn("_rn", F.row_number().over(w))
         .filter(F.col("_rn") == 1)
