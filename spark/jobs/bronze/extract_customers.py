@@ -6,6 +6,10 @@ profile edit to an existing customer_id (e.g. is_active flipping, or a
 city change). Closing that gap needs either an updated_at column on the
 source table or CDC. See docs/design-decisions.md, "Incremental
 extraction and its limits."
+
+SQL note: the watermark filter below is built via f-string, not a bound
+parameter — safe here because `watermark` comes from Iceberg's own
+control table (common/incremental.py), never from external input.
 """
 import os
 import sys

@@ -15,6 +15,14 @@ column to the source schema (with an app-level guarantee that every write
 sets it) or CDC (e.g. Debezium reading the WAL/binlog). Both are source-
 system changes, not something a Bronze job can retrofit on its own. See
 docs/design-decisions.md, "Incremental extraction and its limits."
+
+SQL note: the MERGE below builds its query via f-string interpolation
+rather than parameter binding. Safe here specifically because
+source_table/value are pipeline-internal (source_table is a hardcoded
+literal in each extract_*.py caller; value is a MAX() aggregate Spark
+itself computed from Bronze) — neither ever originates from an external
+or user-supplied string. Would need parameterizing if this ever took
+input from outside the pipeline.
 """
 from typing import Optional
 

@@ -13,6 +13,10 @@ rather than re-reading the entire source table.
 Neither watermark can detect an UPDATE to an already-extracted row (e.g.
 an order's status changing after ingestion) — only new rows. See
 docs/design-decisions.md, "Incremental extraction and its limits."
+
+SQL note: the watermark filter below is built via f-string, not a bound
+parameter — safe here because `watermark` comes from Iceberg's own
+control table (common/incremental.py), never from external input.
 """
 import os
 import sys

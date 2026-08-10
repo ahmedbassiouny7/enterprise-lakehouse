@@ -4,6 +4,7 @@ FROM apache/airflow:2.9.3-python3.11
 USER root
 # SparkSubmitOperator needs a local JVM and a Spark client for submission.
 # Keep the runtime in /opt/spark so the DAG can target spark://master:7077.
+# Java 17 is used for the client driver; the Spark cluster runs Java 8/11.
 ENV SPARK_HOME=/opt/spark
 ENV PATH=${SPARK_HOME}/bin:${PATH}
 RUN apt-get update \
